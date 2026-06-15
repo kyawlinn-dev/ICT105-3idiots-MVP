@@ -23,9 +23,11 @@
 ### Evidence of Work
 
 * GitHub repository link: https://github.com/kyawlinn-dev/ICT105-3idiots-MVP.git
-* Screenshot: Repository structure and GitHub Issues
+* Screenshot: <img width="1710" height="1112" alt="Screenshot 2026-06-15 at 22 51 20" src="https://github.com/user-attachments/assets/c5f496ba-a754-406c-8e52-cd2327dfc3a3" />
+<img width="1710" height="1112" alt="Screenshot 2026-06-15 at 22 37 49" src="https://github.com/user-attachments/assets/bea56fc3-7c5f-47a4-a732-e27247c64b99" />
+
 * File created: README.md, team-profile.md, idea-log.md, weekly-logbook.md
-* Commit link: 
+* Commit link: https://github.com/kyawlinn-dev/ICT105-3idiots-MVP/commits/main/
 
 ### Decision Made This Week
 
