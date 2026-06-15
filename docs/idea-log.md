@@ -1,84 +1,69 @@
 # Initial IT Venture Idea Log
 
-## Idea 1: Smart Campus Lost-and-Found System
-
-### Problem Area
-
-Students often lose personal belongings on campus and do not know where to report or search for them.
-
-### Target Users
-
-University students, security staff, and administrative staff.
-
-### Current Alternative
-
-Students usually post in social media groups, messaging applications, or contact security offices manually.
-
-### Proposed IT Solution
-
-A web-based platform where users can report lost items, upload images, search for found items, and communicate with responsible staff.
-
-### Possible Technology
-
-HTML, CSS, JavaScript, database integration, image upload functionality, and search/filter features.
-
-### Why This Is Suitable
-
-The system can be developed as a web prototype within one semester and validated with real student users.
+Three possible IT venture ideas in problem–user–solution format. These are not final — they will be screened in Lab 2 (opportunity scanning) before the team commits to one semester MVP.
 
 ---
 
-## Idea 2: Campus Event and Activity Finder
+## Idea 1: AI Assistant Tool for IT Students
 
 ### Problem Area
-
-Students frequently miss important campus events because information is spread across multiple platforms.
+IT students often get stuck on coding, debugging, and understanding technical concepts (programming, databases, networking). General AI tools give answers but are not tailored to their coursework or to actually learning, and lab help or tutoring is limited.
 
 ### Target Users
-
-University students and student organizations.
+IT and computer science students.
 
 ### Current Alternative
-
-Checking social media pages, posters, and group chats.
+Searching Stack Overflow and Google, using generic AI chatbots, asking classmates, or waiting for lab sessions.
 
 ### Proposed IT Solution
-
-A centralized platform that displays upcoming events, registration information, and reminders.
+A web-based AI assistant built for IT students that explains code and error messages, clarifies concepts (OOP, SQL, networking), and generates practice exercises — focused on helping them understand, not just copy.
 
 ### Possible Technology
-
-Web application, calendar integration, and notification features.
+Web application (HTML/CSS/JS), an AI API for explanations, a code-snippet view, and a database for saved sessions.
 
 ### Why This Is Suitable
-
-The prototype is simple to build and addresses a common student problem.
+It can be prototyped as a web app that calls an AI API and validated quickly with IT classmates during the semester.
 
 ---
 
-## Idea 3: Study Group Matching Platform
+## Idea 2: Student Apartment Finder Platform
 
 ### Problem Area
-
-Students have difficulty finding study partners for specific courses.
+Students — especially new and international ones — struggle to find available apartments near the university. Listings are scattered across Facebook groups, agents, and word of mouth, often with unclear prices and distances.
 
 ### Target Users
-
-University students.
+University students looking for off-campus housing near campus, especially newcomers.
 
 ### Current Alternative
-
-Asking friends or posting messages in class group chats.
+Facebook groups, asking seniors, walking around to spot "for rent" signs, or going through agents.
 
 ### Proposed IT Solution
-
-A platform that matches students based on subjects, schedules, and interests.
+A chatbot where students ask for available apartments by budget, distance to campus, and room type, and instantly get matching listings with details and contact information.
 
 ### Possible Technology
-
-Web application, user profiles, and matching functions.
+A chat interface (web or messaging), a database of listings, optional AI/NLP to understand questions, and a distance/map feature.
 
 ### Why This Is Suitable
+It can start with a small curated listing database and a simple chatbot, and be validated with students who are actively searching for housing.
 
-The project can be implemented with basic web development technologies and tested with students.
+---
 
+## Idea 3: Campus Student Marketplace
+
+### Problem Area
+Students need to buy and sell used items — textbooks, electronics, furniture, dorm goods — but rely on messy chat groups where posts get buried, with no search and no sense of trust.
+
+### Target Users
+University students, especially those moving in or out each semester.
+
+### Current Alternative
+Facebook/LINE buy-and-sell groups, physical notice boards, and word of mouth.
+
+### Proposed IT Solution
+A web marketplace where students list, search, and filter second-hand items by category, with photos and seller contact, limited to the campus community for trust.
+
+### Possible Technology
+Web application, a database, image upload, search/filter, and item categories.
+
+### Why This Is Suitable
+It is a classic, achievable web-prototype project (listings plus search) and easy to validate with students at the start or end of each semester.
