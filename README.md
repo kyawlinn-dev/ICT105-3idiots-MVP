@@ -1,4 +1,4 @@
-# Student Apartment Finder Chatbot
+# Student Apartment Finder Platform
 
 ICT105 IT Startup MVP Project — Team 3idiots
 
@@ -33,13 +33,13 @@ Students — especially new and international students — struggle to find avai
 
 ## Initial IT Venture Direction
 
-Our team's front-runner is a **Student Apartment Finder Chatbot** where students ask for available apartments by budget, distance to campus, and room type, and instantly receive matching listings with details and contact information. This is one of three ideas in `docs/idea-log.md`; the final direction will be confirmed in Lab 2 after opportunity scanning.
+Our team's front-runner is a **Student Apartment Finder Platform** where students ask for available apartments by budget, distance to campus, and room type, and instantly receive matching listings with details and contact information. This is one of three ideas in `docs/idea-log.md`; the final direction will be confirmed in Lab 2 after opportunity scanning.
 
 ## Technology Possibility
 
 Possible technologies:
 
-- Chatbot interface (web or messaging)
+- Chat interface (web or messaging)
 - Web application
 - Database of apartment listings
 - AI / natural-language understanding for queries
