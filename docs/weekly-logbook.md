@@ -22,10 +22,10 @@
 
 ### Evidence of Work
 
-* GitHub repository link: (Insert repository link)
+* GitHub repository link: https://github.com/kyawlinn-dev/ICT105-3idiots-MVP.git
 * Screenshot: Repository structure and GitHub Issues
 * File created: README.md, team-profile.md, idea-log.md, weekly-logbook.md
-* Commit link: (Insert commit link)
+* Commit link: 
 
 ### Decision Made This Week
 
