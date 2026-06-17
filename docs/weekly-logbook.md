@@ -40,7 +40,8 @@ The team decided to focus on the Smart Campus Lost-and-Found System as the prima
 3. Identify target users and pain points.
 4. Validate the selected problem area.
 5. Refine the venture concept based on evidence.
-	## Lab 02: IT Opportunity Scanning
+   
+## Lab 02: IT Opportunity Scanning
 
 ### What We Completed
 
@@ -69,10 +70,12 @@ AI Assistant Tool for IT Students was rejected as the final project because it r
 ### Evidence of Work
 
 * Opportunity scan file: /docs/opportunity-scan.md
-* NUF scoring file
+* NUF scoring file:  [opportunity-scoring.xlsx] (https://github.com/user-attachments/files/29058540/opportunity-scoring.xlsx)
 
 * Selected opportunity file: /docs/selected-opportunity.md
 * GitHub issue screenshot:
+<img width="959" height="506" alt="Screenshot 2026-06-17 233538" src="https://github.com/user-attachments/assets/e0b55759-01d6-464c-a6d2-f9966e49780f" />
+
 
 * Commit link:
   
