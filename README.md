@@ -25,15 +25,22 @@ ICT105 IT Startup MVP Project — Team 3idiots
 
 Students — especially new and international students — struggle to find available apartments near the university. Listings are scattered across Facebook groups, agents, and word of mouth, often with unclear prices, room types, and distances from campus, which makes searching slow and stressful.
 
-## Target Users
+University students often struggle to find suitable apartments near campus because rental information is scattered across Facebook groups, rental agents, websites, and personal recommendations. This makes the apartment search process time-consuming and inefficient.
 
-- University students looking for off-campus housing near campus
-- New and international students unfamiliar with the area
-- Students changing accommodation between semesters
+## Target Users
+* First-year university students
+* International students
+* Students looking for off-campus accommodation
+* Students planning to move to a new apartment
 
 ## Initial IT Venture Direction
 
 Our team's front-runner is a **Student Apartment Finder Platform** where students ask for available apartments by budget, distance to campus, and room type, and instantly receive matching listings with details and contact information. This is one of three ideas in `docs/idea-log.md`; the final direction will be confirmed in Lab 2 after opportunity scanning.
+
+## Selected IT Venture Direction
+
+Our team selected the Student Apartment Finder Platform. The platform aims to help students easily find apartments near campus by providing centralized apartment listings, rental information, location details, and contact information. We selected this idea because it solves a real student problem, has a clear target user group, and can be developed as a feasible semester project.
+
 
 ## Technology Possibility
 
@@ -68,6 +75,10 @@ Possible technologies:
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
 
+In Lab 02, we reviewed multiple IT opportunities, conducted NUF scoring, selected the Student Apartment Finder Platform as our semester project, and created GitHub Issues for future development activities.
+
 ## Next Step
 
 In Lab 2, the team will conduct opportunity scanning, validate the problem through user feedback, identify target users in more detail, and evaluate the feasibility of the proposed solution before selecting the final direction.
+
+In Lab 03, we will conduct customer discovery interviews and surveys to validate the apartment search problem and collect evidence from potential users.
