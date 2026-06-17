@@ -77,7 +77,7 @@ AI Assistant Tool for IT Students was rejected as the final project because it r
 <img width="959" height="506" alt="Screenshot 2026-06-17 233538" src="https://github.com/user-attachments/assets/e0b55759-01d6-464c-a6d2-f9966e49780f" />
 
 
-* Commit link:
+* Commit link: https://github.com/kyawlinn-dev/ICT105-3idiots-MVP/commits/main/
   
 
 ### Plan for Lab 03
