@@ -40,3 +40,43 @@ The team decided to focus on the Smart Campus Lost-and-Found System as the prima
 3. Identify target users and pain points.
 4. Validate the selected problem area.
 5. Refine the venture concept based on evidence.
+	## Lab 02: IT Opportunity Scanning
+
+### What We Completed
+
+1. Reviewed the three ideas generated in Lab 01.
+2. Identified six potential IT opportunities and evaluated their feasibility.
+3. Conducted NUF scoring and selected the final semester project.
+
+### Selected Opportunity
+
+Student Apartment Finder Platform
+
+### Why We Selected It
+
+The Student Apartment Finder Platform received the highest NUF score because it addresses a real problem experienced by many students. The project is useful, feasible to develop within one semester, and easy to validate through customer interviews and surveys.
+
+### What We Rejected
+
+AI Assistant Tool for IT Students was rejected as the final project because it requires AI integration and has higher technical complexity. Students can already access existing AI tools such as ChatGPT, making differentiation more difficult.
+
+### What We Learned
+
+1. A successful startup idea should solve a real user problem.
+2. Feasibility is as important as innovation.
+3. NUF scoring helps teams make objective decisions.
+
+### Evidence of Work
+
+* Opportunity scan file: /docs/opportunity-scan.md
+* NUF scoring file
+
+* Selected opportunity file: /docs/selected-opportunity.md
+* GitHub issue screenshot:
+
+* Commit link:
+  
+
+### Plan for Lab 03
+
+Our team will prepare interview and survey questions, identify target respondents, and collect evidence about students' apartment-search experiences to validate the problem and proposed solution.
