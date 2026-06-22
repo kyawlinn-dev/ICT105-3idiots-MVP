@@ -82,3 +82,5 @@ In Lab 02, we reviewed multiple IT opportunities, conducted NUF scoring, selecte
 In Lab 2, the team will conduct opportunity scanning, validate the problem through user feedback, identify target users in more detail, and evaluate the feasibility of the proposed solution before selecting the final direction.
 
 In Lab 03, we will conduct customer discovery interviews and surveys to validate the apartment search problem and collect evidence from potential users.
+
+In lab04
