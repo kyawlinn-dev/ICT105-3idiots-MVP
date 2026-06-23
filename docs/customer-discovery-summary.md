@@ -34,12 +34,8 @@ Gather more evidence from apartment owners, and test real adoption behavior (not
 
 ## Decision for Next Lab
 
-Choose one:
 - **Continue with same problem direction** (focus the first segment on new and international students)
-- Narrow the target user segment
-- Revise the problem statement
-- Change the project direction
 
 ## Updated Problem Statement
 
-New and international students near the university spend about 2.9 weeks searching scattered, unreliable sources to find an affordable room close to campus, and have no easy way to find a roommate — so they waste time, overpay, and feel stressed during their first weeks.
+New and international students near the university spend about 2.9 weeks searching scattered, unreliable sources to find an affordable room close to campus, and have no easy way to find a roommate, so they waste time, overpay, and feel stressed during their first weeks.
