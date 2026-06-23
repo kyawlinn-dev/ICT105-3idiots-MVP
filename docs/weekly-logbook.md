@@ -83,3 +83,54 @@ AI Assistant Tool for IT Students was rejected as the final project because it r
 ### Plan for Lab 03
 
 Our team will prepare interview and survey questions, identify target respondents, and collect evidence about students' apartment-search experiences to validate the problem and proposed solution.
+
+## Lab 03: Customer Problem Discovery
+
+### What We Completed
+
+1. Identified target respondents for customer discovery activities.
+2. Prepared non-leading customer discovery questions.
+3. Collected early customer evidence through interviews and surveys.
+4. Compared team assumptions with customer evidence.
+5. Documented customer discovery findings and updated project documentation.
+
+### Selected Opportunity
+
+Student Apartment Finder Platform
+
+### What Evidence We Collected
+
+Our team interviewed and surveyed university students who had experience searching for off-campus accommodation. The responses showed that students commonly use Facebook groups, rental agents, and recommendations from friends to search for apartments.
+
+### Main Findings
+
+1. Apartment information is scattered across multiple platforms.
+2. Students find it difficult to compare prices, facilities, and locations.
+3. Many students experience frustration due to outdated or incomplete information.
+
+### Assumptions Validated
+
+* Students face difficulties when searching for apartments near campus.
+* Students rely heavily on informal information sources.
+* Students need a more centralized and organized source of apartment information.
+
+### What We Learned
+
+1. Customer discovery is essential to confirm whether a problem is real.
+2. Evidence from users is more important than team assumptions.
+3. Customer interviews help identify actual pain points and user behavior.
+
+### Evidence of Work
+
+* Customer questions file: /docs/customer-questions.md
+* Problem notes file: /docs/problem-notes.md
+* Raw responses file: /data/raw-responses.xlsx
+* Assumption-evidence table: /docs/assumption-evidence-table.md
+* Customer discovery summary: /docs/customer-discovery-summary.md
+* GitHub Issues: Updated
+* Commit links: Added in repository
+
+### Plan for Lab 04
+
+Our team will analyze customer needs, prioritize core features, and begin designing the MVP prototype for the Student Apartment Finder Platform.
+
