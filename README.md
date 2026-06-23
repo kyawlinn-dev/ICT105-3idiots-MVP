@@ -67,9 +67,13 @@ Possible technologies:
 
 ## Weekly Progress Log
 
-| Lab | Main Activity | Output | Status |
-|-----|---------------|--------|--------|
-| Lab 1 | Lab setup and idea log | Repository, team profile, initial idea log, weekly logbook | Completed |
+| Week/Lab | Activities Completed                                                                                                                                                       | Main Deliverables                                                                                                                  | Status      |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | :-----------: |
+| Lab 01   | Identified problem areas, generated initial IT venture ideas, and selected three potential opportunities.                                                                  | `idea-log.md`, initial project ideas, GitHub repository setup                                                                      | ✅  Completed |
+| Lab 02   | Reviewed opportunities, conducted NUF scoring, selected the Student Apartment Finder Platform, created GitHub Issues, and updated project documentation.                   | `opportunity-scan.md`, `selected-opportunity.md`, `opportunity-scoring.xlsx`, updated README and weekly logbook                    | ✅  Completed |
+| Lab 03   | Defined target respondents, prepared customer discovery questions, collected early customer evidence, compared assumptions with evidence, and documented problem findings. | `customer-questions.md`, `problem-notes.md`, `raw-responses.xlsx`, `assumption-evidence-table.md`, `customer-discovery-summary.md` | ✅  Completed |
+| Lab 04   | To be updated after Lab 04 activities.                                                                                                                                     | -                                                                                                                                  | ⏳  Pending   |
+
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
