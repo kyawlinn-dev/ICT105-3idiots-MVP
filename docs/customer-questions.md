@@ -17,7 +17,7 @@ Students who searched for off-campus housing near campus in the last 6 months (e
 
 3. Tell us about the last time you looked for an apartment near campus.
 4. What were you trying to find, and what was your situation at that time?
-5. What happened from start to finish — where did you begin and how did it end?
+5. What happened from start to finish (where did you begin and how did it end)?
 
 ## Current Workaround
 
