@@ -2,7 +2,7 @@
 
 ## Selected Case
 
-Student Apartment Finder — a web platform that connects apartment owners directly with students (no agents) and helps students find roommates near the university.
+Student Apartment Finder: A web platform that connects apartment owners directly with students (no agents) and helps students find roommates near the university.
 
 ## Target Respondents
 
