@@ -71,11 +71,27 @@ Possible technologies:
 |-----|---------------|--------|--------|
 | Lab 1 | Lab setup and idea log | Repository, team profile, initial idea log, weekly logbook | Completed |
 
+## Customer Problem Discovery Summary
+In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
+The findings revealed that students mainly rely on Facebook groups, rental agents, recommendations from friends or seniors, and online communities when searching for apartments. However, the information is often scattered, outdated, and difficult to compare.
+
+## Key Findings
+Students spend significant time searching for apartment information.
+Rental information from different sources is often incomplete or outdated.
+Students find it difficult to compare apartment prices, facilities, and locations.
+International and first-year students experience greater difficulty because they have limited local knowledge.
+
+## Updated Problem Statement
+University students, especially first-year and international students, struggle to find suitable apartments near campus because rental information is scattered across multiple channels, making it difficult to compare options and make informed decisions.
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
 
 In Lab 02, we reviewed multiple IT opportunities, conducted NUF scoring, selected the Student Apartment Finder Platform as our semester project, and created GitHub Issues for future development activities.
+
+In Lab 03, our team collected early customer evidence, validated the existence of the problem, updated project assumptions, and documented customer discovery findings.
+
 
 ## Next Step
 
@@ -83,4 +99,4 @@ In Lab 2, the team will conduct opportunity scanning, validate the problem throu
 
 In Lab 03, we will conduct customer discovery interviews and surveys to validate the apartment search problem and collect evidence from potential users.
 
-In lab04
+In Lab 04, our team will identify and prioritize MVP features based on customer needs and begin designing the prototype for the Student Apartment Finder Platform.
