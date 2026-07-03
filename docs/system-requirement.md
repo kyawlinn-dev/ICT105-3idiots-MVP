@@ -30,7 +30,7 @@ These requirements define the minimum functionalities that our final prototype o
 The final prototype of the Student Apartment Finder will not be a static mockup or slideshow. It will be an interactive web application where apartment owners can submit and manage room listings, and students can search and filter apartments by price, distance, and room type, open a detailed view of each listing, contact owners directly, post or browse roommate requests, and view listing status. Listing data will be stored in a connected database or spreadsheet backend so that the main workflow — from browsing to contacting an owner — can be fully demonstrated end to end.
 
 
-## Available Technologies for Development
+## Available Technologies for Prototype
 
 | Platform Type           | Available Prototype Form                                                                                     |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------- |
