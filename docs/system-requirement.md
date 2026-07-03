@@ -2,7 +2,7 @@
 
 ## Minimum Final Prototype Functionalities
 
-These requirements define the minimum prototype functionalities that each ICT105 student group must address in the final prototype. The requirements are designed to be platform-independent and can align with different project topics, such as booking systems, reporting systems, inventory systems, learning platforms, dashboards, marketplace concepts, reminder systems, service request systems, or other IT-based solutions.
+These requirements define the minimum functionalities that our final prototype of the Student Apartment Finder must demonstrate. They translate the fixed ICT105 requirements (FR-01 to FR-16) into our own case: a web platform that helps students near Rangsit University find rooms directly from apartment owners, search and compare listings by price and distance, view apartment details, contact owners without agents, and find roommates. Each requirement below is grounded in our Lab 03 evidence, where students reported a slow, scattered search (an average of about 2.9 weeks across 3 or more sources), and defines what our prototype must show to solve that problem.
 
 | Req ID    | Minimum Prototype Functionality                        | What Students Must Show in Final Prototype                                                                                                                                                                                                                       |
 | --------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -27,7 +27,8 @@ These requirements define the minimum prototype functionalities that each ICT105
 
 ## Minimum Technical Requirement
 
-The final prototype must not be only a static idea or presentation. It must be an interactive prototype where users can click, submit, view, search/filter, update, or simulate the main workflow.
+The final prototype of the Student Apartment Finder will not be a static mockup or slideshow. It will be an interactive web application where apartment owners can submit and manage room listings, and students can search and filter apartments by price, distance, and room type, open a detailed view of each listing, contact owners directly, post or browse roommate requests, and view listing status. Listing data will be stored in a connected database or spreadsheet backend so that the main workflow — from browsing to contacting an owner — can be fully demonstrated end to end.
+
 
 Acceptable platforms may include:
 
