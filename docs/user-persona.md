@@ -1,7 +1,7 @@
 # Lab 04 - User Persona
 
 ## 1. Persona Name
-Mia — Year 1 International Student
+Mia - Year 1 International Student
 
 ## 2. User Type
 A new international student searching for off-campus housing near the university, who is unfamiliar with the area and the local rental market.
