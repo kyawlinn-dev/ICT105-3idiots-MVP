@@ -133,4 +133,48 @@ Our team interviewed and surveyed university students who had experience searchi
 ### Plan for Lab 04
 
 Our team will analyze customer needs, prioritize core features, and begin designing the MVP prototype for the Student Apartment Finder Platform.
+## Lab 04: User Persona, Requirements, and User Stories
 
+## Group Information
+- Course: ICT105 Fundamental Technology Entrepreneurship
+- Lab: Lab 04 - User Persona, Requirements, and User Stories
+- Group Name: 3idiots
+- Repository Link: https://github.com/kyawlinn-dev/ICT105-3idiots-MVP.git
+- Date: 04 July 2026
+
+## 1. Work Completed Today
+| Member Name | Contribution | GitHub Evidence (Commit/Issue/PR Link) |
+|---|---|---|
+| Phyo Wai Aung | Reviewed Lab 03 evidence and supported persona / user story planning as Product Lead and Validation Lead | Lab 04 GitHub issue and repository commit history |
+| Kyaw Linn | Created system requirements, MVP feature list, user flow diagram, and use case diagram as Technical Lead and UX/UI Lead | Lab 04 GitHub issue and repository commit history |
+| Arkar Kyaw Oo | Reviewed documentation and updated README / weekly logbook as Documentation Lead | GitHub Issue #22 and repository commit history |
+
+## 2. Main Decisions
+- Primary target user: New and international university students who need to find off-campus accommodation near the university.
+- Main persona: Mia - Year 1 International Student.
+- Most important problem: Apartment information is scattered across many sources, unclear, outdated, and difficult to compare.
+- Must-have requirements: Homepage, primary student pathway, owner listing submission, apartment listing page, search/filter function, detail view, listing status, admin listing management, validation, feedback messages, analytics dashboard, UI consistency, privacy awareness, and traceability.
+- Features included in MVP: Homepage, apartment listing page, search/filter, apartment detail view, owner add listing form, listing status display, admin listing management, basic validation and feedback, admin analytics dashboard, shortlist/compare, roommate support, and responsive layout.
+- Features postponed: Real-time chat, Power BI integration, online payment, rental contract signing, full identity verification, and full booking system.
+
+## 3. Requirement Changes / Clarifications
+
+The team clarified that the final prototype will be an interactive web app, not only a static idea or presentation. The web app should allow users to click, submit listing data, view apartment records, search/filter listings, open apartment detail pages, update listing status, and view an admin analytics dashboard.
+
+The team also clarified three user roles: Student, Apartment Owner, and Admin. The main MVP journey focuses on the student apartment search process. Apartment owners support the system by submitting and updating listings. Admin supports the system by managing listings and viewing summary analytics.
+
+Power BI integration can be considered later, but the first prototype can use a simple web-based admin dashboard to show the required summary and analytics view.
+
+## 4. Problems Encountered
+- Technical problem: The team needed to keep the prototype realistic while still including student, owner, and admin roles.
+- Team coordination problem: The team needed to divide Lab 04 tasks clearly across persona, user stories, requirements, MVP features, diagrams, and documentation updates.
+- Evidence/requirement problem: The team needed to connect Lab 03 evidence to Lab 04 requirements without adding too many complex features.
+
+## 5. Next Actions Before Lab 05
+| Task | Owner | Deadline | GitHub Issue |
+|---|---|---|---|
+| Final check of user persona and user stories | Phyo Wai Aung | Before Lab 05 | Lab 04 user persona / user stories issues |
+| Final check of system requirements and MVP feature list | Kyaw Linn | Before Lab 05 | Lab 04 system requirements / MVP feature issues |
+| Final check of user flow and use case diagrams | Kyaw Linn | Before Lab 05 | Lab 04 diagram issue |
+| Final README and weekly logbook update | Arkar Kyaw Oo | Before Lab 05 | GitHub Issue #22 |
+| Start planning web app prototype screens | Team | Lab 05 | New Lab 05 issue |
