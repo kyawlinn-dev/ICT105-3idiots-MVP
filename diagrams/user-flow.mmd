@@ -1,0 +1,47 @@
+flowchart TD
+    A([Start]) --> B[Open Student Apartment Finder Web App]
+
+    B --> C[Homepage / Landing Page<br/>Wireframe: homepage.png]
+    C --> D{User chooses action}
+
+    D -->|Browse apartments| E[Apartment Listing Page<br/>Wireframe: record-list.png]
+    D -->|Find roommate| R[Roommate Support Page<br/>Wireframe: roommate-support.png]
+    D -->|Sign in| S[Sign In / Role Selection]
+
+    E --> F[Search or Filter Apartments<br/>By university, price, distance, room type, facility, availability]
+    F --> G{Matching apartments found?}
+
+    G -->|No| H[Show no matching result message]
+    H --> F
+
+    G -->|Yes| I[View Filtered Apartment Results]
+    I --> J[Select Apartment Listing]
+    J --> K[Apartment Detail View<br/>Wireframe: detail-view.png]
+
+    K --> L{Apartment suitable?}
+    L -->|No| E
+    L -->|Yes| M{Choose next action}
+
+    M -->|Save listing| N[Saved / Shortlist Page<br/>Wireframe: saved.png]
+    M -->|Contact owner| O[Contact Owner Section<br/>Inside detail-view.png]
+
+    N --> P([End])
+    O --> P
+
+    R --> R1[Browse Roommate Posts]
+    R1 --> R2[View Roommate Post Details]
+    R2 --> R3[Contact or Save Roommate Post]
+    R3 --> P
+
+    S --> S1{Select role}
+    S1 -->|Student| C
+    S1 -->|Apartment Owner| OW[Owner Add Listing Form<br/>Wireframe: input-form.png]
+    S1 -->|Admin| AD[Admin Dashboard<br/>Wireframe: dashboard.png]
+
+    OW --> OW1[Submit Apartment Listing]
+    OW1 --> OW2[Show validation or success message]
+    OW2 --> ADL[Admin Listing Management<br/>Wireframe: admin-view.png]
+
+    AD --> ADL
+    ADL --> AD2[Approve / Reject / Manage Listing]
+    AD2 --> E
