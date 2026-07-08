@@ -1,12 +1,84 @@
-flowchart LR
-    U[Main User] --> UI[Web / App Interface]
-    UI --> FORM[Input / Submission Form]
-    FORM --> STORE[(Data Storage)]
-    STORE --> LIST[Record List]
-    LIST --> DETAIL[Detail View]
-    STORE --> DASH[Dashboard / Summary]
-    ADMIN[Admin / Manager] --> ADMINP[Admin Panel]
-    ADMINP --> STORE
-    ADMINP --> STATUS[Status Update]
-    STATUS --> STORE
+%% Student Apartment Finder Platform - System Architecture
+%% Team 3idiots - ICT105 Lab 06
+%% Solid boxes = built in current prototype (React + mock data / state)
+%% Dashed boxes = target backend/database per technical-architecture.md
 
+flowchart LR
+    %% ===== Actors =====
+    STUDENT([Student / User])
+    OWNER([Apartment Owner])
+    ADMIN([Admin / Manager])
+
+    %% ===== Frontend layer =====
+    subgraph FE["Frontend - React + Vite + TypeScript (Tailwind + shadcn/ui)"]
+        direction TB
+        subgraph PUB["Student Web App"]
+            HOME[Homepage / Landing]
+            LIST[Apartment Listing + Search / Filter]
+            DETAIL[Apartment Detail View]
+            SAVED[Saved / Shortlist]
+            ROOM[Roommate Support]
+        end
+        subgraph OWN["Owner Area"]
+            OADD[Add Listing Form]
+            OMANAGE[Owner Listing Management]
+            ODASH[Owner Dashboard]
+        end
+        subgraph ADM["Admin Area"]
+            AMANAGE[Listing Approval / Management]
+            ADASH[Analytics Dashboard]
+        end
+    end
+
+    %% ===== Backend layer =====
+    subgraph BE["Backend API - Express.js"]
+        LISTAPI[Listing Endpoints]
+        VALID[Validation + Submission]
+        REVIEW[Approval / Status Actions]
+        METRICS[Dashboard Query Service]
+    end
+
+    %% ===== Database layer =====
+    subgraph DB["Database - Supabase PostgreSQL"]
+        TUSER[(Users)]
+        TLIST[(Apartment Listings)]
+        TSAVE[(Saved Listings)]
+        TROOM[(Roommate Posts)]
+        TREV[(Listing Reviews)]
+        TMETRIC[(Dashboard Metrics)]
+    end
+
+    %% ===== Actor to frontend =====
+    STUDENT --> PUB
+    OWNER --> OWN
+    ADMIN --> ADM
+
+    %% ===== Frontend to backend =====
+    PUB --> LISTAPI
+    SAVED --> LISTAPI
+    ROOM --> LISTAPI
+    OADD --> VALID
+    OMANAGE --> REVIEW
+    AMANAGE --> REVIEW
+    ODASH --> METRICS
+    ADASH --> METRICS
+
+    %% ===== Backend to database =====
+    VALID --> TUSER
+    LISTAPI --> TLIST
+    VALID --> TLIST
+    REVIEW --> TLIST
+    REVIEW --> TREV
+    LISTAPI --> TSAVE
+    LISTAPI --> TROOM
+    METRICS --> TLIST
+    METRICS --> TMETRIC
+
+    %% ===== Styling =====
+    classDef planned fill:#f8fafc,stroke:#94a3b8,stroke-width:1px,stroke-dasharray:5 4,color:#334155;
+    classDef built fill:#ede9fe,stroke:#7c3aed,stroke-width:1px,color:#312e81;
+    classDef store fill:#eff6ff,stroke:#2563eb,stroke-width:1px,color:#1e3a8a;
+
+    class HOME,LIST,DETAIL,SAVED,ROOM,OADD,OMANAGE,ODASH,AMANAGE,ADASH built;
+    class LISTAPI,VALID,REVIEW,METRICS planned;
+    class TUSER,TLIST,TSAVE,TROOM,TREV,TMETRIC store;
