@@ -178,3 +178,67 @@ Power BI integration can be considered later, but the first prototype can use a 
 | Final check of user flow and use case diagrams | Kyaw Linn | Before Lab 05 | Lab 04 diagram issue |
 | Final README and weekly logbook update | Arkar Kyaw Oo | Before Lab 05 | GitHub Issue #22 |
 | Start planning web app prototype screens | Team | Lab 05 | New Lab 05 issue |
+
+
+## Lab 05: Product Concept and UI/UX Wireframe
+
+## Group Name
+
+3idiots
+
+## Project Title
+
+Student Apartment Finder Platform
+
+## Lab 05 Focus
+Product Concept and UI/UX Wireframe
+
+## What We Completed Today
+- [x] Reviewed Lab 04 requirements
+- [x] Defined product concept
+- [x] Mapped features to requirements
+- [x] Created required wireframe screens
+- [x] Created user flow diagram
+- [x] Built clickable prototype draft or screen navigation plan
+- [x] Updated GitHub repository
+
+## Member Contributions
+| Member Name | Contribution | Evidence / Commit Link |
+|---|---|---|
+| Team | Reviewed Lab 04 system requirements, user stories, MVP feature list, and diagrams to guide the Lab 05 wireframe work. | `docs/system-requirements.md`, `docs/user-stories.md`, `docs/mvp-feature-list.md`, `diagrams/user-flow.png` |
+| Team | Defined the product concept for the Student Apartment Finder Platform, including target users, problem, proposed system, value proposition, MVP scope, and out-of-scope features. | `docs/product-concept.md` |
+| Team | Mapped the required Lab 05 screens to requirement IDs, user stories, purposes, wireframe files, and final prototype modules. | `docs/feature-requirement-mapping.md` |
+| Team | Prepared the wireframe specification for the required web app screens, including homepage, input form, record list, detail view, dashboard, and admin view. | `docs/wireframe-specification.md` |
+| Team | Created and exported the required wireframe screens for the web app prototype. | `wireframes/homepage.png`, `wireframes/input-form.png`, `wireframes/record-list.png`, `wireframes/detail-view.png`, `wireframes/dashboard.png`, `wireframes/admin-view.png` |
+| Team | Reviewed the wireframe usability checklist to make sure the planned screens are clear, consistent, and connected to the Lab 04 requirements. | `docs/wireframe-usability-checklist.md` |
+| Team | Updated the README and weekly logbook to document Lab 05 progress and prepare the repository for the next prototype development stage. | `README.md`, `docs/weekly-logbook.md` |
+
+## Decisions Made
+| Decision | Reason | Related Requirement |
+|---|---|---|
+| The final prototype will continue as a web app. | A web app is suitable for students, apartment owners, and admin users to access apartment search and management features. | FR-01, FR-02, FR-13, FR-14 |
+| The homepage will introduce the project, target users, problem, and main action. | Students need to understand the purpose of the platform quickly before browsing apartments. | FR-01, FR-02 |
+| The apartment owner listing form will be used as the main input/submission screen. | The system needs apartment listing data before students can view and compare available rooms. | FR-03, FR-10, FR-11 |
+| The apartment listing page will show records with search and filter functions. | Lab 03 evidence showed that students need one organized place to compare apartment options by price, distance, room type, and availability. | FR-05, FR-06 |
+| The apartment detail page will show full listing information and current status. | Students need clear apartment details before deciding whether to shortlist the apartment or contact the owner. | FR-07, FR-08 |
+| The admin dashboard will show simple summary and analytics information. | Admin users need to view total listings, available rooms, pending listings, roommate posts, and other useful platform summary data. | FR-12 |
+| The admin management view will allow listing approval, rejection, editing, or removal. | The platform needs a way to manage incorrect, outdated, or invalid apartment listings. | FR-09, FR-08 |
+| The Lab 06 files will not be counted as Lab 05 deliverables. | `business-model-canvas.md` and `feature-value-mapping.md` belong to the next lab stage, not the current Lab 05 wireframe task. | Lab continuity |
+
+## Problems Found
+
+The team needed to make sure the Lab 05 wireframes were not random screens. Each screen had to connect back to the Lab 04 system requirements, user stories, MVP feature list, and user flow.
+
+Another problem was controlling the prototype scope because the system includes three user roles: Student, Apartment Owner, and Admin. To keep the MVP realistic, the team focused mainly on the student apartment search journey and kept owner and admin features simple.
+
+The team also needed to decide how to show the analytics dashboard. The team decided that a simple web-based admin analytics dashboard is enough for the first prototype, while advanced Power BI integration can be considered as a future improvement.
+
+## Next Steps Before Lab 06
+
+- Review the Lab 05 wireframes as the visual baseline for the final prototype
+- Improve the clickable web app prototype based on the wireframes
+- Check that every prototype screen connects to `system-requirements.md`
+- Check that every prototype feature connects to `user-stories.md`
+- Check that every prototype feature connects to `mvp-feature-list.md`
+- Prepare screenshots or exports for GitHub evidence
+- Continue to Lab 06 business and value planning
