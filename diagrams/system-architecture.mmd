@@ -1,84 +1,63 @@
 %% Student Apartment Finder Platform - System Architecture
 %% Team 3idiots - ICT105 Lab 06
-%% Solid boxes = built in current prototype (React + mock data / state)
-%% Dashed boxes = target backend/database per technical-architecture.md
+%% Layers stack top-to-bottom: Actors -> Frontend areas -> Backend -> Database
+%% Solid violet = built in current prototype (React + mock data / state)
+%% Dashed grey = target backend per technical-architecture.md
+%% Blue cylinders = Supabase tables
 
-flowchart LR
+flowchart TB
     %% ===== Actors =====
     STUDENT([Student / User])
     OWNER([Apartment Owner])
     ADMIN([Admin / Manager])
 
-    %% ===== Frontend layer =====
-    subgraph FE["Frontend - React + Vite + TypeScript (Tailwind + shadcn/ui)"]
-        direction TB
-        subgraph PUB["Student Web App"]
-            HOME[Homepage / Landing]
-            LIST[Apartment Listing + Search / Filter]
-            DETAIL[Apartment Detail View]
-            SAVED[Saved / Shortlist]
-            ROOM[Roommate Support]
-        end
-        subgraph OWN["Owner Area"]
-            OADD[Add Listing Form]
-            OMANAGE[Owner Listing Management]
-            ODASH[Owner Dashboard]
-        end
-        subgraph ADM["Admin Area"]
-            AMANAGE[Listing Approval / Management]
-            ADASH[Analytics Dashboard]
-        end
+    %% ===== Frontend: Student =====
+    subgraph PUB["Student Web App - React + Vite + TypeScript"]
+        direction LR
+        HOME[Homepage / Landing] ~~~ LIST[Listing + Search / Filter] ~~~ DETAIL[Apartment Detail View] ~~~ SAVED[Saved / Shortlist] ~~~ ROOM[Roommate Support]
     end
 
-    %% ===== Backend layer =====
+    %% ===== Frontend: Owner =====
+    subgraph OWN["Owner Area"]
+        direction LR
+        OADD[Add Listing Form] ~~~ OMANAGE[Listing Management] ~~~ ODASH[Owner Dashboard]
+    end
+
+    %% ===== Frontend: Admin =====
+    subgraph ADM["Admin Area"]
+        direction LR
+        AMANAGE[Approval / Management] ~~~ ADASH[Analytics Dashboard]
+    end
+
+    %% ===== Backend =====
     subgraph BE["Backend API - Express.js"]
-        LISTAPI[Listing Endpoints]
-        VALID[Validation + Submission]
-        REVIEW[Approval / Status Actions]
-        METRICS[Dashboard Query Service]
+        direction LR
+        LISTAPI[Listing Endpoints] ~~~ VALID[Validation + Submission] ~~~ REVIEW[Approval / Status Actions] ~~~ METRICS[Dashboard Query Service]
     end
 
-    %% ===== Database layer =====
+    %% ===== Database =====
     subgraph DB["Database - Supabase PostgreSQL"]
-        TUSER[(Users)]
-        TLIST[(Apartment Listings)]
-        TSAVE[(Saved Listings)]
-        TROOM[(Roommate Posts)]
-        TREV[(Listing Reviews)]
-        TMETRIC[(Dashboard Metrics)]
+        direction LR
+        TUSER[(Users)] ~~~ TLIST[(Apartment Listings)] ~~~ TSAVE[(Saved Listings)] ~~~ TROOM[(Roommate Posts)] ~~~ TREV[(Listing Reviews)] ~~~ TMETRIC[(Dashboard Metrics)]
     end
 
-    %% ===== Actor to frontend =====
+    %% ===== Layer connections =====
     STUDENT --> PUB
     OWNER --> OWN
     ADMIN --> ADM
 
-    %% ===== Frontend to backend =====
-    PUB --> LISTAPI
-    SAVED --> LISTAPI
-    ROOM --> LISTAPI
-    OADD --> VALID
-    OMANAGE --> REVIEW
-    AMANAGE --> REVIEW
-    ODASH --> METRICS
-    ADASH --> METRICS
-
-    %% ===== Backend to database =====
-    VALID --> TUSER
-    LISTAPI --> TLIST
-    VALID --> TLIST
-    REVIEW --> TLIST
-    REVIEW --> TREV
-    LISTAPI --> TSAVE
-    LISTAPI --> TROOM
-    METRICS --> TLIST
-    METRICS --> TMETRIC
+    PUB --> BE
+    OWN --> BE
+    ADM --> BE
+    BE --> DB
 
     %% ===== Styling =====
-    classDef planned fill:#f8fafc,stroke:#94a3b8,stroke-width:1px,stroke-dasharray:5 4,color:#334155;
     classDef built fill:#ede9fe,stroke:#7c3aed,stroke-width:1px,color:#312e81;
+    classDef planned fill:#f8fafc,stroke:#94a3b8,stroke-width:1px,stroke-dasharray:5 4,color:#334155;
     classDef store fill:#eff6ff,stroke:#2563eb,stroke-width:1px,color:#1e3a8a;
+    classDef actor fill:#ffffff,stroke:#6b7280,stroke-width:1px,color:#111827;
 
+    class STUDENT,OWNER,ADMIN actor;
     class HOME,LIST,DETAIL,SAVED,ROOM,OADD,OMANAGE,ODASH,AMANAGE,ADASH built;
     class LISTAPI,VALID,REVIEW,METRICS planned;
     class TUSER,TLIST,TSAVE,TROOM,TREV,TMETRIC store;
