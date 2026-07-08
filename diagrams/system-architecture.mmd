@@ -1,0 +1,12 @@
+flowchart LR
+    U[Main User] --> UI[Web / App Interface]
+    UI --> FORM[Input / Submission Form]
+    FORM --> STORE[(Data Storage)]
+    STORE --> LIST[Record List]
+    LIST --> DETAIL[Detail View]
+    STORE --> DASH[Dashboard / Summary]
+    ADMIN[Admin / Manager] --> ADMINP[Admin Panel]
+    ADMINP --> STORE
+    ADMINP --> STATUS[Status Update]
+    STATUS --> STORE
+
