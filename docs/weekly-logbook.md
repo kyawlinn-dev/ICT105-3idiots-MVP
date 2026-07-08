@@ -242,3 +242,62 @@ The team also needed to decide how to show the analytics dashboard. The team dec
 - Check that every prototype feature connects to `mvp-feature-list.md`
 - Prepare screenshots or exports for GitHub evidence
 - Continue to Lab 06 business and value planning
+
+# Weekly Logbook - Lab 06
+
+## Group Name
+
+3idiots
+
+## Project Title
+
+Student Apartment Finder Platform
+
+## Date
+
+8 July 2026
+
+## Members Present
+
+| Member Name | Contribution Today | GitHub Evidence / Commit / File Updated |
+|---|---|---|
+| Phyo Wai Aung | Reviewed Business Model Canvas and validated business value | docs/business-model-canvas.md |
+| Kyaw Linn | Designed technical architecture, system components and data flow | docs/technical-architecture.md, diagrams/ |
+| Arkar Kyaw Oo | Updated feature-value mapping, data structure, README and weekly logbook | docs/feature-value-mapping.md, docs/data-structure.md, README.md, docs/weekly-logbook.md |
+
+## Decisions Made Today
+
+1. **Business model decision:**
+
+   The platform will focus on helping students quickly find apartments near Rangsit University while allowing apartment owners to publish verified listings directly.
+
+2. **Technical architecture decision:**
+
+   The project will use a database-backed web application with React, Express.js and Supabase.
+
+3. **Data structure decision:**
+
+   The system will use Users, Apartment Listings, Saved Listings, Roommate Posts, Listing Reviews and Dashboard Metrics as its main data entities.
+
+4. **Diagram decision:**
+
+   The team completed the system architecture diagram and data flow diagram to show how information moves between users, backend services and the database.
+
+## Problems or Risks Found
+
+- Owner validation data is still limited compared to student survey data.
+- Authentication and admin approval workflow will initially use simulated functionality before full implementation.
+- Additional testing will be required during prototype development.
+
+## Next Actions Before Lab 07
+
+- Implement the frontend based on the approved wireframes.
+- Connect UI components with the designed data structure.
+- Build apartment listing and search functionality.
+- Develop the owner listing page.
+- Begin implementing the admin dashboard.
+- Test user navigation and feature integration.
+
+## Lecturer / TA Notes
+
+(To be completed during lab session.)
