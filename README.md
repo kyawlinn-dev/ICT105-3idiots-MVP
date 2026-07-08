@@ -74,6 +74,7 @@ Possible technologies:
 | Lab 03   | Defined target respondents, prepared customer discovery questions, collected early customer evidence, compared assumptions with evidence, and documented problem findings. | `customer-questions.md`, `problem-notes.md`, `raw-responses.xlsx`, `assumption-evidence-table.md`, `customer-discovery-summary.md` | ✅  Completed |
 | Lab 04   | Created the Lab 04 user persona, user stories, system requirements, MVP feature list, user flow diagram, and use case diagram for the Student Apartment Finder Platform. | `user-persona.md`, `user-stories.md`, `system-requirements.md`, `mvp-feature-list.md`, `user-flow.png`, `use-case.png` | ✅  Completed |
 | Lab 05   | Defined the product concept, mapped features to requirements, created UI/UX wireframes, updated user flow, prepared clickable prototype draft, and updated GitHub documentation for the Student Apartment Finder Platform. | `product-concept.md`, `feature-requirement-mapping.md`, `wireframe-specification.md`, `wireframe-usability-checklist.md`, `homepage.png`, `input-form.png`, `record-list.png`, `detail-view.png`, `dashboard.png`, `admin-view.png` | ✅  Completed |
+| **Lab 06** | Completed the Business Model Canvas, mapped MVP features to user and business value, designed the technical architecture, defined the data structure, created the system architecture and data flow diagrams, and updated the project documentation for the Student Apartment Finder Platform. | `business-model-canvas.md`, `feature-value-mapping.md`, `technical-architecture.md`, `data-structure.md`, `system-architecture.png`, `data-flow.png`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
@@ -193,6 +194,59 @@ All members contributed to the same GitHub repository. The team worked together 
 
 The Lab 05 work includes product concept writing, feature-to-requirement mapping, wireframe specification, usability checking, exported wireframe screens, user flow update, clickable prototype draft, README update, and weekly logbook update.
 
+# Lab 06 Update - Business Model Canvas and Technical Architecture
+
+## Lab 06 Summary
+
+In Lab 06, our group transformed the validated problem, system requirements, user stories, and wireframes into a complete business and technical implementation plan for the Student Apartment Finder Platform.
+
+We completed the Business Model Canvas to explain how the platform creates value for students and apartment owners. We also designed the technical architecture, data structure, feature-value mapping, and system diagrams that will guide the implementation of the final MVP prototype.
+
+## Files Added or Updated
+
+- [Business Model Canvas](docs/business-model-canvas.md)
+- [Feature-Value Mapping](docs/feature-value-mapping.md)
+- [Technical Architecture](docs/technical-architecture.md)
+- [Data Structure](docs/data-structure.md)
+- [System Architecture Diagram](diagrams/system-architecture.png)
+- [Data Flow Diagram](diagrams/data-flow.png)
+- [Weekly Logbook](docs/weekly-logbook.md)
+
+## Technical Direction
+
+Our team selected a **database-backed web application** architecture.
+
+Technology stack:
+
+- Frontend: React + Vite + TypeScript
+- UI: Tailwind CSS + shadcn/ui
+- Backend: Express.js
+- Database: Supabase PostgreSQL
+- Authentication: Supabase Auth (or simulated authentication during prototype)
+- Future deployment: Vercel (Frontend) and Render/Railway (Backend)
+
+This architecture supports three user roles:
+
+- Students
+- Apartment Owners
+- Admin
+
+The database architecture allows apartment listings, roommate posts, user accounts, listing approvals, and dashboard information to be stored and managed efficiently.
+
+## Final Prototype Connection
+
+The Lab 06 outputs provide the implementation blueprint for the final prototype.
+
+The Business Model Canvas defines how the platform creates value.
+
+The Feature-Value Mapping ensures every MVP feature satisfies the functional requirements and user stories.
+
+The Technical Architecture specifies how the frontend, backend, and database interact.
+
+The Data Structure defines the entities and fields required for implementation.
+
+Together, these documents prepare the project for actual system development during the remaining labs.
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
@@ -204,6 +258,8 @@ In Lab 03, our team collected early customer evidence, validated the existence o
 In Lab 04, the team converted the Lab 03 evidence into product planning documents. The team created the user persona, user stories, system requirements, MVP feature list, user flow diagram, and use case diagram. The final prototype direction is an interactive web app for the Student Apartment Finder Platform.
 
 In Lab 05, the team converted the Lab 04 outputs into a product concept and UI/UX wireframes. The team prepared the product concept, feature-to-requirement mapping, wireframe specification, usability checklist, user flow, required wireframe screens, and clickable prototype draft. These wireframes will guide the final prototype development in the next lab.
+
+In Lab 06, the team transformed the Lab 05 product concept into a business and technical implementation plan. We completed the Business Model Canvas, feature-value mapping, technical architecture, data structure, and system architecture and data flow diagrams. These outputs provide a clear roadmap for developing the Student Apartment Finder Platform and ensure that the final prototype aligns with the project requirements and user needs.
 
 
 
@@ -229,3 +285,5 @@ The next development focus will be:
 - Check that each feature connects to `user-stories.md` and `mvp-feature-list.md`
 - Prepare Lab 06 business and value planning documents
 - Keep all work updated in the same GitHub repository
+
+In Lab 07, the team will begin implementing the Student Apartment Finder Platform based on the Lab 06 technical architecture. We will develop the frontend interface, connect it with the backend and database, implement the core MVP features, and conduct initial testing to ensure the system functions according to the defined requirements and user stories.
