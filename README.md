@@ -73,6 +73,7 @@ Possible technologies:
 | Lab 02   | Reviewed opportunities, conducted NUF scoring, selected the Student Apartment Finder Platform, created GitHub Issues, and updated project documentation.                   | `opportunity-scan.md`, `selected-opportunity.md`, `opportunity-scoring.xlsx`, updated README and weekly logbook                    | ✅  Completed |
 | Lab 03   | Defined target respondents, prepared customer discovery questions, collected early customer evidence, compared assumptions with evidence, and documented problem findings. | `customer-questions.md`, `problem-notes.md`, `raw-responses.xlsx`, `assumption-evidence-table.md`, `customer-discovery-summary.md` | ✅  Completed |
 | Lab 04   | Created the Lab 04 user persona, user stories, system requirements, MVP feature list, user flow diagram, and use case diagram for the Student Apartment Finder Platform. | `user-persona.md`, `user-stories.md`, `system-requirements.md`, `mvp-feature-list.md`, `user-flow.png`, `use-case.png` | ✅  Completed |
+| Lab 05   | Defined the product concept, mapped features to requirements, created UI/UX wireframes, updated user flow, prepared clickable prototype draft, and updated GitHub documentation for the Student Apartment Finder Platform. | `product-concept.md`, `feature-requirement-mapping.md`, `wireframe-specification.md`, `wireframe-usability-checklist.md`, `homepage.png`, `input-form.png`, `record-list.png`, `detail-view.png`, `dashboard.png`, `admin-view.png` | ✅  Completed |
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
@@ -156,6 +157,42 @@ The first MVP focuses on helping students find nearby rooms in one searchable pl
 
 All members contributed to this repository through commits, issues, or pull requests. Lab 04 work was organized through GitHub Issues for user persona, user stories, system requirements, MVP feature list, diagrams, and documentation updates.
 
+## Lab 05: Product Concept and UI/UX Wireframe
+
+### Product Concept
+
+The Student Apartment Finder Platform is a web app for students searching for off-campus rooms near Rangsit University, especially new and international students who are not familiar with nearby accommodation options.
+
+The product solves the problem of scattered, unclear, and outdated apartment information. Based on Lab 03 evidence, students often search through many sources such as Facebook groups, friends, seniors, agents, and walking around the area. This makes apartment searching slow, stressful, and difficult to compare.
+
+The proposed web app allows students to browse apartment listings, search and filter by budget, distance, room type, and availability, view apartment details, contact owners directly, and use basic roommate support. Apartment owners can submit and update listings, while admin users can manage listings and view a simple analytics dashboard.
+
+### Requirement-Driven Screens
+
+| Screen | Related Requirement IDs | Wireframe File |
+|---|---|---|
+| Homepage / Landing | FR-01, FR-02 | `/wireframes/homepage.png` |
+| Input / Submission Form | FR-03, FR-10, FR-11 | `/wireframes/input-form.png` |
+| Records / Information List | FR-05, FR-06 | `/wireframes/record-list.png` |
+| Record Detail View | FR-07, FR-08 | `/wireframes/detail-view.png` |
+| Dashboard / Summary | FR-12 | `/wireframes/dashboard.png` |
+| Admin / Manager View | FR-09, FR-08 | `/wireframes/admin-view.png` |
+
+### User Flow
+
+The user flow shows how students move through the apartment search process. The main flow begins when a student opens the web app, views the homepage, browses apartment listings, searches or filters apartments, opens an apartment detail page, and then shortlists the apartment or contacts the owner.
+
+The user flow diagram is available here:
+
+- `/diagrams/user-flow.png`
+- `/diagrams/user-flow.mmd`
+
+### Team Contribution
+
+All members contributed to the same GitHub repository. The team worked together to convert the Lab 04 requirements, user stories, MVP feature list, and diagrams into Lab 05 product concept and UI/UX wireframe outputs.
+
+The Lab 05 work includes product concept writing, feature-to-requirement mapping, wireframe specification, usability checking, exported wireframe screens, user flow update, clickable prototype draft, README update, and weekly logbook update.
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
@@ -165,6 +202,8 @@ In Lab 02, we reviewed multiple IT opportunities, conducted NUF scoring, selecte
 In Lab 03, our team collected early customer evidence, validated the existence of the problem, updated project assumptions, and documented customer discovery findings.
 
 In Lab 04, the team converted the Lab 03 evidence into product planning documents. The team created the user persona, user stories, system requirements, MVP feature list, user flow diagram, and use case diagram. The final prototype direction is an interactive web app for the Student Apartment Finder Platform.
+
+In Lab 05, the team converted the Lab 04 outputs into a product concept and UI/UX wireframes. The team prepared the product concept, feature-to-requirement mapping, wireframe specification, usability checklist, user flow, required wireframe screens, and clickable prototype draft. These wireframes will guide the final prototype development in the next lab.
 
 
 
@@ -179,3 +218,14 @@ In Lab 04, our team will identify and prioritize MVP features based on customer 
 In Lab 05, the team will begin developing the interactive web app prototype based on the Lab 04 system requirements, user stories, MVP feature list, and diagrams.
 
 The next development focus will be the homepage, apartment listing page, search and filter function, apartment detail page, owner listing submission form, listing status handling, admin listing management, and basic admin analytics dashboard.
+
+In Lab 06, the team will continue from the Lab 05 wireframes and begin connecting the prototype direction with business and value planning.
+
+The next development focus will be:
+
+- Review the Lab 05 wireframes as the visual baseline for the final prototype
+- Continue improving the clickable web app prototype
+- Check that each prototype screen connects to `system-requirements.md`
+- Check that each feature connects to `user-stories.md` and `mvp-feature-list.md`
+- Prepare Lab 06 business and value planning documents
+- Keep all work updated in the same GitHub repository
