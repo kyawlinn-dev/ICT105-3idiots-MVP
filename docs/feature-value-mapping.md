@@ -1,17 +1,22 @@
-# Lab 06 - Feature to Value Mapping
+# Feature-Value Mapping
 
-Each major MVP feature is mapped to the user value it creates, the business value it supports, the requirement it satisfies, the user story, and the prototype screen/module that delivers it.
+| Feature ID | MVP Feature | Requirement ID | User Story ID | User Value | Business / Operational Value | Prototype Screen or Module | Priority |
+|---|---|---|---|---|---|---|---|
+| F-01 | Homepage / Landing | FR-01, FR-02 | US-01 | Understand the platform and start searching fast | First impression; draws users in | HomePage | Must |
+| F-02 | Browse & Search Listings | FR-05, FR-06 | US-03 | Find rooms in one place, not 3+ sources | Core engagement; retention | ApartmentsPage | Must |
+| F-03 | Filter (budget/distance/type) | FR-06 | US-03 | Compare relevant options quickly | Better match quality | FilterPanel | Must |
+| F-04 | Apartment Detail View | FR-07 | US-04 | See price, distance, facilities, owner clearly | Builds trust; drives contact | ApartmentDetailPage | Must |
+| F-05 | Listing Status | FR-08 | US-06 | Avoid wasting time on taken rooms | Data quality; trust | StatusBadge | Must |
+| F-06 | Owner Add Listing | FR-03, FR-10, FR-11 | US-02 | Owners reach students directly | Grows supply/inventory | OwnerAddListingPage | Must |
+| F-07 | Direct Owner Contact | FR-02 | US-05 | Arrange a viewing without agents | Core differentiator (no middleman) | ApartmentDetailPage | Must |
+| F-08 | Roommate Board | FR-05 | US-07 | Find someone to share rent | Retention; network effect | RoommatesPage | Should |
+| F-09 | Admin Management | FR-09 | US-08 | Trustworthy, valid listings | Platform quality and safety | AdminListingsPage | Should |
+| F-10 | Admin Dashboard | FR-12 | US-11 | See platform activity at a glance | Monitoring; decisions | AdminDashboardPage | Should |
 
-| Feature | User Value | Business Value | Requirement ID | User Story | Prototype Screen / Module |
-|---|---|---|---|---|---|
-| Homepage / Landing | Understand the platform and start searching fast | First impression; drives users into the funnel | FR-01, FR-02 | US-01 | HomePage |
-| Browse & Search Listings | Find rooms in one place instead of 3+ sources | Core engagement; keeps students on the platform | FR-05, FR-06 | US-03 | ApartmentsPage |
-| Filter (budget/distance/type) | Compare relevant options quickly | Higher match quality; repeat use | FR-06 | US-03 | FilterPanel |
-| Apartment Detail View | See price, distance, facilities, and owner clearly | Builds trust; drives contact | FR-07 | US-04 | ApartmentDetailPage |
-| Listing Status (available/taken) | Avoid wasting time on gone rooms | Data quality; user trust | FR-08 | US-06 | StatusBadge |
-| Owner Add Listing | Owners reach students directly | Supply side; grows inventory | FR-03, FR-10, FR-11 | US-02 | OwnerAddListingPage |
-| Direct Owner Contact | Arrange a viewing without agents/fees | Core differentiator (no middleman) | FR-02 | US-05 | ApartmentDetailPage |
-| Roommate Board | Find someone to share rent | Extra retention; network effect | FR-05 | US-07 | RoommatesPage |
-| Admin Management | Trustworthy, valid listings | Platform quality and safety | FR-09 | US-08 | AdminListingsPage |
-| Admin Dashboard | See platform activity at a glance | Decision-making; monitoring | FR-12 | US-11 | AdminDashboardPage |
-| Saved Listings | Track options over a multi-week search | Retention; return visits | FR-05 | US-12 | SavedPage |
+## Reflection
+
+**Which feature creates the strongest user value?** Browse & Search Listings (F-02) — it directly solves the top problem of scattered sources and a slow search.
+
+**Which feature creates the strongest business or operational value?** Owner Add Listing (F-06) — it grows the supply of rooms, which the whole platform depends on.
+
+**Which required feature is still weak or unclear?** The owner side — our Lab 03 evidence for owners is thin (only 3 owners), so owner adoption needs more validation.
