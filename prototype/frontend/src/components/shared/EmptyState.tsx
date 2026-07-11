@@ -9,7 +9,7 @@ type EmptyStateProps = {
 export function EmptyState({ title, description }: EmptyStateProps) {
   return (
     <Card className="border-dashed">
-      <CardContent className="flex flex-col items-center justify-center px-6 py-12 text-center">
+      <CardContent className="flex flex-col items-center justify-center px-6 py-8 text-center sm:py-10">
         <div className="mb-4 rounded-full bg-blue-50 p-3 text-blue-600">
           <SearchX className="h-7 w-7" />
         </div>

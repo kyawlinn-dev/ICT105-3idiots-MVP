@@ -1,13 +1,19 @@
-import { Bell, Menu, Search } from "lucide-react"
+import { Bell, LogOut, Menu, Search } from "lucide-react"
 import { useState } from "react"
 import { Outlet } from "react-router-dom"
 import { ownerNavItems } from "../../data/mockData"
 import { cn } from "../../lib/utils"
+import type { AuthProfile } from "../../services/api/types"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { DashboardSidebar } from "./DashboardSidebar"
 
-export function OwnerLayout() {
+type OwnerLayoutProps = {
+  session: AuthProfile | null
+  onSignOut: () => void | Promise<void>
+}
+
+export function OwnerLayout({ session, onSignOut }: OwnerLayoutProps) {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
@@ -15,15 +21,15 @@ export function OwnerLayout() {
       <DashboardSidebar
         title="Owner Portal"
         subtitle="Student Apartment Finder"
-        profileName="Krit S."
+        profileName={session?.displayName ?? "Apartment Owner"}
         profileRole="Apartment Owner"
         collapsed={collapsed}
         onToggle={() => setCollapsed((current) => !current)}
         navItems={ownerNavItems}
       />
-      <div className={cn("transition-all duration-300 lg:pl-72", collapsed && "lg:pl-20")}>
+      <div className={cn("transition-all duration-300 lg:pl-52", collapsed && "lg:pl-14")}>
         <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-          <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <div className="flex h-14 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-3">
               <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open sidebar">
                 <Menu className="h-5 w-5" />
@@ -39,12 +45,17 @@ export function OwnerLayout() {
                 <Input className="pl-9" placeholder="Search listings or messages" />
               </div>
             </div>
-            <Button variant="ghost" size="icon" aria-label="Notifications">
-              <Bell className="h-5 w-5" />
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="icon" aria-label="Notifications">
+                <Bell className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" aria-label="Sign out" onClick={onSignOut}>
+                <LogOut className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
         </header>
-        <main className="min-w-0 overflow-x-hidden px-4 py-6 sm:px-6 lg:px-8">
+        <main className="min-w-0 px-4 py-4 sm:px-6 lg:px-8">
           <Outlet />
         </main>
       </div>

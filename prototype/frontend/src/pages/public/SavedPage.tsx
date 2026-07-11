@@ -15,7 +15,7 @@ export function SavedPage({ apartments, savedIds, onToggleSave }: SavedPageProps
   const savedApartments = apartments.filter((apartment) => savedIds.includes(apartment.id))
 
   return (
-    <main className="bg-slate-50 px-4 py-6 sm:px-6 lg:px-8">
+    <main className="bg-slate-50 px-4 py-5 sm:px-6 lg:px-8">
       <section className="mx-auto max-w-4xl">
         <Card>
           <CardHeader className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">

@@ -10,6 +10,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  font-size: 15px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 15px;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

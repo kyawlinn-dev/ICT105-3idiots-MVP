@@ -1,12 +1,15 @@
-import { Search, SlidersHorizontal, X } from "lucide-react"
-import { useMemo, useState } from "react"
+import { List, Map, Search, SlidersHorizontal, X } from "lucide-react"
+import { useEffect, useMemo, useState } from "react"
 import { ApartmentListItem } from "../../components/shared/ApartmentCard"
 import { EmptyState } from "../../components/shared/EmptyState"
 import { FilterPanel, type ApartmentFilters } from "../../components/shared/FilterPanel"
+import { ListingOverviewMap } from "../../components/shared/MapPreview"
 import { Button } from "../../components/ui/button"
 import { Input } from "../../components/ui/input"
 import { Select } from "../../components/ui/select"
 import type { Apartment } from "../../data/mockData"
+import { getListingMapMarkers } from "../../services/api/apartments"
+import type { ListingMapMarker } from "../../services/api/types"
 
 type ApartmentsPageProps = {
   apartments: Apartment[]
@@ -27,6 +30,14 @@ const initialFilters: ApartmentFilters = {
 export function ApartmentsPage({ apartments, savedIds, onToggleSave }: ApartmentsPageProps) {
   const [filters, setFilters] = useState(initialFilters)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [viewMode, setViewMode] = useState<"list" | "map">("list")
+  const [markers, setMarkers] = useState<ListingMapMarker[]>([])
+
+  useEffect(() => {
+    getListingMapMarkers()
+      .then(setMarkers)
+      .catch((error) => console.error(error))
+  }, [])
 
   const filteredApartments = useMemo(() => {
     const keyword = filters.search.trim().toLowerCase()
@@ -49,14 +60,19 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave }: Apartment
     })
   }, [apartments, filters])
 
+  const filteredMapMarkers = useMemo(
+    () => markers.filter((marker) => filteredApartments.some((apartment) => apartment.id === marker.id)),
+    [filteredApartments, markers],
+  )
+
   return (
     <main className="bg-slate-50">
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <p className="text-sm font-bold uppercase tracking-wide text-blue-600">Apartments</p>
           <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <h1 className="max-w-2xl text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Find apartments that fit your student life</h1>
+              <h1 className="max-w-2xl text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">Find apartments that fit your student life</h1>
               <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">Search Rangsit University, Bangkok University, Khlong Luang, Thanyaburi, and Pathum Thani sample listings.</p>
             </div>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
@@ -82,16 +98,22 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave }: Apartment
               <SlidersHorizontal className="h-4 w-4" />
               Filters
             </Button>
+            <Button type="button" variant={viewMode === "map" ? "default" : "outline"} className="h-12 w-full sm:w-auto" onClick={() => setViewMode(viewMode === "map" ? "list" : "map")}>
+              {viewMode === "map" ? <List className="h-4 w-4" /> : <Map className="h-4 w-4" />}
+              {viewMode === "map" ? "List" : "Map"}
+            </Button>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-[280px_1fr] lg:px-8">
+      <section className="mx-auto grid max-w-7xl gap-5 px-4 py-6 sm:px-6 lg:grid-cols-[280px_1fr] lg:px-8">
         <div className="hidden lg:block">
           <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(initialFilters)} />
         </div>
         <div>
-          {filteredApartments.length > 0 ? (
+          {viewMode === "map" ? (
+            <ListingOverviewMap markers={filteredMapMarkers} />
+          ) : filteredApartments.length > 0 ? (
             <div className="grid gap-4">
               {filteredApartments.map((apartment) => (
                 <ApartmentListItem key={apartment.id} apartment={apartment} isSaved={savedIds.includes(apartment.id)} onToggleSave={onToggleSave} />

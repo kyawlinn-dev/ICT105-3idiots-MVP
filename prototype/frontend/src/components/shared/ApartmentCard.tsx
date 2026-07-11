@@ -1,4 +1,4 @@
-import { Bed, Bath, Heart, MapPin, Ruler, Star } from "lucide-react"
+﻿import { Bath, Bed, Building2, Heart, MapPin, Ruler, Star } from "lucide-react"
 import { Link } from "react-router-dom"
 import type { Apartment } from "../../data/mockData"
 import { formatCurrency } from "../../lib/utils"
@@ -12,11 +12,26 @@ type ApartmentCardProps = {
   onToggleSave: (id: string) => void
 }
 
+function ListingImage({ src, alt, className }: { src: string; alt: string; className: string }) {
+  if (src) {
+    return <img src={src} alt={alt} className={className} />
+  }
+
+  return (
+    <div className={`${className} grid place-items-center bg-slate-100 text-slate-400`}>
+      <div className="text-center">
+        <Building2 className="mx-auto h-8 w-8" />
+        <p className="mt-2 text-xs font-semibold text-slate-500">No photos yet</p>
+      </div>
+    </div>
+  )
+}
+
 export function ApartmentCard({ apartment, isSaved, onToggleSave }: ApartmentCardProps) {
   return (
     <Card className="overflow-hidden transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-100">
       <div className="relative">
-        <img src={apartment.image} alt={apartment.name} className="h-52 w-full object-cover" />
+        <ListingImage src={apartment.image} alt={apartment.name} className="h-52 w-full object-cover" />
         <button
           type="button"
           onClick={() => onToggleSave(apartment.id)}
@@ -82,7 +97,7 @@ export function ApartmentListItem({ apartment, isSaved, onToggleSave }: Apartmen
     <Card className="overflow-hidden transition hover:border-violet-200 hover:shadow-lg hover:shadow-violet-100">
       <CardContent className="grid gap-4 p-3 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center">
         <Link to={`/apartments/${apartment.id}`} className="block overflow-hidden rounded-lg">
-          <img src={apartment.image} alt={apartment.name} className="h-36 w-full object-cover sm:h-28" />
+          <ListingImage src={apartment.image} alt={apartment.name} className="h-36 w-full object-cover sm:h-28" />
         </Link>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
