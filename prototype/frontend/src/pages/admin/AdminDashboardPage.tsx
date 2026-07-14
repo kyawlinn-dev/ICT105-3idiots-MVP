@@ -1,26 +1,30 @@
 import { Bar, BarChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { useEffect, useState } from "react"
 import { ChartCard } from "../../components/shared/ChartCard"
+import { LoadingState } from "../../components/shared/LoadingState"
 import { MetricCard } from "../../components/shared/MetricCard"
 import { StatusBadge } from "../../components/shared/StatusBadge"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import type { Apartment } from "../../data/mockData"
-import { dashboardMetrics, listingStatusData, painPointData, roommateDemandData } from "../../data/mockData"
+import type { DashboardMetric } from "../../data/mockData"
 import { formatCurrency } from "../../lib/utils"
 import { getAdminDashboard } from "../../services/api/dashboard"
+import type { ApiDashboard } from "../../services/api/types"
 
 type AdminDashboardPageProps = {
   listings: Apartment[]
+  listingsLoading?: boolean
 }
 
-const statusColors = ["#7c3aed", "#f59e0b", "#fb7185"]
+const statusColors = ["#2563eb", "#f59e0b", "#fb7185"]
 
-export function AdminDashboardPage({ listings }: AdminDashboardPageProps) {
-  const [metrics, setMetrics] = useState(dashboardMetrics)
-  const [statusData, setStatusData] = useState(listingStatusData)
-  const [painPoints, setPainPoints] = useState(painPointData)
-  const [roommateDemand, setRoommateDemand] = useState(roommateDemandData)
+export function AdminDashboardPage({ listings, listingsLoading }: AdminDashboardPageProps) {
+  const [metrics, setMetrics] = useState<DashboardMetric[]>([])
+  const [statusData, setStatusData] = useState<ApiDashboard["listingStatus"]>([])
+  const [painPoints, setPainPoints] = useState<ApiDashboard["painPoints"]>([])
+  const [roommateDemand, setRoommateDemand] = useState<ApiDashboard["roommateDemand"]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     getAdminDashboard()
@@ -28,20 +32,25 @@ export function AdminDashboardPage({ listings }: AdminDashboardPageProps) {
         setMetrics(dashboard.metrics)
         setStatusData(dashboard.listingStatus)
         setPainPoints(dashboard.painPoints)
-        setRoommateDemand(dashboard.roommateDemand.length ? dashboard.roommateDemand : roommateDemandData)
+        setRoommateDemand(dashboard.roommateDemand)
       })
       .catch((error) => console.error(error))
+      .finally(() => setLoading(false))
   }, [])
+
+  if (loading || listingsLoading) {
+    return <LoadingState label="Loading dashboard data…" />
+  }
 
   return (
     <div className="mx-auto max-w-7xl space-y-3 text-xs">
       <div className="flex flex-col gap-2 rounded-lg border border-slate-200/80 bg-white p-3 shadow-[0_12px_35px_rgba(15,23,42,0.04)] sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-wide text-violet-600">Admin Panel</p>
+          <p className="text-[11px] font-bold uppercase tracking-wide text-blue-600">Admin Panel</p>
           <h1 className="mt-0.5 text-base font-bold tracking-tight text-slate-950">Dashboard Overview</h1>
           <p className="mt-0.5 text-xs text-slate-500">Welcome back, Admin</p>
         </div>
-        <Button variant="outline" size="sm">May 11 - May 17, 2026</Button>
+        <Button variant="outline" size="sm" disabled>Live dashboard data</Button>
       </div>
 
       <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
@@ -105,7 +114,7 @@ export function AdminDashboardPage({ listings }: AdminDashboardPageProps) {
                 <thead className="border-y border-slate-100 bg-slate-50 text-slate-500">
                   <tr>
                     <th className="px-3 py-2 font-semibold">Apartment Name</th>
-                    <th className="px-3 py-2 font-semibold">Owner</th>
+                    <th className="px-3 py-2 font-semibold">Landlord</th>
                     <th className="px-3 py-2 font-semibold">Location</th>
                     <th className="px-3 py-2 font-semibold">Price</th>
                     <th className="px-3 py-2 font-semibold">Status</th>

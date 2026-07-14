@@ -6,7 +6,7 @@ import { Card, CardContent } from "../../components/ui/card"
 const values = [
   {
     title: "Verified listing flow",
-    text: "Owners submit real room details, photos, and a confirmed Google map location before a listing goes live.",
+    text: "Landlords submit real room details, photos, and a confirmed Google map location before a listing goes live.",
     icon: ShieldCheck,
   },
   {
@@ -16,7 +16,7 @@ const values = [
   },
   {
     title: "Location confidence",
-    text: "Map views help students understand where a room is before they contact an owner or arrange a visit.",
+    text: "Map views help students understand where a room is before they contact a landlord or arrange a visit.",
     icon: MapPin,
   },
 ]
@@ -32,7 +32,7 @@ export function AboutPage() {
               A practical housing search platform for students around Pathum Thani campuses.
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-              Student Apartment Finder connects students with owner-submitted apartment listings near Rangsit University, Bangkok University, and nearby student areas. The platform focuses on useful details, real photos, and map-based confidence before students contact owners.
+              Student Apartment Finder connects students with landlord-submitted apartment listings near Rangsit University, Bangkok University, and nearby student areas. The platform focuses on useful details, real photos, and map-based confidence before students contact landlords.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Button asChild className="bg-blue-600 hover:bg-blue-700">
@@ -78,8 +78,8 @@ export function AboutPage() {
         <Card>
           <CardContent className="grid gap-5 p-5 md:grid-cols-3">
             {[
-              ["For students", "Find owner-approved apartment options and save rooms for later comparison."],
-              ["For owners", "Upload room information, photos, and Google Places location data from one portal."],
+              ["For students", "Find landlord-submitted apartment options and save rooms for later comparison."],
+              ["For landlords", "Upload room information, photos, and Google Places location data from one portal."],
               ["For admins", "Review submitted listings before they become visible to students."],
             ].map(([title, text]) => (
               <div key={title} className="rounded-lg bg-slate-50 p-4">

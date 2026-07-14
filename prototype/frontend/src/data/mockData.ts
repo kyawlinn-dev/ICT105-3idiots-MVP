@@ -19,6 +19,8 @@ import {
 export type AvailabilityStatus = "Available" | "Limited" | "Unavailable"
 export type ApprovalStatus = "Approved" | "Pending" | "Rejected"
 export type NearUniversity = "Rangsit University" | "Bangkok University"
+export type RoommatePostStatus = "active" | "paused" | "matched" | "expired"
+export type RoommateApprovalStatus = "approved" | "pending" | "rejected"
 
 export type Apartment = {
   id: string
@@ -64,7 +66,11 @@ export type RoommatePost = {
   locationPreference: string
   lifestyleTags: string[]
   description: string
+  status: RoommatePostStatus
+  approvalStatus: RoommateApprovalStatus
   createdAt: string
+  updatedAt: string
+  expiresAt: string
 }
 
 export type DashboardMetric = {
@@ -83,8 +89,8 @@ export const roommatePosts: RoommatePost[] = []
 export const dashboardMetrics: DashboardMetric[] = [
   { id: "m1", label: "Approved listings", value: "10", change: "Rangsit and BU area", type: "positive", icon: ClipboardCheck },
   { id: "m2", label: "Pending reviews", value: "1", change: "Needs admin action", type: "warning", icon: Building2 },
-  { id: "m3", label: "Saved apartments", value: "126", change: "Mock student saves", type: "positive", icon: Heart },
-  { id: "m4", label: "Roommate posts", value: "3", change: "Thailand sample data", type: "neutral", icon: Users },
+  { id: "m3", label: "Saved apartments", value: "0", change: "Student shortlists", type: "positive", icon: Heart },
+  { id: "m4", label: "Roommate posts", value: "0", change: "Current posts", type: "neutral", icon: Users },
 ]
 
 export const listingStatusData = [
@@ -121,7 +127,8 @@ export const ownerNavItems = [
 export const adminNavItems = [
   { label: "Overview", to: "/admin/dashboard", icon: BarChart3 },
   { label: "Listings", to: "/admin/listings", icon: Building2 },
-  { label: "Owners", to: "/admin/owners", icon: UserRound },
+  { label: "Roommate Posts", to: "/admin/roommate-posts", icon: Users },
+  { label: "Landlords", to: "/admin/owners", icon: UserRound },
   { label: "Users", to: "/admin/users", icon: Users },
   { label: "Analytics", to: "/admin/analytics", icon: LineChart },
   { label: "Reports", to: "/admin/reports", icon: ClipboardCheck },

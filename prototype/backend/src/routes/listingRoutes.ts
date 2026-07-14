@@ -1,25 +1,27 @@
 import { Router } from "express"
 import { sendData } from "../lib/apiResponse.js"
-import { requireAuth, requireRole } from "../middleware/auth.js"
+import { optionalAuth, requireAuth, requireRole } from "../middleware/auth.js"
 import { createListing, getListingById, getListings, getOwnerListings, updateListingAvailability, updateOwnerListing } from "../services/listingService.js"
 import { createListingSchema, listingFiltersSchema, updateAvailabilitySchema, updateListingSchema } from "../validation/listingSchemas.js"
 
 export const listingRoutes = Router()
 
-listingRoutes.get("/listings", async (req, res, next) => {
+listingRoutes.get("/listings", optionalAuth, async (req, res, next) => {
   try {
     const filters = listingFiltersSchema.parse({ ...req.query, approvalStatus: req.query.approvalStatus ?? "approved" })
     const listings = await getListings(filters)
-    sendData(res, listings)
+    const canViewOwnerContact = req.auth?.profile.role === "student"
+    sendData(res, canViewOwnerContact ? listings : listings.map((listing) => ({ ...listing, ownerContact: "" })))
   } catch (error) {
     next(error)
   }
 })
 
-listingRoutes.get("/listings/:id", async (req, res, next) => {
+listingRoutes.get("/listings/:id", optionalAuth, async (req, res, next) => {
   try {
-    const listing = await getListingById(req.params.id)
-    sendData(res, listing)
+    const listing = await getListingById(String(req.params.id))
+    const canViewOwnerContact = req.auth?.profile.role === "student"
+    sendData(res, canViewOwnerContact ? listing : { ...listing, ownerContact: "" })
   } catch (error) {
     next(error)
   }

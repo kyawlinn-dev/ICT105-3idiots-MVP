@@ -91,6 +91,54 @@ export type CreateRoommatePostPayload = {
   description: string
 }
 
+export type AppNotification = {
+  id: string
+  type: "listing_approved" | "listing_rejected" | "roommate_approved" | "roommate_rejected"
+  title: string
+  message: string
+  link: string | null
+  createdAt: string
+  readAt: string | null
+}
+
+export type MessageConversation = {
+  kind: "listing" | "roommate"
+  listingId: string
+  listingName: string
+  studentId: string
+  studentName: string
+  landlordId: string
+  landlordName: string
+  counterpartName: string
+  lastMessage: string
+  lastMessageAt: string
+  unreadCount: number
+}
+
+export type ListingMessage = {
+  id: string
+  listingId: string
+  studentId: string
+  landlordId: string
+  senderId: string
+  senderName: string
+  body: string
+  createdAt: string
+  readAt: string | null
+}
+
+export type MessageThread = {
+  kind: "listing" | "roommate"
+  listingId: string
+  listingName: string
+  studentId: string
+  studentName: string
+  landlordId: string
+  landlordName: string
+  counterpartName: string
+  messages: ListingMessage[]
+}
+
 const availabilityToUi: Record<ApiAvailabilityStatus, AvailabilityStatus> = {
   available: "Available",
   limited: "Limited",
@@ -140,7 +188,11 @@ export const mapRoommatePostFromApi = (post: ApiRoommatePost): RoommatePost => (
   locationPreference: post.locationPreference,
   lifestyleTags: post.lifestyleTags,
   description: post.description,
+  status: post.status,
+  approvalStatus: post.approvalStatus,
   createdAt: post.createdAt,
+  updatedAt: post.updatedAt,
+  expiresAt: post.expiresAt,
 })
 
 export const toApiAvailability = (status: AvailabilityStatus) => availabilityToApi[status]

@@ -14,6 +14,7 @@ import type { ApiAvailabilityStatus } from "../../services/api/types"
 import { uploadListingPhoto, type UploadedListingPhoto } from "../../services/api/uploads"
 import { googleMapsPlaceUrl, googleMapsUrlFromCoordinates, parseGoogleMapsLocation } from "../../services/maps/googleMapsLinks"
 import { loadGoogleMaps, loadGooglePlaces } from "../../services/maps/googleMapsLoader"
+import { toast } from "sonner"
 
 type FormState = {
   name: string
@@ -353,6 +354,7 @@ export function OwnerAddListingPage({ listing, onListingCreated }: OwnerAddListi
         : await createListing(payload)
 
       setMessage(result.message ?? (isEditMode ? "Listing updated and sent for admin review." : "Listing submitted for admin review and saved to Supabase."))
+      toast.success(result.message ?? (isEditMode ? "Listing updated." : "Listing submitted for review."))
       if (!isEditMode) {
         setForm(emptyForm)
         setPhotos([])
@@ -361,6 +363,7 @@ export function OwnerAddListingPage({ listing, onListingCreated }: OwnerAddListi
       }
       await onListingCreated?.()
     } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Something went wrong. Please try again.")
       console.error(error)
       setMessage(isEditMode ? "Listing update failed. Please check the backend and required fields." : "Listing submission failed. Please check the backend and required fields.")
     } finally {
@@ -372,7 +375,7 @@ export function OwnerAddListingPage({ listing, onListingCreated }: OwnerAddListi
     <div className="mx-auto max-w-6xl space-y-5">
       <div className="rounded-lg border border-slate-200/80 bg-white p-5 shadow-[0_18px_60px_rgba(15,23,42,0.05)]">
         <PageHeader
-          eyebrow="Owner Panel"
+          eyebrow="Landlord Panel"
           title={isEditMode ? "Edit Apartment Listing" : "Add New Apartment Listing"}
           description={isEditMode ? "Update listing details, photos, and location. Content edits return the listing to admin review." : "Upload real listing details, photos, and a confirmed Google map location."}
         />
@@ -486,12 +489,12 @@ export function OwnerAddListingPage({ listing, onListingCreated }: OwnerAddListi
           </Field>
         </FormSection>
 
-        <FormSection title="Photos and contact" description="Upload real room photos and provide owner contact details.">
-          <Field label="Owner name" error={errors.ownerName}>
-            <Input value={form.ownerName} onChange={(event) => update("ownerName", event.target.value)} placeholder="Owner or company name" />
+        <FormSection title="Photos and contact" description="Upload real room photos and provide landlord contact details.">
+          <Field label="Landlord name" error={errors.ownerName}>
+            <Input value={form.ownerName} onChange={(event) => update("ownerName", event.target.value)} placeholder="Landlord or company name" />
           </Field>
-          <Field label="Owner contact" error={errors.ownerContact}>
-            <Input value={form.ownerContact} onChange={(event) => update("ownerContact", event.target.value)} placeholder="owner@example.com" />
+          <Field label="Landlord contact" error={errors.ownerContact}>
+            <Input value={form.ownerContact} onChange={(event) => update("ownerContact", event.target.value)} placeholder="landlord@example.com" />
           </Field>
           <div className="md:col-span-3">
             <Label>Room photos</Label>
@@ -529,7 +532,7 @@ export function OwnerAddListingPage({ listing, onListingCreated }: OwnerAddListi
           </Button>
           <Button type="submit" disabled={submitting || uploading}>
             <Send className="h-4 w-4" />
-            {submitting ? (isEditMode ? "Updating..." : "Submitting...") : isEditMode ? "Update Listing" : "Submit Listing"}
+            {submitting ? "Saving…" : isEditMode ? "Update Listing" : "Submit Listing"}
           </Button>
         </div>
       </form>

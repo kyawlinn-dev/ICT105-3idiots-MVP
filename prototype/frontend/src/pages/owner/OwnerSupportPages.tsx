@@ -21,12 +21,12 @@ export function OwnerLeadsPage({ listings }: OwnerPageProps) {
     <OwnerPageShell
       eyebrow="Student interest"
       title="Leads"
-      description="Track student interest signals for your approved listings. Full lead capture can be connected after the MVP."
+      description="Review which approved listings are ready to receive student enquiries."
     >
       <div className="grid gap-3 md:grid-cols-3">
         <SummaryCard label="Approved listings" value={`${approved.length}`} />
         <SummaryCard label="Contact-ready listings" value={`${approved.filter((listing) => listing.ownerContact).length}`} />
-        <SummaryCard label="Saved/contact leads" value="MVP placeholder" />
+        <SummaryCard label="Recorded leads" value="—" />
       </div>
       <Card>
         <CardHeader className="p-4">
@@ -53,16 +53,16 @@ export function OwnerLeadsPage({ listings }: OwnerPageProps) {
 export function OwnerMessagesPage({ listings }: OwnerPageProps) {
   return (
     <OwnerPageShell
-      eyebrow="Owner inbox"
+      eyebrow="Landlord inbox"
       title="Messages"
-      description="Keep owner communication visible without adding real-time chat to the MVP."
+      description="Students can contact landlords from approved listings."
     >
       <Card>
         <CardContent className="p-4">
           <EmptyOwnerState
             icon={MessageSquare}
-            title="No direct message inbox yet"
-            description={`${listings.length} listing records are ready for contact display. Real chat is outside the MVP, so students use the contact details shown on approved listings.`}
+            title="No messages to display"
+            description={`${listings.length} listing records are available for direct contact. Students can use the contact details shown on approved listings.`}
           />
         </CardContent>
       </Card>
@@ -77,7 +77,7 @@ export function OwnerAnalyticsPage({ listings }: OwnerPageProps) {
     <OwnerPageShell
       eyebrow="Listing performance"
       title="Analytics"
-      description="Review simple owner-side listing metrics from your current records."
+      description="Review simple landlord-side listing metrics from your current records."
     >
       <div className="grid gap-3 md:grid-cols-4">
         <SummaryCard label="Total listings" value={`${listings.length}`} />
@@ -107,11 +107,11 @@ export function OwnerProfilePage({ session }: OwnerPageProps) {
     <OwnerPageShell
       eyebrow="Account"
       title="Profile"
-      description="Your owner profile is used for portal access and listing contact context."
+      description="Your landlord profile is used for portal access and listing contact context."
     >
       <Card>
         <CardContent className="grid gap-4 p-4 md:grid-cols-2">
-          <ReadOnlyField label="Display name" value={session?.displayName ?? "Apartment Owner"} icon={UserRound} />
+          <ReadOnlyField label="Display name" value={session?.displayName ?? "Apartment Landlord"} icon={UserRound} />
           <ReadOnlyField label="Email" value={session?.email || "Not provided"} icon={Mail} />
           <ReadOnlyField label="Phone" value={session?.phone || "Not provided"} icon={Phone} />
           <ReadOnlyField label="LINE ID" value={session?.lineId || "Not provided"} icon={MessageSquare} />
@@ -126,7 +126,7 @@ export function OwnerSettingsPage(_props: OwnerPageProps) {
     <OwnerPageShell
       eyebrow="Preferences"
       title="Settings"
-      description="MVP account preferences for owner notifications and listing workflow defaults."
+      description="MVP account preferences for landlord notifications and listing workflow defaults."
     >
       <Card>
         <CardContent className="grid gap-4 p-4 md:grid-cols-2">

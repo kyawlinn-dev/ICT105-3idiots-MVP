@@ -1,5 +1,6 @@
 ﻿import { ArrowLeft, Bath, Bed, Building2, ChevronLeft, ChevronRight, Heart, Mail, MapPin, MessageCircle, Phone, Ruler, Share2, Wifi } from "lucide-react"
 import { useEffect, useState } from "react"
+import { LockKeyhole } from "lucide-react"
 import { Link, useParams } from "react-router-dom"
 import { ApartmentCard } from "../../components/shared/ApartmentCard"
 import { ListingDetailMap } from "../../components/shared/MapPreview"
@@ -9,17 +10,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/ca
 import type { Apartment } from "../../data/mockData"
 import { formatCurrency } from "../../lib/utils"
 import { getListingMapMarker } from "../../services/api/apartments"
-import type { ListingMapMarker } from "../../services/api/types"
+import type { AuthProfile, ListingMapMarker } from "../../services/api/types"
 
 type ApartmentDetailPageProps = {
   apartments: Apartment[]
   savedIds: string[]
   onToggleSave: (id: string) => void
+  loading?: boolean
+  session: AuthProfile | null
 }
 
 function DetailImage({ src, alt, className }: { src?: string; alt: string; className: string }) {
-  if (src) {
-    return <img src={src} alt={alt} className={className} />
+  const [failed, setFailed] = useState(false)
+
+  useEffect(() => setFailed(false), [src])
+
+  if (src && !failed) {
+    return <img src={src} alt={alt} className={className} onError={() => setFailed(true)} />
   }
 
   return (
@@ -32,7 +39,7 @@ function DetailImage({ src, alt, className }: { src?: string; alt: string; class
   )
 }
 
-export function ApartmentDetailPage({ apartments, savedIds, onToggleSave }: ApartmentDetailPageProps) {
+export function ApartmentDetailPage({ apartments, savedIds, onToggleSave, loading, session }: ApartmentDetailPageProps) {
   const { id } = useParams()
   const apartment = apartments.find((item) => item.id === id)
   const [mapMarker, setMapMarker] = useState<ListingMapMarker | null>(null)
@@ -48,6 +55,20 @@ export function ApartmentDetailPage({ apartments, savedIds, onToggleSave }: Apar
       .then(setMapMarker)
       .catch((error) => console.error(error))
   }, [id])
+
+  if (loading && !apartment) {
+    return (
+      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8" aria-busy="true">
+        <Card>
+          <CardContent className="space-y-4 p-8">
+            <div className="h-7 w-48 animate-pulse rounded bg-slate-200" />
+            <div className="h-4 w-full max-w-md animate-pulse rounded bg-slate-100" />
+            <p className="sr-only">Loading apartment details</p>
+          </CardContent>
+        </Card>
+      </main>
+    )
+  }
 
   if (!apartment) {
     return (
@@ -66,6 +87,10 @@ export function ApartmentDetailPage({ apartments, savedIds, onToggleSave }: Apar
 
   const similar = apartments.filter((item) => item.id !== apartment.id && item.roomType === apartment.roomType).slice(0, 2)
   const saved = savedIds.includes(apartment.id)
+  const canMessage = session?.role === "student"
+  const hasDirectContact = Boolean(apartment.ownerContact)
+  const signInState = { redirectTo: `/apartments/${apartment.id}` }
+  const contactIsEmail = apartment.ownerContact.includes("@")
   const gallery = apartment.gallery
   const selectedPhoto = gallery[selectedPhotoIndex]
   const hasMultiplePhotos = gallery.length > 1
@@ -90,7 +115,17 @@ export function ApartmentDetailPage({ apartments, savedIds, onToggleSave }: Apar
               <Button type="button" variant="ghost" size="icon" aria-label="Share apartment">
                 <Share2 className="h-4 w-4" />
               </Button>
-              <Button type="button" className="min-h-11 flex-1 bg-blue-600 hover:bg-blue-700 sm:flex-none">Contact Owner</Button>
+              {canMessage ? (
+                <Button asChild className="min-h-11 flex-1 bg-blue-600 hover:bg-blue-700 sm:flex-none">
+                  <Link to={`/messages?listing=${encodeURIComponent(apartment.id)}`}>Message Landlord</Link>
+                </Button>
+              ) : session ? (
+                <Button type="button" disabled className="min-h-11 flex-1 sm:flex-none">Student account required</Button>
+              ) : (
+                <Button asChild className="min-h-11 flex-1 bg-blue-600 hover:bg-blue-700 sm:flex-none">
+                  <Link to="/signin" state={signInState}>Sign in to contact</Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>
@@ -159,15 +194,15 @@ export function ApartmentDetailPage({ apartments, savedIds, onToggleSave }: Apar
                   </div>
                   <div className="text-left sm:text-right lg:mt-4 lg:text-left">
                     <p className="text-3xl font-bold text-slate-950">{formatCurrency(apartment.price)}</p>
-                    <p className="text-sm text-slate-500">THB/month</p>
+                    <p className="text-sm text-slate-500">per month</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card id="landlord-contact" className="scroll-mt-20">
               <CardHeader className="p-4 pb-2">
-                <CardTitle className="text-base">Contact Owner</CardTitle>
+                <CardTitle className="text-base">Contact Landlord</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 p-4 pt-0">
                 <div className="flex items-center gap-3">
@@ -176,22 +211,52 @@ export function ApartmentDetailPage({ apartments, savedIds, onToggleSave }: Apar
                   </div>
                   <div>
                     <p className="font-bold text-slate-950">{apartment.ownerName}</p>
-                    <p className="text-xs text-slate-500">Apartment owner</p>
+                    <p className="text-xs text-slate-500">Apartment landlord</p>
                   </div>
                 </div>
-                <p className="flex items-center gap-2 text-xs text-slate-500">
-                  <Mail className="h-4 w-4 text-blue-600" />
-                  {apartment.ownerContact}
-                </p>
-                <Button type="button" className="h-10 w-full bg-blue-600 hover:bg-blue-700">
-                  <MessageCircle className="h-4 w-4" />
-                  Send Message
-                </Button>
-                <Button type="button" variant="outline" className="h-10 w-full">
-                  <Phone className="h-4 w-4" />
-                  Call
-                </Button>
-                <p className="text-center text-xs text-slate-500">Response time: Within a few hours</p>
+                {canMessage ? (
+                  <>
+                    {hasDirectContact ? <p className="flex items-center gap-2 break-all text-xs text-slate-500">
+                      {contactIsEmail ? <Mail className="h-4 w-4 shrink-0 text-blue-600" /> : <Phone className="h-4 w-4 shrink-0 text-blue-600" />}
+                      {apartment.ownerContact}
+                    </p> : null}
+                    <Button asChild className="h-10 w-full bg-blue-600 hover:bg-blue-700">
+                      <Link to={`/messages?listing=${encodeURIComponent(apartment.id)}`}>
+                        <MessageCircle className="h-4 w-4" />
+                        Message Landlord
+                      </Link>
+                    </Button>
+                    {hasDirectContact && contactIsEmail ? (
+                      <Button type="button" variant="outline" className="h-10 w-full" disabled>
+                        <Phone className="h-4 w-4" />
+                        Phone unavailable
+                      </Button>
+                    ) : hasDirectContact ? (
+                      <Button asChild variant="outline" className="h-10 w-full">
+                        <a href={`tel:${apartment.ownerContact}`}>
+                          <Phone className="h-4 w-4" />
+                          Call Landlord
+                        </a>
+                      </Button>
+                    ) : null}
+                    <p className="text-center text-xs text-slate-500">Response time: Within a few hours</p>
+                  </>
+                ) : session ? (
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-center">
+                    <LockKeyhole className="mx-auto h-5 w-5 text-slate-400" />
+                    <p className="mt-2 text-sm font-semibold text-slate-700">Student account required</p>
+                    <p className="mt-1 text-xs leading-5 text-slate-500">Landlord contact and messaging are available only to signed-in students.</p>
+                  </div>
+                ) : (
+                  <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
+                    <LockKeyhole className="mx-auto h-5 w-5 text-blue-600" />
+                    <p className="mt-2 text-sm font-semibold text-slate-800">Sign in to contact this landlord</p>
+                    <p className="mt-1 text-xs leading-5 text-slate-600">Create or use a student account to reveal contact details.</p>
+                    <Button asChild className="mt-3 h-10 w-full">
+                      <Link to="/signin" state={signInState}>Continue to sign in</Link>
+                    </Button>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>

@@ -3,6 +3,7 @@ import { ServiceError } from "../lib/serviceError.js"
 import type { ApartmentListing, ListingMapMarker, ListingPhoto } from "../types/listing.js"
 import type { CreateListingInput, ListingFilters, UpdateApprovalInput, UpdateAvailabilityInput, UpdateListingInput } from "../validation/listingSchemas.js"
 import { requireSupabaseClient } from "./supabaseClient.js"
+import { createNotification } from "./notificationService.js"
 
 type ListingPhotoRow = {
   id: string
@@ -335,7 +336,7 @@ export const updateOwnerListing = async (id: string, input: UpdateListingInput, 
   return getListingById(id)
 }
 
-export const updateListingApproval = async (id: string, input: UpdateApprovalInput) => {
+export const updateListingApproval = async (id: string, input: UpdateApprovalInput, adminId: string) => {
   const supabase = requireSupabaseClient()
   const { data, error } = await supabase
     .from("apartment_listings")
@@ -351,14 +352,26 @@ export const updateListingApproval = async (id: string, input: UpdateApprovalInp
   }
 
   const { error: logError } = await supabase.from("admin_action_logs").insert({
-    admin_id: "admin-demo",
+    admin_id: adminId,
     listing_id: id,
     action: input.approvalStatus,
     note: input.note,
   })
   handleSupabaseError(logError)
 
-  return mapListing(data as ListingRow)
+  const reviewedListing = data as ListingRow
+  if (reviewedListing.owner_id && input.approvalStatus !== "pending") {
+    const approved = input.approvalStatus === "approved"
+    await createNotification({
+      recipientId: reviewedListing.owner_id,
+      type: approved ? "listing_approved" : "listing_rejected",
+      title: approved ? "Apartment listing approved" : "Apartment listing needs changes",
+      message: approved ? `${reviewedListing.name} is now visible to students.` : `${reviewedListing.name} was rejected by the admin. Review the details and submit an update.`,
+      link: "/owner/listings",
+    })
+  }
+
+  return mapListing(reviewedListing)
 }
 
 export const deleteListing = async (id: string) => {

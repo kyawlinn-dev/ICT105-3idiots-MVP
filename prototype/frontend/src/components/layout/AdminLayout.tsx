@@ -15,6 +15,7 @@ type AdminLayoutProps = {
 
 export function AdminLayout({ session, onSignOut }: AdminLayoutProps) {
   const [collapsed, setCollapsed] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -25,24 +26,26 @@ export function AdminLayout({ session, onSignOut }: AdminLayoutProps) {
         profileRole="Platform Admin"
         collapsed={collapsed}
         onToggle={() => setCollapsed((current) => !current)}
+        mobileOpen={mobileOpen}
+        onMobileClose={() => setMobileOpen(false)}
         navItems={adminNavItems}
       />
       <div className={cn("transition-all duration-300 lg:pl-52", collapsed && "lg:pl-14")}>
         <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
           <div className="flex h-11 items-center justify-between gap-3 px-3 sm:px-4 lg:px-5">
             <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open sidebar">
+              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open sidebar" onClick={() => setMobileOpen(true)}>
                 <Menu className="h-5 w-5" />
               </Button>
               <div>
                 <p className="text-xs font-bold text-slate-950">Admin dashboard</p>
-                <p className="text-[11px] text-slate-500">Review listings, owners, users, and analytics</p>
+                <p className="text-[11px] text-slate-500">Review listings, landlords, users, and analytics</p>
               </div>
             </div>
             <div className="hidden max-w-sm flex-1 items-center gap-2 md:flex">
               <div className="relative w-full">
                 <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
-                <Input className="h-8 pl-8 text-xs" placeholder="Search listings, owners, or users" />
+                <Input className="h-8 pl-8 text-xs" placeholder="Search listings, landlords, or users" />
               </div>
             </div>
             <div className="flex items-center gap-1">

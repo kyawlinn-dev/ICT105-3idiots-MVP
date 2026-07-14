@@ -9,7 +9,7 @@ import { Label } from "../../components/ui/label"
 import { signIn, signUp } from "../../services/api/auth"
 import { ApiError } from "../../services/api/client"
 import type { AuthProfile, AuthRole } from "../../services/api/types"
-
+import { toast } from "sonner"
 type AuthPageProps = {
   onAuthenticated: (profile: AuthProfile) => void | Promise<void>
 }
@@ -60,11 +60,11 @@ const portalCopy = {
   ownerLogin: {
     role: "owner",
     mode: "sign-in",
-    eyebrow: "Owner portal",
+    eyebrow: "Landlord portal",
     title: "Sign in to manage your listings",
-    description: "Upload rooms, manage availability, and track review status from your owner dashboard.",
+    description: "Upload rooms, manage availability, and track review status from your landlord dashboard.",
     icon: Building2,
-    submitLabel: "Sign in to owner portal",
+    submitLabel: "Sign in to landlord portal",
     alternateLabel: "List your apartment",
     alternateTo: "/owner/signup",
     redirectTo: "/owner/dashboard",
@@ -73,11 +73,11 @@ const portalCopy = {
   ownerSignup: {
     role: "owner",
     mode: "sign-up",
-    eyebrow: "Owner sign up",
-    title: "Create an owner account",
+    eyebrow: "Landlord sign up",
+    title: "Create a landlord account",
     description: "Add real apartment details, upload room photos, and submit listings for admin review.",
     icon: Building2,
-    submitLabel: "Create owner account",
+    submitLabel: "Create landlord account",
     alternateLabel: "Already manage listings?",
     alternateTo: "/owner/login",
     redirectTo: "/owner/add-listing",
@@ -88,7 +88,7 @@ const portalCopy = {
     mode: "sign-in",
     eyebrow: "Admin login",
     title: "Access the admin console",
-    description: "Review owner submissions, approve listings, and monitor platform records.",
+    description: "Review landlord submissions, approve listings, and monitor platform records.",
     icon: ShieldCheck,
     submitLabel: "Sign in as admin",
     redirectTo: "/admin/dashboard",
@@ -147,9 +147,12 @@ function AuthPortalPage({ config, onAuthenticated }: AuthPageProps & { config: P
         : await signIn({ role: config.role, email, password })
 
       await onAuthenticated(profile)
-      navigate(redirectTo)
+      toast.success(config.mode === "sign-up" ? "Account created! Welcome." : "Welcome back!")
+    navigate(redirectTo)
     } catch (error) {
-      setMessage(error instanceof ApiError ? error.message : "Authentication failed. Please try again.")
+      const errorMessage = error instanceof ApiError ? error.message : "Authentication failed. Please try again."
+      toast.error(errorMessage)
+      setMessage(errorMessage)
     } finally {
       setSubmitting(false)
     }
@@ -182,7 +185,7 @@ function AuthPortalPage({ config, onAuthenticated }: AuthPageProps & { config: P
               </div>
               <div>
                 <h2 className="text-xl font-bold text-slate-950">{config.mode === "sign-up" ? "Create account" : "Sign in"}</h2>
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{config.role} portal</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{config.role === "owner" ? "landlord" : config.role} portal</p>
               </div>
             </div>
 
@@ -211,13 +214,13 @@ function AuthPortalPage({ config, onAuthenticated }: AuthPageProps & { config: P
                 </div>
               ) : null}
               <Button type="submit" className="h-11 w-full bg-blue-600 hover:bg-blue-700" disabled={submitting}>
-                {submitting ? "Please wait..." : config.submitLabel}
+                {submitting ? config.mode === "sign-up" ? "Creating account…" : "Signing in…" : config.submitLabel}
               </Button>
             </form>
 
             {config.alternateTo && config.alternateLabel ? (
               <Button asChild variant="ghost" className="mt-3 h-10 w-full">
-                <Link to={config.alternateTo}>{config.alternateLabel}</Link>
+                <Link to={config.alternateTo} state={{ redirectTo }}>{config.alternateLabel}</Link>
               </Button>
             ) : null}
           </CardContent>

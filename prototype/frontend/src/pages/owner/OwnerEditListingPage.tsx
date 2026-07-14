@@ -19,9 +19,9 @@ export function OwnerEditListingPage({ listings, onListingUpdated }: OwnerEditLi
     return (
       <div className="mx-auto max-w-4xl space-y-4">
         <PageHeader
-          eyebrow="Owner workflow"
+          eyebrow="Landlord workflow"
           title="Listing not found"
-          description="This listing may still be loading, or it may not belong to your owner account."
+          description="This listing may still be loading, or it may not belong to your landlord account."
           action={
             <Button asChild variant="outline">
               <Link to="/owner/listings">
@@ -33,7 +33,7 @@ export function OwnerEditListingPage({ listings, onListingUpdated }: OwnerEditLi
         />
         <Card>
           <CardContent className="p-5 text-sm font-semibold text-slate-500">
-            Open My Listings again after owner records finish loading. Owners can only edit listings connected to their account.
+            Open My Listings again after landlord records finish loading. Landlords can only edit listings connected to their account.
           </CardContent>
         </Card>
       </div>

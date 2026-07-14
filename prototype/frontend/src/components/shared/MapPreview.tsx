@@ -21,7 +21,7 @@ const markerInfoContent = (marker: ListingMapMarker) => `
   <div style="min-width: 180px; max-width: 220px; font-family: Inter, Arial, sans-serif;">
     <strong style="display: block; margin-bottom: 6px; color: #020617;">${escapeHtml(marker.name)}</strong>
     <span style="display: block; margin-bottom: 4px; color: #2563eb; font-size: 12px; font-weight: 700;">${marker.distanceFromCampus} km from campus</span>
-    <span style="display: block; margin-bottom: 10px; color: #475569; font-size: 12px;">${formatCurrency(marker.price)} THB/month</span>
+    <span style="display: block; margin-bottom: 10px; color: #475569; font-size: 12px;">${formatCurrency(marker.price)}/month</span>
     <a href="/apartments/${encodeURIComponent(marker.id)}" style="color: #2563eb; font-size: 12px; font-weight: 700; text-decoration: none;">View apartment</a>
   </div>
 `
@@ -133,7 +133,7 @@ export function ListingOverviewMap({ markers }: OverviewMapProps) {
             <div>
               <MapPin className="mx-auto h-7 w-7 text-blue-600" />
               <p className="mt-3 text-sm font-bold text-slate-950">No available map locations</p>
-              <p className="mt-1 text-xs text-slate-500">Approved owner listings with confirmed coordinates will appear here.</p>
+              <p className="mt-1 text-xs text-slate-500">Approved landlord listings with confirmed coordinates will appear here.</p>
             </div>
           </div>
         )}
@@ -147,7 +147,7 @@ export function ListingOverviewMap({ markers }: OverviewMapProps) {
               <Link key={marker.id} to={`/apartments/${marker.id}`} className="rounded-lg border border-slate-200 p-3 transition hover:border-blue-200 hover:bg-blue-50/40">
                 <p className="text-sm font-bold text-slate-950">{marker.name}</p>
                 <p className="mt-1 text-xs font-semibold text-blue-600">{marker.distanceFromCampus} km from campus</p>
-                <p className="mt-1 text-xs text-slate-500">{formatCurrency(marker.price)} THB/month</p>
+                <p className="mt-1 text-xs text-slate-500">{formatCurrency(marker.price)}/month</p>
               </Link>
             ))}
           </div>
@@ -176,7 +176,7 @@ export function ListingDetailMap({ marker }: DetailMapProps) {
           <div>
             <p className="text-sm font-bold text-slate-950">{marker.name}</p>
             <p className="mt-1 text-xs text-slate-500">
-              Approx. {marker.distanceFromCampus} km from campus. Coordinates come from the owner-confirmed location.
+              Approx. {marker.distanceFromCampus} km from campus. Coordinates come from the landlord-confirmed location.
             </p>
           </div>
           <a

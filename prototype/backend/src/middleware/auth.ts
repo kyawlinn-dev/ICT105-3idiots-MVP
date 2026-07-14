@@ -18,6 +18,18 @@ export const requireAuth: RequestHandler = async (req, res, next) => {
   }
 }
 
+export const optionalAuth: RequestHandler = async (req, res, next) => {
+  try {
+    const session = await getSessionProfile(req.cookies?.[accessTokenCookieName], req.cookies?.[refreshTokenCookieName], res)
+    if (session) {
+      req.auth = session
+    }
+    next()
+  } catch (error) {
+    next(error)
+  }
+}
+
 export const requireRole = (roles: UserRole[]): RequestHandler => {
   return (req, _res, next) => {
     if (!req.auth) {

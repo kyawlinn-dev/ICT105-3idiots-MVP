@@ -1,5 +1,4 @@
 import { SlidersHorizontal } from "lucide-react"
-import { Button } from "../ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
@@ -119,9 +118,6 @@ export function FilterPanel({ filters, onChange, onReset }: FilterPanelProps) {
             <option value="Unavailable">Unavailable</option>
           </Select>
         </div>
-        <Button type="button">
-          Filters Applied
-        </Button>
       </CardContent>
     </Card>
   )
