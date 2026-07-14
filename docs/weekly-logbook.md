@@ -301,3 +301,45 @@ Student Apartment Finder Platform
 ## Lecturer / TA Notes
 
 (To be completed during lab session.)
+
+# Weekly Logbook - Lab 07
+
+## Group Information
+
+- **Group name:** 3idiots
+- **Project title:** Student Apartment Finder Platform
+- **Date:** 15 July 2026
+- **Repository link:** https://github.com/kyawlinn-dev/ICT105-3idiots-MVP
+
+## What We Completed Today
+
+- [x] Reviewed requirements, user stories, MVP features, architecture, and wireframes
+- [x] Identified critical assumptions
+- [x] Selected MVP experiment type
+- [x] Defined test users and success metrics
+- [x] Prepared experiment script and feedback form
+- [x] Updated GitHub repository and README
+
+## Member Contributions
+
+| Member Name | Contribution | Evidence/Commit/Issue Link |
+|---|---|---|
+| Phyo Wai Aung | Prepared the MVP experiment plan and identified critical assumptions. | `docs/mvp-experiment-plan.md`, `docs/critical-assumptions.md` |
+| Kyaw Linn | Developed the experiment script, defined success metrics, and reviewed the prototype workflow. | `docs/experiment-script.md`, `docs/success-metrics.md` |
+| Arkar Kyaw Oo | Updated the README, weekly logbook, feedback form, and GitHub documentation. | `README.md`, `docs/weekly-logbook.md`, `docs/feedback-form.md` |
+
+## Key Decisions
+
+| Decision | Reason | Evidence/Requirement Link |
+|---|---|---|
+| Use a Simple Web Prototype for testing | The current prototype supports realistic interaction with the core system features. | FR-01, FR-02, FR-06, FR-07 |
+| Focus on apartment search workflow | Searching and contacting apartment owners is the project's core functionality. | User Stories, MVP Feature List |
+| Use measurable success metrics | Allows objective evaluation of usability before implementation. | `success-metrics.md` |
+
+## Problems and Next Action
+
+| Problem | Next Action | Responsible Member |
+|---|---|---|
+| Limited user testing has not yet been conducted. | Recruit target users and perform the MVP experiment. | All Members |
+| Feedback data has not been collected. | Conduct usability testing and analyse experiment results. | All Members |
+| Improvements may be required after testing. | Refine the prototype based on user feedback before the next lab. | Development Team |
