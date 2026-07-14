@@ -3,6 +3,7 @@ import type { RefObject } from "react"
 import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { PageHeader } from "../../components/shared/PageHeader"
+import { LoadingState } from "../../components/shared/LoadingState"
 import { StatusBadge } from "../../components/shared/StatusBadge"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent } from "../../components/ui/card"
@@ -12,9 +13,10 @@ import { formatCurrency } from "../../lib/utils"
 type OwnerListingsPageProps = {
   listings: Apartment[]
   onUpdateAvailability: (id: string, status: AvailabilityStatus) => void
+  loading?: boolean
 }
 
-export function OwnerListingsPage({ listings, onUpdateAvailability }: OwnerListingsPageProps) {
+export function OwnerListingsPage({ listings, onUpdateAvailability, loading }: OwnerListingsPageProps) {
   const [openMenuId, setOpenMenuId] = useState("")
   const menuRootRef = useRef<HTMLDivElement | null>(null)
 
@@ -53,10 +55,19 @@ export function OwnerListingsPage({ listings, onUpdateAvailability }: OwnerListi
     }
   }
 
+  if (loading) {
+    return (
+      <div className="mx-auto max-w-6xl space-y-4">
+        <PageHeader eyebrow="Landlord listings" title="Manage your apartments" description="Review listing status, update room availability, and edit apartment details." />
+        <LoadingState label="Loading your apartment listings…" />
+      </div>
+    )
+  }
+
   return (
     <div className="mx-auto max-w-6xl space-y-4">
       <PageHeader
-        eyebrow="Owner workflow"
+        eyebrow="Landlord workflow"
         title="Manage my listings"
         description="Review listing status, update availability, and edit submitted apartment records."
       />
@@ -212,7 +223,7 @@ function InfoBlock({ label, value }: { label: string; value: React.ReactNode }) 
 function EmptyListings() {
   return (
     <div className="rounded-lg border border-dashed border-slate-200 bg-slate-50 p-5 text-center text-sm font-semibold text-slate-500">
-      No owner listings yet. Add an apartment to submit it for admin review.
+      No landlord listings yet. Add an apartment to submit it for admin review.
     </div>
   )
 }

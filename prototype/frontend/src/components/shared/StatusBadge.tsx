@@ -9,7 +9,7 @@ const statusStyles: Record<string, string> = {
   Limited: "bg-amber-50 text-amber-700 ring-amber-200",
   Unavailable: "bg-slate-100 text-slate-600 ring-slate-200",
   Approved: "bg-emerald-50 text-emerald-700 ring-emerald-200",
-  Pending: "bg-violet-50 text-violet-700 ring-violet-200",
+  Pending: "bg-blue-50 text-blue-700 ring-blue-200",
   Rejected: "bg-rose-50 text-rose-700 ring-rose-200",
 }
 

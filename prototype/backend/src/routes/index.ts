@@ -4,6 +4,8 @@ import { authRoutes } from "./authRoutes.js"
 import { healthRoutes } from "./healthRoutes.js"
 import { listingRoutes } from "./listingRoutes.js"
 import { mapRoutes } from "./mapRoutes.js"
+import { messageRoutes } from "./messageRoutes.js"
+import { notificationRoutes } from "./notificationRoutes.js"
 import { roommateRoutes } from "./roommateRoutes.js"
 import { savedListingRoutes } from "./savedListingRoutes.js"
 import { uploadRoutes } from "./uploadRoutes.js"
@@ -14,6 +16,8 @@ apiRoutes.use(healthRoutes)
 apiRoutes.use(authRoutes)
 apiRoutes.use(listingRoutes)
 apiRoutes.use(mapRoutes)
+apiRoutes.use(messageRoutes)
+apiRoutes.use(notificationRoutes)
 apiRoutes.use(adminRoutes)
 apiRoutes.use(roommateRoutes)
 apiRoutes.use(savedListingRoutes)

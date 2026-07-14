@@ -1,5 +1,6 @@
 import { List, Map, Search, SlidersHorizontal, X } from "lucide-react"
 import { useEffect, useMemo, useState } from "react"
+import { useSearchParams } from "react-router-dom"
 import { ApartmentListItem } from "../../components/shared/ApartmentCard"
 import { EmptyState } from "../../components/shared/EmptyState"
 import { FilterPanel, type ApartmentFilters } from "../../components/shared/FilterPanel"
@@ -15,6 +16,7 @@ type ApartmentsPageProps = {
   apartments: Apartment[]
   savedIds: string[]
   onToggleSave: (id: string) => void
+  loading?: boolean
 }
 
 const initialFilters: ApartmentFilters = {
@@ -27,10 +29,12 @@ const initialFilters: ApartmentFilters = {
   availability: "",
 }
 
-export function ApartmentsPage({ apartments, savedIds, onToggleSave }: ApartmentsPageProps) {
-  const [filters, setFilters] = useState(initialFilters)
+export function ApartmentsPage({ apartments, savedIds, onToggleSave, loading }: ApartmentsPageProps) {
+  const [searchParams] = useSearchParams()
+  const [filters, setFilters] = useState(() => ({ ...initialFilters, search: searchParams.get("search") ?? "" }))
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [viewMode, setViewMode] = useState<"list" | "map">("list")
+  const [sortBy, setSortBy] = useState<"recommended" | "price-low" | "distance">("recommended")
   const [markers, setMarkers] = useState<ListingMapMarker[]>([])
 
   useEffect(() => {
@@ -60,9 +64,21 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave }: Apartment
     })
   }, [apartments, filters])
 
+  const visibleApartments = useMemo(() => {
+    if (sortBy === "price-low") {
+      return [...filteredApartments].sort((a, b) => a.price - b.price)
+    }
+
+    if (sortBy === "distance") {
+      return [...filteredApartments].sort((a, b) => a.distanceFromCampus - b.distanceFromCampus)
+    }
+
+    return filteredApartments
+  }, [filteredApartments, sortBy])
+
   const filteredMapMarkers = useMemo(
-    () => markers.filter((marker) => filteredApartments.some((apartment) => apartment.id === marker.id)),
-    [filteredApartments, markers],
+    () => markers.filter((marker) => visibleApartments.some((apartment) => apartment.id === marker.id)),
+    [visibleApartments, markers],
   )
 
   return (
@@ -73,12 +89,12 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave }: Apartment
           <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <h1 className="max-w-2xl text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">Find apartments that fit your student life</h1>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">Search Rangsit University, Bangkok University, Khlong Luang, Thanyaburi, and Pathum Thani sample listings.</p>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">Search listings near Rangsit University, Bangkok University, Khlong Luang, Thanyaburi, and Pathum Thani.</p>
             </div>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
-              <p className="text-sm font-semibold text-slate-500">{filteredApartments.length} apartments found</p>
-              <Select className="w-full sm:w-48" defaultValue="recommended">
-                <option value="recommended">Sort by: Recommended</option>
+              <p className="text-sm font-semibold text-slate-500" aria-live="polite">{loading ? "Loading apartments..." : `${visibleApartments.length} apartments found`}</p>
+              <Select className="w-full sm:w-56" value={sortBy} onChange={(event) => setSortBy(event.target.value as typeof sortBy)} aria-label="Sort apartments">
+                <option value="recommended">Recommended</option>
                 <option value="price-low">Price: Low first</option>
                 <option value="distance">Distance</option>
               </Select>
@@ -110,12 +126,26 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave }: Apartment
         <div className="hidden lg:block">
           <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(initialFilters)} />
         </div>
-        <div>
-          {viewMode === "map" ? (
+        <div aria-busy={loading}>
+          {loading ? (
+            <div className="grid gap-4" aria-label="Loading apartment results">
+              {[0, 1, 2].map((item) => (
+                <div key={item} className="grid animate-pulse gap-4 rounded-xl border border-slate-200 bg-white p-3 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center">
+                  <div className="h-36 rounded-lg bg-slate-200 sm:h-28" />
+                  <div className="space-y-3">
+                    <div className="h-5 w-2/3 rounded bg-slate-200" />
+                    <div className="h-4 w-1/2 rounded bg-slate-100" />
+                    <div className="h-4 w-4/5 rounded bg-slate-100" />
+                  </div>
+                  <div className="h-8 w-28 rounded bg-slate-100" />
+                </div>
+              ))}
+            </div>
+          ) : viewMode === "map" ? (
             <ListingOverviewMap markers={filteredMapMarkers} />
-          ) : filteredApartments.length > 0 ? (
+          ) : visibleApartments.length > 0 ? (
             <div className="grid gap-4">
-              {filteredApartments.map((apartment) => (
+              {visibleApartments.map((apartment) => (
                 <ApartmentListItem key={apartment.id} apartment={apartment} isSaved={savedIds.includes(apartment.id)} onToggleSave={onToggleSave} />
               ))}
             </div>

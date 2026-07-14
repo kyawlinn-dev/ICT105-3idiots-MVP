@@ -3,6 +3,7 @@ import type { RefObject } from "react"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { PageHeader } from "../../components/shared/PageHeader"
+import { LoadingState } from "../../components/shared/LoadingState"
 import { StatusBadge } from "../../components/shared/StatusBadge"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent } from "../../components/ui/card"
@@ -14,14 +15,16 @@ import { formatCurrency } from "../../lib/utils"
 type AdminListingsPageProps = {
   listings: Apartment[]
   onUpdateApproval: (id: string, status: ApprovalStatus) => void
-  onDeleteListing: (id: string) => void
+  onDeleteListing: (id: string) => void | Promise<void>
+  loading?: boolean
 }
 
-export function AdminListingsPage({ listings, onUpdateApproval, onDeleteListing }: AdminListingsPageProps) {
+export function AdminListingsPage({ listings, onUpdateApproval, onDeleteListing, loading }: AdminListingsPageProps) {
   const [query, setQuery] = useState("")
   const [status, setStatus] = useState("")
   const [location, setLocation] = useState("")
   const [openMenuId, setOpenMenuId] = useState("")
+  const [deletingId, setDeletingId] = useState("")
   const menuRootRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -74,9 +77,24 @@ export function AdminListingsPage({ listings, onUpdateApproval, onDeleteListing 
     }
   }
 
-  const deleteListing = (id: string) => {
+  const deleteListing = async (listing: Apartment) => {
+    if (!window.confirm(`Delete “${listing.name}”? This cannot be undone.`)) return
     setOpenMenuId("")
-    onDeleteListing(id)
+    setDeletingId(listing.id)
+    try {
+      await onDeleteListing(listing.id)
+    } finally {
+      setDeletingId("")
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="mx-auto max-w-6xl space-y-4">
+        <PageHeader eyebrow="Admin panel" title="Manage apartment listings" description="Review landlord submissions, approve valid rooms, reject incomplete records, and remove outdated listings." />
+        <LoadingState label="Loading apartment listings…" />
+      </div>
+    )
   }
 
   return (
@@ -84,7 +102,7 @@ export function AdminListingsPage({ listings, onUpdateApproval, onDeleteListing 
       <PageHeader
         eyebrow="Admin panel"
         title="Manage apartment listings"
-        description="Review owner submissions, approve valid rooms, reject incomplete records, and remove outdated listings."
+        description="Review landlord submissions, approve valid rooms, reject incomplete records, and remove outdated listings."
       />
 
       <Card>
@@ -98,7 +116,7 @@ export function AdminListingsPage({ listings, onUpdateApproval, onDeleteListing 
           <div className="grid gap-2 md:grid-cols-[1fr_150px_170px_auto]">
             <div className="relative">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-              <Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search apartment, owner, or location" className="pl-9" />
+              <Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search apartment, landlord, or location" className="pl-9" />
             </div>
             <Select value={status} onChange={(event) => setStatus(event.target.value)}>
               <option value="">All status</option>
@@ -135,13 +153,14 @@ export function AdminListingsPage({ listings, onUpdateApproval, onDeleteListing 
                   onToggle={() => setOpenMenuId((current) => (current === listing.id ? "" : listing.id))}
                   onApproval={setApproval}
                   onDelete={deleteListing}
+                  deleting={deletingId === listing.id}
                 />
               </div>
               <div className="grid grid-cols-2 gap-2 text-sm">
                 <InfoBlock label="Price" value={formatCurrency(listing.price)} />
                 <InfoBlock label="Distance" value={`${listing.distanceFromCampus} km`} />
                 <InfoBlock label="Review" value={<StatusBadge status={listing.approvalStatus} />} />
-                <InfoBlock label="Owner" value={listing.ownerName} />
+                <InfoBlock label="Landlord" value={listing.ownerName} />
               </div>
             </CardContent>
           </Card>
@@ -152,7 +171,7 @@ export function AdminListingsPage({ listings, onUpdateApproval, onDeleteListing 
         <CardContent className="overflow-visible p-0">
           <div className="grid grid-cols-[minmax(0,1.4fr)_minmax(120px,0.8fr)_110px_110px_130px_64px] gap-3 border-b border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-semibold text-slate-500">
             <span>Apartment</span>
-            <span>Owner</span>
+            <span>Landlord</span>
             <span>Location</span>
             <span>Price</span>
             <span>Status</span>
@@ -179,6 +198,7 @@ export function AdminListingsPage({ listings, onUpdateApproval, onDeleteListing 
                     onToggle={() => setOpenMenuId((current) => (current === listing.id ? "" : listing.id))}
                     onApproval={setApproval}
                     onDelete={deleteListing}
+                    deleting={deletingId === listing.id}
                   />
                 </div>
               </div>
@@ -201,13 +221,15 @@ function AdminListingActions({
   onToggle,
   onApproval,
   onDelete,
+  deleting,
 }: {
   listing: Apartment
   open: boolean
   menuRootRef?: RefObject<HTMLDivElement | null>
   onToggle: () => void
   onApproval: (listing: Apartment, status: ApprovalStatus) => void
-  onDelete: (id: string) => void
+  onDelete: (listing: Apartment) => void
+  deleting: boolean
 }) {
   const canViewPublic = listing.approvalStatus === "Approved"
 
@@ -227,7 +249,7 @@ function AdminListingActions({
           <ActionButton icon={CheckCircle2} label="Approve listing" onClick={() => onApproval(listing, "Approved")} />
           <ActionButton icon={XCircle} label="Reject listing" onClick={() => onApproval(listing, "Rejected")} />
           <div className="my-1 border-t border-slate-100" />
-          <ActionButton icon={Trash2} label="Delete listing" danger onClick={() => onDelete(listing.id)} />
+          <ActionButton icon={Trash2} label={deleting ? "Deleting…" : "Delete listing"} danger disabled={deleting} onClick={() => onDelete(listing)} />
         </div>
       ) : null}
     </div>
@@ -236,7 +258,7 @@ function AdminListingActions({
 
 function FilterTab({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) {
   return (
-    <button type="button" onClick={onClick} className={active ? "rounded-lg bg-violet-50 px-3 py-1.5 text-violet-700" : "rounded-lg px-3 py-1.5 text-slate-500 hover:bg-slate-50"}>
+    <button type="button" onClick={onClick} className={active ? "rounded-lg bg-blue-50 px-3 py-1.5 text-blue-700" : "rounded-lg px-3 py-1.5 text-slate-500 hover:bg-blue-50 hover:text-blue-700"}>
       {label}
     </button>
   )
@@ -244,7 +266,7 @@ function FilterTab({ active, label, onClick }: { active: boolean; label: string;
 
 function ActionLink({ to, icon: Icon, label }: { to: string; icon: typeof Eye; label: string }) {
   return (
-    <Link to={to} className="flex w-full items-center gap-2 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-violet-50 hover:text-violet-700">
+    <Link to={to} className="flex w-full items-center gap-2 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700">
       <Icon className="h-4 w-4" />
       {label}
     </Link>
@@ -255,7 +277,7 @@ function ActionButton({ icon: Icon, label, onClick, disabled = false, danger = f
   return (
     <button
       type="button"
-      className={danger ? "flex w-full items-center gap-2 px-3 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50 disabled:cursor-not-allowed disabled:text-slate-400 disabled:hover:bg-white" : "flex w-full items-center gap-2 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-violet-50 hover:text-violet-700 disabled:cursor-not-allowed disabled:text-slate-400 disabled:hover:bg-white"}
+      className={danger ? "flex w-full items-center gap-2 px-3 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50 disabled:cursor-not-allowed disabled:text-slate-400 disabled:hover:bg-white" : "flex w-full items-center gap-2 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700 disabled:cursor-not-allowed disabled:text-slate-400 disabled:hover:bg-white"}
       onClick={onClick}
       disabled={disabled}
     >

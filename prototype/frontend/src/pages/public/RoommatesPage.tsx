@@ -1,31 +1,43 @@
 import {
   Calendar,
   Heart,
-  Mail,
+  LockKeyhole,
   MapPin,
   MessageCircle,
-  Phone,
   Plus,
+  Pencil,
   Search,
   SlidersHorizontal,
   UserRound,
+  Trash2,
   X,
 } from "lucide-react"
 import { type FormEvent, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { EmptyState } from "../../components/shared/EmptyState"
+import { LoadingState } from "../../components/shared/LoadingState"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
 import { Select } from "../../components/ui/select"
 import { Textarea } from "../../components/ui/textarea"
-import type { NearUniversity, RoommatePost } from "../../data/mockData"
+import type { NearUniversity, RoommatePost, RoommatePostStatus } from "../../data/mockData"
 import { formatCurrency } from "../../lib/utils"
 import { ApiError } from "../../services/api/client"
-import { createRoommatePost, getRoommatePosts } from "../../services/api/roommates"
+import {
+  createRoommatePost,
+  deleteRoommatePost,
+  getMyRoommatePosts,
+  getRoommatePosts,
+  getSavedRoommatePosts,
+  removeSavedRoommatePost,
+  saveRoommatePost,
+  updateRoommatePost,
+  updateRoommatePostStatus,
+} from "../../services/api/roommates"
 import type { AuthProfile } from "../../services/api/types"
-
+import { toast } from "sonner"
 type RoommatesPageProps = {
   session: AuthProfile | null
   sessionLoading: boolean
@@ -47,8 +59,11 @@ const emptyPostForm = {
 export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
   const navigate = useNavigate()
   const [roommatePosts, setRoommatePosts] = useState<RoommatePost[]>([])
+  const [myPosts, setMyPosts] = useState<RoommatePost[]>([])
+  const [view, setView] = useState<"browse" | "mine">("browse")
   const [selectedId, setSelectedId] = useState("")
   const [savedPosts, setSavedPosts] = useState<string[]>([])
+  const [mobileDetailOpen, setMobileDetailOpen] = useState(false)
   const [keyword, setKeyword] = useState("")
   const [university, setUniversity] = useState("")
   const [maxBudget, setMaxBudget] = useState("")
@@ -58,16 +73,25 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [isCreateOpen, setIsCreateOpen] = useState(false)
+  const [editingPost, setEditingPost] = useState<RoommatePost | null>(null)
   const [postForm, setPostForm] = useState(emptyPostForm)
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
     let active = true
+    setLoading(true)
 
-    getRoommatePosts()
-      .then((posts) => {
+    const studentSession = session?.role === "student"
+    Promise.all([
+      getRoommatePosts(),
+      studentSession ? getMyRoommatePosts() : Promise.resolve([]),
+      studentSession ? getSavedRoommatePosts() : Promise.resolve([]),
+    ])
+      .then(([posts, ownPosts, savedIds]) => {
         if (!active) return
         setRoommatePosts(posts)
+        setMyPosts(ownPosts)
+        setSavedPosts(savedIds)
         setSelectedId(posts[0]?.id ?? "")
         setError("")
       })
@@ -82,7 +106,7 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
     return () => {
       active = false
     }
-  }, [])
+  }, [session?.id, session?.role])
 
   const tags = useMemo(() => Array.from(new Set(roommatePosts.flatMap((post) => post.lifestyleTags))).sort(), [roommatePosts])
 
@@ -120,6 +144,24 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
     }
 
     setMessage("")
+    setEditingPost(null)
+    setPostForm(emptyPostForm)
+    setIsCreateOpen(true)
+  }
+
+  const openEditPost = (post: RoommatePost) => {
+    setEditingPost(post)
+    setPostForm({
+      title: post.title,
+      nearUniversity: post.nearUniversity,
+      budgetMin: post.budgetMin?.toString() ?? "",
+      budgetMax: post.budget.toString(),
+      moveInDate: post.moveInDate,
+      locationPreference: post.locationPreference,
+      lifestyleTags: post.lifestyleTags.join(", "),
+      description: post.description,
+    })
+    setMessage("")
     setIsCreateOpen(true)
   }
 
@@ -131,8 +173,50 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
     setTag("")
   }
 
-  const togglePost = (id: string) => {
-    setSavedPosts((current) => (current.includes(id) ? current.filter((postId) => postId !== id) : [...current, id]))
+  const togglePost = async (id: string) => {
+    if (session?.role !== "student") {
+      navigate("/signin", { state: { redirectTo: "/roommates" } })
+      return
+    }
+
+    const wasSaved = savedPosts.includes(id)
+    setSavedPosts((current) => (wasSaved ? current.filter((postId) => postId !== id) : [...current, id]))
+    try {
+      setSavedPosts(wasSaved ? await removeSavedRoommatePost(id) : await saveRoommatePost(id))
+      toast.success(wasSaved ? "Removed from saved roommate posts." : "Roommate post saved.")
+    } catch (requestError) {
+      console.error(requestError)
+      setSavedPosts((current) => (wasSaved ? [...current, id] : current.filter((postId) => postId !== id)))
+      toast.error("Saved roommate post could not be updated.")
+    }
+  }
+
+  const changePostStatus = async (post: RoommatePost, status: Exclude<RoommatePostStatus, "expired">) => {
+    try {
+      const updated = await updateRoommatePostStatus(post.id, status)
+      setMyPosts((current) => current.map((item) => item.id === updated.id ? updated : item))
+      setRoommatePosts((current) => status === "active"
+        ? [updated, ...current.filter((item) => item.id !== updated.id)]
+        : current.filter((item) => item.id !== updated.id))
+      toast.success(status === "matched" ? "Post marked as roommate found." : status === "paused" ? "Post paused." : "Post reactivated.")
+    } catch (requestError) {
+      console.error(requestError)
+      toast.error("Roommate post status could not be updated.")
+    }
+  }
+
+  const removeOwnPost = async (post: RoommatePost) => {
+    if (!window.confirm(`Delete “${post.title}”? This cannot be undone.`)) return
+    try {
+      await deleteRoommatePost(post.id)
+      setMyPosts((current) => current.filter((item) => item.id !== post.id))
+      setRoommatePosts((current) => current.filter((item) => item.id !== post.id))
+      setSavedPosts((current) => current.filter((id) => id !== post.id))
+      toast.success("Roommate post deleted.")
+    } catch (requestError) {
+      console.error(requestError)
+      toast.error("Roommate post could not be deleted.")
+    }
   }
 
   const submitPost = async (event: FormEvent<HTMLFormElement>) => {
@@ -140,13 +224,20 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
     setMessage("")
 
     if (!postForm.title.trim() || !postForm.budgetMax || !postForm.moveInDate.trim() || !postForm.locationPreference.trim() || !postForm.description.trim()) {
+      toast.error("Please complete the required roommate post fields.")
       setMessage("Please complete the required roommate post fields.")
+      return
+    }
+
+    if (postForm.budgetMin && Number(postForm.budgetMin) > Number(postForm.budgetMax)) {
+      toast.error("Minimum budget cannot be higher than maximum budget.")
+      setMessage("Minimum budget cannot be higher than maximum budget.")
       return
     }
 
     setSubmitting(true)
     try {
-      const created = await createRoommatePost({
+      const payload = {
         title: postForm.title,
         nearUniversity: postForm.nearUniversity,
         budgetMin: postForm.budgetMin ? Number(postForm.budgetMin) : undefined,
@@ -155,16 +246,28 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
         locationPreference: postForm.locationPreference,
         lifestyleTags: postForm.lifestyleTags.split(",").map((item) => item.trim()).filter(Boolean),
         description: postForm.description,
-      })
+      }
+      const savedPost = editingPost
+        ? await updateRoommatePost(editingPost.id, payload)
+        : await createRoommatePost(payload)
 
-      setRoommatePosts((current) => [created, ...current])
-      setSelectedId(created.id)
+      setMyPosts((current) => editingPost
+        ? current.map((item) => item.id === savedPost.id ? savedPost : item)
+        : [savedPost, ...current])
+      setRoommatePosts((current) => savedPost.status === "active"
+        ? [savedPost, ...current.filter((item) => item.id !== savedPost.id)]
+        : current.filter((item) => item.id !== savedPost.id))
+      setSelectedId(savedPost.id)
       setPostForm(emptyPostForm)
+      setEditingPost(null)
       setIsCreateOpen(false)
-      setMessage("Roommate post created.")
+      toast.success(editingPost ? "Roommate post updated." : "Roommate post created.")
+      setMessage(editingPost ? "Roommate post updated." : "Roommate post created.")
     } catch (requestError) {
       console.error(requestError)
-      setMessage(requestError instanceof ApiError ? requestError.message : "Roommate post failed. Please check the backend.")
+      const roommateError = requestError instanceof ApiError ? requestError.message : "Roommate post failed. Please check the backend."
+      toast.error(roommateError)
+      setMessage(roommateError)
     } finally {
       setSubmitting(false)
     }
@@ -182,17 +285,29 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
                 Browse student roommate posts around Rangsit University and Bangkok University, then contact posters using their shared profile details.
               </p>
             </div>
-            <Button className="h-9 w-full sm:w-auto" onClick={openCreatePost} disabled={sessionLoading}>
-              <Plus className="h-4 w-4" />
-              Create post
-            </Button>
+            <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+              <Button type="button" variant={view === "browse" ? "secondary" : "ghost"} className="h-9" onClick={() => setView("browse")}>Browse posts</Button>
+              <Button
+                type="button"
+                variant={view === "mine" ? "secondary" : "ghost"}
+                className="h-9"
+                onClick={() => session?.role === "student" ? setView("mine") : navigate("/signin", { state: { redirectTo: "/roommates" } })}
+                disabled={sessionLoading}
+              >
+                My posts
+              </Button>
+              <Button className="h-9" onClick={openCreatePost} disabled={sessionLoading}>
+                <Plus className="h-4 w-4" />
+                Create post
+              </Button>
+            </div>
           </div>
           {message ? <div className="mt-3 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700">{message}</div> : null}
         </div>
 
-        <Card>
+        {view === "browse" ? <Card>
           <CardContent className="p-3">
-            <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-[minmax(180px,1fr)_150px_112px_130px_130px_auto] lg:items-center">
+            <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-[minmax(180px,1fr)_150px_140px_130px_130px_auto] lg:items-center">
               <label className="relative">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                 <Input className="pl-9" value={keyword} onChange={(event) => setKeyword(event.target.value)} placeholder="Search title, area, lifestyle" />
@@ -206,7 +321,7 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
                 ))}
               </Select>
               <Input value={maxBudget} onChange={(event) => setMaxBudget(event.target.value)} type="number" min="0" placeholder="Max budget" />
-              <Input value={moveIn} onChange={(event) => setMoveIn(event.target.value)} placeholder="Move-in month" />
+              <Input value={moveIn} onChange={(event) => setMoveIn(event.target.value)} type="month" aria-label="Move-in month" />
               <Select value={tag} onChange={(event) => setTag(event.target.value)}>
                 <option value="">All tags</option>
                 {tags.map((item) => (
@@ -221,9 +336,9 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
               </Button>
             </div>
           </CardContent>
-        </Card>
+        </Card> : null}
 
-        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_340px]">
+        {view === "browse" ? <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_340px]">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between p-3">
               <div>
@@ -233,7 +348,7 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
             </CardHeader>
             <CardContent className="grid gap-2.5 p-3 pt-0">
               {loading ? (
-                <div className="rounded-lg border border-slate-200 bg-white p-6 text-center text-sm font-semibold text-slate-500">Loading roommate posts...</div>
+                <LoadingState label="Loading roommate posts…" />
               ) : error ? (
                 <EmptyState title="Roommate posts unavailable" description={error} />
               ) : filteredPosts.length > 0 ? (
@@ -243,7 +358,10 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
                     post={post}
                     active={selectedPost?.id === post.id}
                     saved={savedPosts.includes(post.id)}
-                    onSelect={() => setSelectedId(post.id)}
+                    onSelect={() => {
+                      setSelectedId(post.id)
+                      setMobileDetailOpen(true)
+                    }}
                     onSave={() => togglePost(post.id)}
                   />
                 ))
@@ -253,9 +371,9 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
             </CardContent>
           </Card>
 
-          <aside className="lg:sticky lg:top-16 lg:self-start">
+          <aside className="hidden lg:sticky lg:top-16 lg:block lg:self-start">
             {selectedPost ? (
-              <RoommateDetailCard post={selectedPost} saved={savedPosts.includes(selectedPost.id)} onSave={() => togglePost(selectedPost.id)} />
+              <RoommateDetailCard post={selectedPost} session={session} saved={savedPosts.includes(selectedPost.id)} onSave={() => togglePost(selectedPost.id)} onRequireSignIn={() => navigate("/signin", { state: { redirectTo: "/roommates" } })} />
             ) : (
               <Card>
                 <CardContent className="p-4">
@@ -264,18 +382,34 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
               </Card>
             )}
           </aside>
-        </div>
+        </div> : (
+          <MyRoommatePosts posts={myPosts} onEdit={openEditPost} onStatusChange={changePostStatus} onDelete={removeOwnPost} />
+        )}
       </section>
+
+      {mobileDetailOpen && selectedPost ? (
+        <div className="fixed inset-0 z-50 bg-slate-950/50 lg:hidden" onClick={() => setMobileDetailOpen(false)}>
+          <div className="absolute inset-x-0 bottom-0 max-h-[90vh] overflow-y-auto rounded-t-2xl bg-slate-50 p-3 shadow-2xl" onClick={(event) => event.stopPropagation()}>
+            <div className="mb-2 flex items-center justify-between px-1">
+              <p className="font-bold text-slate-950">Roommate details</p>
+              <Button type="button" variant="ghost" size="icon" aria-label="Close roommate details" onClick={() => setMobileDetailOpen(false)}>
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+            <RoommateDetailCard post={selectedPost} session={session} saved={savedPosts.includes(selectedPost.id)} onSave={() => togglePost(selectedPost.id)} onRequireSignIn={() => navigate("/signin", { state: { redirectTo: "/roommates" } })} />
+          </div>
+        </div>
+      ) : null}
 
       {isCreateOpen ? (
         <div className="fixed inset-0 z-50 flex items-end bg-slate-950/40 p-0 sm:items-center sm:justify-center sm:p-4">
           <Card className="max-h-[92vh] w-full overflow-y-auto rounded-b-none sm:max-w-2xl sm:rounded-lg">
             <CardHeader className="flex flex-row items-start justify-between gap-4 border-b border-slate-100 p-4">
               <div>
-                <CardTitle className="text-lg">Create roommate post</CardTitle>
+                <CardTitle className="text-lg">{editingPost ? "Edit roommate post" : "Create roommate post"}</CardTitle>
                 <p className="mt-1 text-sm text-slate-500">Posting as {session?.displayName}</p>
               </div>
-              <button type="button" className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" onClick={() => setIsCreateOpen(false)} aria-label="Close create post form">
+              <button type="button" className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" onClick={() => { setIsCreateOpen(false); setEditingPost(null) }} aria-label="Close roommate post form">
                 <X className="h-5 w-5" />
               </button>
             </CardHeader>
@@ -294,7 +428,7 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
                   </Select>
                 </Field>
                 <Field label="Move-in month">
-                  <Input value={postForm.moveInDate} onChange={(event) => setPostForm({ ...postForm, moveInDate: event.target.value })} required placeholder="August 2026" />
+                  <Input value={postForm.moveInDate} onChange={(event) => setPostForm({ ...postForm, moveInDate: event.target.value })} type="month" required />
                 </Field>
                 <Field label="Minimum budget">
                   <Input value={postForm.budgetMin} onChange={(event) => setPostForm({ ...postForm, budgetMin: event.target.value })} type="number" min="0" placeholder="Optional" />
@@ -312,11 +446,11 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
                   <Textarea value={postForm.description} onChange={(event) => setPostForm({ ...postForm, description: event.target.value })} required placeholder="Share your room preference, schedule, and what kind of roommate would fit." />
                 </Field>
                 <div className="flex flex-col-reverse gap-2 sm:col-span-2 sm:flex-row sm:justify-end">
-                  <Button type="button" variant="outline" onClick={() => setIsCreateOpen(false)}>
+                  <Button type="button" variant="outline" onClick={() => { setIsCreateOpen(false); setEditingPost(null) }}>
                     Cancel
                   </Button>
                   <Button type="submit" disabled={submitting}>
-                    {submitting ? "Creating..." : "Create post"}
+                    {submitting ? "Saving..." : editingPost ? "Save changes" : "Create post"}
                   </Button>
                 </div>
               </form>
@@ -344,7 +478,7 @@ function RoommatePostCard({ post, active, saved, onSelect, onSave }: { post: Roo
             </span>
             <span className="flex items-center gap-1">
               <Calendar className="h-3.5 w-3.5 text-blue-600" />
-              {post.moveInDate}
+              {formatMoveIn(post.moveInDate)}
             </span>
           </div>
           <p className="mt-2 line-clamp-2 text-sm leading-5 text-slate-600">{post.description}</p>
@@ -368,12 +502,63 @@ function RoommatePostCard({ post, active, saved, onSelect, onSave }: { post: Roo
   )
 }
 
-function RoommateDetailCard({ post, saved, onSave }: { post: RoommatePost; saved: boolean; onSave: () => void }) {
-  const contactItems = [
-    post.posterEmail ? { icon: Mail, label: post.posterEmail, href: `mailto:${post.posterEmail}` } : null,
-    post.posterPhone ? { icon: Phone, label: post.posterPhone, href: `tel:${post.posterPhone}` } : null,
-    post.posterLineId ? { icon: MessageCircle, label: `LINE: ${post.posterLineId}`, href: null } : null,
-  ].filter(Boolean) as Array<{ icon: typeof Mail; label: string; href: string | null }>
+function MyRoommatePosts({ posts, onEdit, onStatusChange, onDelete }: {
+  posts: RoommatePost[]
+  onEdit: (post: RoommatePost) => void
+  onStatusChange: (post: RoommatePost, status: Exclude<RoommatePostStatus, "expired">) => void
+  onDelete: (post: RoommatePost) => void
+}) {
+  return (
+    <Card>
+      <CardHeader className="p-4">
+        <CardTitle className="text-base">My roommate posts</CardTitle>
+        <p className="text-sm text-slate-500">Edit your details, pause your search, or mark a roommate as found.</p>
+      </CardHeader>
+      <CardContent className="grid gap-3 p-4 pt-0">
+        {posts.length ? posts.map((post) => (
+          <article key={post.id} className="rounded-lg border border-slate-200 bg-white p-4">
+            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h2 className="font-bold text-slate-950">{post.title}</h2>
+                  <span className={statusClass(post.status)}>{statusLabel(post.status)}</span>
+                  <span className={post.approvalStatus === "approved" ? "rounded-full bg-emerald-50 px-2 py-1 text-xs font-bold text-emerald-700" : post.approvalStatus === "rejected" ? "rounded-full bg-rose-50 px-2 py-1 text-xs font-bold text-rose-700" : "rounded-full bg-amber-50 px-2 py-1 text-xs font-bold text-amber-700"}>{post.approvalStatus === "approved" ? "Approved" : post.approvalStatus === "rejected" ? "Rejected" : "Pending review"}</span>
+                </div>
+                <p className="mt-2 text-sm text-slate-600">{formatMoveIn(post.moveInDate)} · {post.locationPreference} · {budgetLabel(post)}</p>
+                <p className="mt-1 text-xs text-slate-400">Posted {formatPostDate(post.createdAt)} · Expires {formatPostDate(post.expiresAt)}</p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button type="button" size="sm" variant="outline" onClick={() => onEdit(post)}>
+                  <Pencil className="h-3.5 w-3.5" />
+                  Edit
+                </Button>
+                {post.status === "active" ? (
+                  <Button type="button" size="sm" variant="outline" onClick={() => onStatusChange(post, "paused")}>Pause</Button>
+                ) : (
+                  <Button type="button" size="sm" variant="outline" onClick={() => onStatusChange(post, "active")}>Reactivate</Button>
+                )}
+                {post.status !== "matched" ? (
+                  <Button type="button" size="sm" variant="secondary" onClick={() => onStatusChange(post, "matched")}>Roommate found</Button>
+                ) : null}
+                <Button type="button" size="sm" variant="danger" onClick={() => onDelete(post)}>
+                  <Trash2 className="h-3.5 w-3.5" />
+                  Delete
+                </Button>
+              </div>
+            </div>
+          </article>
+        )) : (
+          <EmptyState title="You have not created a roommate post" description="Create a post to share your budget, move-in month, preferred area, and lifestyle." />
+        )}
+      </CardContent>
+    </Card>
+  )
+}
+
+function RoommateDetailCard({ post, session, saved, onSave, onRequireSignIn }: { post: RoommatePost; session: AuthProfile | null; saved: boolean; onSave: () => void; onRequireSignIn: () => void }) {
+  const navigate = useNavigate()
+  const isOwner = session?.role === "student" && post.studentId === session.id
+  const canContact = session?.role === "student" && !isOwner
 
   return (
     <Card>
@@ -384,9 +569,10 @@ function RoommateDetailCard({ post, saved, onSave }: { post: RoommatePost; saved
         </div>
         <div className="grid gap-2 text-sm">
           <Detail label="Budget" value={budgetLabel(post)} />
-          <Detail label="Move in" value={post.moveInDate} />
+          <Detail label="Move in" value={formatMoveIn(post.moveInDate)} />
           <Detail label="Location" value={post.locationPreference} />
           <Detail label="University" value={post.nearUniversity} />
+          <Detail label="Posted" value={formatPostDate(post.createdAt)} />
         </div>
         <div>
           <p className="text-xs font-bold uppercase tracking-wide text-slate-400">Lifestyle fit</p>
@@ -413,33 +599,32 @@ function RoommateDetailCard({ post, saved, onSave }: { post: RoommatePost; saved
             </div>
           </div>
           <div className="mt-3 grid gap-2">
-            {contactItems.length > 0 ? contactItems.map((item) => {
-              const Icon = item.icon
-              const content = (
-                <>
-                  <Icon className="h-4 w-4" />
-                  {item.label}
-                </>
-              )
-
-              return item.href ? (
-                <a key={item.label} href={item.href} className="flex min-h-9 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 hover:border-blue-200 hover:text-blue-700">
-                  {content}
-                </a>
-              ) : (
-                <div key={item.label} className="flex min-h-9 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700">
-                  {content}
-                </div>
-              )
-            }) : (
-              <p className="rounded-lg bg-white px-3 py-2 text-sm text-slate-500">This student has not shared contact details yet.</p>
+            {isOwner ? (
+              <p className="rounded-lg bg-white px-3 py-3 text-center text-sm font-semibold text-slate-600">This is your post. Manage it from “My posts.”</p>
+            ) : !canContact ? (
+              <div className="rounded-lg bg-white p-3 text-center">
+                <LockKeyhole className="mx-auto h-5 w-5 text-blue-600" />
+                <p className="mt-2 text-sm font-semibold text-slate-700">Student sign-in required</p>
+                <p className="mt-1 text-xs leading-5 text-slate-500">Contact details are private and available only to signed-in students.</p>
+                {!session ? <Button type="button" className="mt-3 h-9 w-full" onClick={onRequireSignIn}>Sign in to contact</Button> : null}
+              </div>
+            ) : (
+              <>
+                <Button type="button" className="w-full" onClick={() => navigate(`/messages?roommate=${encodeURIComponent(post.id)}`)}>
+                  <MessageCircle className="h-4 w-4" />
+                  Message student
+                </Button>
+                <p className="text-center text-xs leading-5 text-slate-500">Contact details stay private. Continue the conversation securely in your inbox.</p>
+              </>
             )}
           </div>
         </div>
-        <Button type="button" variant="outline" className="w-full" onClick={onSave}>
-          <Heart className={saved ? "h-4 w-4 fill-rose-500 text-rose-500" : "h-4 w-4"} />
-          {saved ? "Saved post" : "Save post"}
-        </Button>
+        {!isOwner ? (
+          <Button type="button" variant="outline" className="w-full" onClick={session?.role === "student" ? onSave : onRequireSignIn}>
+            <Heart className={saved ? "h-4 w-4 fill-rose-500 text-rose-500" : "h-4 w-4"} />
+            {session?.role === "student" ? saved ? "Saved post" : "Save post" : "Sign in to save"}
+          </Button>
+        ) : null}
       </CardContent>
     </Card>
   )
@@ -465,6 +650,30 @@ function Detail({ label, value }: { label: string; value: string }) {
 
 function budgetLabel(post: RoommatePost) {
   return post.budgetMin ? `${formatCurrency(post.budgetMin)} - ${formatCurrency(post.budget)}` : `Up to ${formatCurrency(post.budget)}`
+}
+
+function formatMoveIn(value: string) {
+  const match = /^(\d{4})-(\d{2})$/.exec(value)
+  if (!match) return value
+  return new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, 1)))
+}
+
+function formatPostDate(value: string) {
+  const date = new Date(value)
+  return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat("en", { day: "numeric", month: "short", year: "numeric" }).format(date)
+}
+
+function statusLabel(status: RoommatePostStatus) {
+  return status === "matched" ? "Roommate found" : status.charAt(0).toUpperCase() + status.slice(1)
+}
+
+function statusClass(status: RoommatePostStatus) {
+  const color = status === "active"
+    ? "bg-emerald-50 text-emerald-700"
+    : status === "matched"
+      ? "bg-blue-50 text-blue-700"
+      : "bg-slate-100 text-slate-600"
+  return `rounded-full px-2 py-0.5 text-[11px] font-bold ${color}`
 }
 
 function initials(name: string) {

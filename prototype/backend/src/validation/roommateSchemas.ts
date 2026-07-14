@@ -15,3 +15,12 @@ export const createRoommatePostSchema = z.object({
 })
 
 export type CreateRoommatePostInput = z.infer<typeof createRoommatePostSchema>
+
+export const updateRoommatePostSchema = createRoommatePostSchema
+
+export const updateRoommatePostStatusSchema = z.object({
+  status: z.enum(["active", "paused", "matched"]),
+})
+
+export type UpdateRoommatePostInput = z.infer<typeof updateRoommatePostSchema>
+export type UpdateRoommatePostStatusInput = z.infer<typeof updateRoommatePostStatusSchema>

@@ -18,7 +18,7 @@ export function AdminOwnersPage({ listings }: AdminPageProps) {
   const owners = Array.from(new Map(listings.map((listing) => [listing.ownerName, listing])).values())
 
   return (
-    <AdminPageShell eyebrow="Owner records" title="Owners" description="Review owner-submitted listing records and approval coverage.">
+    <AdminPageShell eyebrow="Landlord records" title="Landlords" description="Review landlord-submitted listing records and approval coverage.">
       <Card>
         <CardContent className="grid gap-3 p-4">
           {owners.length ? owners.map((owner) => {
@@ -35,7 +35,7 @@ export function AdminOwnersPage({ listings }: AdminPageProps) {
                 </div>
               </div>
             )
-          }) : <EmptyAdminState icon={UserRound} title="No owners yet" description="Owner profiles appear after listings are submitted." />}
+          }) : <EmptyAdminState icon={UserRound} title="No landlords yet" description="Landlord profiles appear after listings are submitted." />}
         </CardContent>
       </Card>
     </AdminPageShell>
@@ -44,15 +44,15 @@ export function AdminOwnersPage({ listings }: AdminPageProps) {
 
 export function AdminUsersPage({ listings }: AdminPageProps) {
   return (
-    <AdminPageShell eyebrow="Platform users" title="Users" description="MVP user overview for student, owner, and admin records.">
+    <AdminPageShell eyebrow="Platform users" title="Users" description="MVP user overview for student, landlord, and admin records.">
       <div className="grid gap-3 md:grid-cols-3">
         <SummaryCard label="Student accounts" value="MVP auth records" />
-        <SummaryCard label="Owner records" value={`${new Set(listings.map((listing) => listing.ownerName)).size}`} />
+        <SummaryCard label="Landlord records" value={`${new Set(listings.map((listing) => listing.ownerName)).size}`} />
         <SummaryCard label="Admin session" value="Active" />
       </div>
       <Card>
         <CardContent className="p-4">
-          <EmptyAdminState icon={Users} title="Detailed user management is future scope" description="The MVP uses role-based Supabase Auth, with full account administration planned after the class demo." />
+          <EmptyAdminState icon={Users} title="No user records to display" description="Student and landlord accounts will appear here when account management data is available." />
         </CardContent>
       </Card>
     </AdminPageShell>
@@ -63,7 +63,7 @@ export function AdminAnalyticsPage({ listings }: AdminPageProps) {
   const averageRent = listings.length ? Math.round(listings.reduce((sum, listing) => sum + listing.price, 0) / listings.length) : 0
 
   return (
-    <AdminPageShell eyebrow="Review analytics" title="Analytics" description="Monitor listing review status and owner submission quality.">
+    <AdminPageShell eyebrow="Review analytics" title="Analytics" description="Monitor listing review status and landlord submission quality.">
       <div className="grid gap-3 md:grid-cols-4">
         <SummaryCard label="All listings" value={`${listings.length}`} />
         <SummaryCard label="Approved" value={`${listings.filter((listing) => listing.approvalStatus === "Approved").length}`} />
@@ -89,7 +89,7 @@ export function AdminAnalyticsPage({ listings }: AdminPageProps) {
 
 export function AdminReportsPage({ listings }: AdminPageProps) {
   return (
-    <AdminPageShell eyebrow="Admin reports" title="Reports" description="Export-ready review summaries for the MVP demo.">
+    <AdminPageShell eyebrow="Admin reports" title="Reports" description="Review platform summaries and listing activity.">
       <Card>
         <CardContent className="grid gap-3 p-4">
           <ReportRow label="Listings needing review" value={`${listings.filter((listing) => listing.approvalStatus === "Pending").length}`} />
@@ -128,7 +128,7 @@ export function AdminSupportPage(_props: AdminPageProps) {
     <AdminPageShell eyebrow="Support" title="Support" description="Operational notes for the class MVP admin console.">
       <Card>
         <CardContent className="p-4">
-          <EmptyAdminState icon={Headphones} title="Support workflow is lightweight for MVP" description="Admins can resolve most demo issues by approving, rejecting, deleting, or asking owners to edit listings." />
+          <EmptyAdminState icon={Headphones} title="No support requests" description="Admins can resolve listing issues by approving, rejecting, deleting, or asking landlords to update their information." />
         </CardContent>
       </Card>
     </AdminPageShell>
@@ -156,7 +156,7 @@ function SummaryCard({ label, value }: { label: string; value: string }) {
 }
 
 function StatusPill({ label }: { label: string }) {
-  return <span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-bold text-violet-700">{label}</span>
+  return <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700">{label}</span>
 }
 
 function ReportRow({ label, value }: { label: string; value: string }) {
@@ -171,7 +171,7 @@ function ReportRow({ label, value }: { label: string; value: string }) {
 function EmptyAdminState({ icon: Icon, title, description }: { icon: typeof LineChart; title: string; description: string }) {
   return (
     <div className="rounded-lg border border-dashed border-slate-200 bg-slate-50 p-6 text-center">
-      <div className="mx-auto grid h-11 w-11 place-items-center rounded-lg bg-violet-50 text-violet-700">
+      <div className="mx-auto grid h-11 w-11 place-items-center rounded-lg bg-blue-50 text-blue-700">
         <Icon className="h-5 w-5" />
       </div>
       <h2 className="mt-3 text-base font-bold text-slate-950">{title}</h2>
