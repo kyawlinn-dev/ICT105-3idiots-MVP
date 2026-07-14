@@ -308,7 +308,7 @@ Student Apartment Finder Platform
 
 - **Group name:** 3idiots
 - **Project title:** Student Apartment Finder Platform
-- **Date:** 15 July 2026
+- **Date:** 14 July 2026
 - **Repository link:** https://github.com/kyawlinn-dev/ICT105-3idiots-MVP
 
 ## What We Completed Today
