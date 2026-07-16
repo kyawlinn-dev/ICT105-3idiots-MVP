@@ -76,6 +76,7 @@ Possible technologies:
 | Lab 05   | Defined the product concept, mapped features to requirements, created UI/UX wireframes, updated user flow, prepared clickable prototype draft, and updated GitHub documentation for the Student Apartment Finder Platform. | `product-concept.md`, `feature-requirement-mapping.md`, `wireframe-specification.md`, `wireframe-usability-checklist.md`, `homepage.png`, `input-form.png`, `record-list.png`, `detail-view.png`, `dashboard.png`, `admin-view.png` | ✅  Completed |
 | **Lab 06** | Completed the Business Model Canvas, mapped MVP features to user and business value, designed the technical architecture, defined the data structure, created the system architecture and data flow diagrams, and updated the project documentation for the Student Apartment Finder Platform. | `business-model-canvas.md`, `feature-value-mapping.md`, `technical-architecture.md`, `data-structure.md`, `system-architecture.png`, `data-flow.png`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 07** | Designed the MVP experiment by identifying critical assumptions, selecting the experiment type, defining success metrics, preparing the experiment script and feedback form, and updating the GitHub documentation for the Student Apartment Finder Platform. | `mvp-experiment-plan.md`, `critical-assumptions.md`, `experiment-script.md`, `success-metrics.md`, `feedback-form.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
+| **Lab 08** | Conducted customer validation using the MVP prototype, collected and analysed validation data, calculated key analytics metrics, identified usability issues, documented validation insights, made an evidence-based MVP decision, and updated the project documentation. | `validation-results.xlsx`, `validation-results.csv`, `customer-validation-summary.md`, `analytics-insights.md`, `mvp-decision.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
@@ -289,6 +290,44 @@ Our team selected a working web prototype because the application has already be
 
 The MVP experiment provides evidence that the Student Apartment Finder Platform is usable and addresses the needs of its target users. Feedback collected during testing will be used to refine the user interface, improve navigation, validate core features, and guide implementation of the final prototype with greater confidence.
 
+## Lab 08: Customer Validation and Analytics Sheet
+
+### Validation Objective
+
+The team validated whether students could successfully use the Student Apartment Finder Platform to complete the core apartment search workflow and evaluated the usability of the prototype through customer testing and analytics.
+
+### Prototype Version Tested
+
+- **Version:** v0.1
+- **Link:** Prototype repository
+- **Screenshots:** `/screenshots/validation-test-screens.png`
+
+### Analytics Summary
+
+| Metric | Result |
+|---|---:|
+| Total test users | 25 |
+| Task success rate | 92% |
+| Average feedback score | 3.92 / 5 |
+| Average interest level | 4.40 / 5 |
+| Main confusion point | Filter labels and contact button placement |
+
+### MVP Decision
+
+**Continue with minor revisions.**
+
+The validation results demonstrate that users can successfully complete the core apartment search workflow. The team will continue development while improving several usability issues identified during testing, including filter labels, contact button placement, and clearer availability status indicators.
+
+### Files Added
+
+- `/data/validation-results.xlsx`
+- `/data/validation-results.csv`
+- `/docs/customer-validation-summary.md`
+- `/docs/analytics-insights.md`
+- `/docs/mvp-decision.md`
+- `/screenshots/validation-test-screens.png`
+- `/docs/weekly-logbook.md`
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
@@ -304,6 +343,8 @@ In Lab 05, the team converted the Lab 04 outputs into a product concept and UI/U
 In Lab 06, the team transformed the Lab 05 product concept into a business and technical implementation plan. We completed the Business Model Canvas, feature-value mapping, technical architecture, data structure, and system architecture and data flow diagrams. These outputs provide a clear roadmap for developing the Student Apartment Finder Platform and ensure that the final prototype aligns with the project requirements and user needs.
 
 In Lab 07, the team designed and prepared the MVP experiment for the Student Apartment Finder Platform. We identified critical assumptions, selected a simple web prototype as the experiment method, defined measurable success metrics, prepared an experiment script and feedback form, and updated the project documentation. These outputs provide a structured approach for validating the usability and effectiveness of the prototype before the final implementation stage.
+
+In Lab 08, the team validated the Student Apartment Finder Platform by collecting user testing data and analysing customer feedback. We calculated key validation metrics, identified usability improvements, documented analytics insights, and made an evidence-based MVP decision. The validation confirmed that the core workflow is effective while highlighting several areas for refinement before the final implementation.
 
 
 
@@ -333,3 +374,5 @@ The next development focus will be:
 In Lab 07, the team will begin implementing the Student Apartment Finder Platform based on the Lab 06 technical architecture. We will develop the frontend interface, connect it with the backend and database, implement the core MVP features, and conduct initial testing to ensure the system functions according to the defined requirements and user stories.
 
 In Lab 08, the team will conduct user testing using the MVP experiment plan, collect feedback from target users, evaluate the success metrics, analyse the experiment results, and improve the Student Apartment Finder Platform based on the findings before continuing with the final prototype development.
+
+In Lab 09, the team will improve the prototype based on the customer validation results, resolve the identified usability issues, enhance the user interface and functionality, and continue developing the final MVP prototype to fully satisfy the project requirements.
