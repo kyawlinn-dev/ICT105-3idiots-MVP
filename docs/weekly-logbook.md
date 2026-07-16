@@ -343,3 +343,42 @@ Student Apartment Finder Platform
 | Limited user testing has not yet been conducted. | Recruit target users and perform the MVP experiment. | All Members |
 | Feedback data has not been collected. | Conduct usability testing and analyse experiment results. | All Members |
 | Improvements may be required after testing. | Refine the prototype based on user feedback before the next lab. | Development Team |
+
+# Weekly Logbook - Lab 08
+
+## Group Information
+
+- **Group name:** 3idiots
+- **Project title:** Student Apartment Finder Platform
+- **Repository link:** https://github.com/kyawlinn-dev/ICT105-3idiots-MVP
+- **Lab date:** 22 July 2026
+
+## Work Completed Today
+
+- [x] Reviewed Lab 07 MVP experiment plan
+- [x] Prepared validation dataset structure
+- [x] Created and analysed the validation results dataset
+- [x] Wrote customer validation summary
+- [x] Wrote analytics insights
+- [x] Wrote MVP decision
+- [x] Updated README
+- [x] Created GitHub issues for prototype improvements
+
+## Member Contributions
+
+| Member Name | Contribution | GitHub Evidence |
+|---|---|---|
+| Phyo Wai Aung | Conducted customer validation and collected testing data. | `validation-results.csv` |
+| Kyaw Linn | Analysed validation metrics and reviewed prototype usability. | `analytics-insights.md`, `mvp-decision.md` |
+| Arkar Kyaw Oo | Updated README, weekly logbook, and project documentation. | `README.md`, `weekly-logbook.md`,  `customer-validation-summary.md` |
+
+## Problems Found
+
+Although the majority of testers completed their tasks successfully, several users experienced confusion with filter labels, contact button placement, and apartment availability status. These usability issues should be addressed before the next development phase.
+
+## Next Actions
+
+- Improve search filter labels and availability indicators.
+- Relocate and redesign the contact button for better visibility.
+- Conduct another round of user testing after implementing the improvements.
+- Continue developing the final MVP prototype based on the validation results.
