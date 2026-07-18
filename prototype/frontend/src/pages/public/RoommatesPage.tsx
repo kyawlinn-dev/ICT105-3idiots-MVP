@@ -89,10 +89,12 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
     ])
       .then(([posts, ownPosts, savedIds]) => {
         if (!active) return
+        const ownPostIds = new Set(ownPosts.map((post) => post.id))
+        const visiblePosts = posts.filter((post) => !ownPostIds.has(post.id))
         setRoommatePosts(posts)
         setMyPosts(ownPosts)
-        setSavedPosts(savedIds)
-        setSelectedId(posts[0]?.id ?? "")
+        setSavedPosts(savedIds.filter((id) => !ownPostIds.has(id)))
+        setSelectedId(visiblePosts[0]?.id ?? "")
         setError("")
       })
       .catch((requestError) => {
@@ -108,14 +110,16 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
     }
   }, [session?.id, session?.role])
 
-  const tags = useMemo(() => Array.from(new Set(roommatePosts.flatMap((post) => post.lifestyleTags))).sort(), [roommatePosts])
+  const ownPostIds = useMemo(() => new Set(myPosts.map((post) => post.id)), [myPosts])
+  const browsablePosts = useMemo(() => roommatePosts.filter((post) => !ownPostIds.has(post.id) && post.studentId !== session?.id), [ownPostIds, roommatePosts, session?.id])
+  const tags = useMemo(() => Array.from(new Set(browsablePosts.flatMap((post) => post.lifestyleTags))).sort(), [browsablePosts])
 
   const filteredPosts = useMemo(() => {
     const query = keyword.trim().toLowerCase()
     const budgetLimit = maxBudget ? Number(maxBudget) : null
     const moveInQuery = moveIn.trim().toLowerCase()
 
-    return roommatePosts.filter((post) => {
+    return browsablePosts.filter((post) => {
       const searchable = [post.title, post.posterName, post.nearUniversity, post.locationPreference, post.description, ...post.lifestyleTags].join(" ").toLowerCase()
       const matchesKeyword = query ? searchable.includes(query) : true
       const matchesUniversity = university ? post.nearUniversity === university : true
@@ -125,7 +129,7 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
 
       return matchesKeyword && matchesUniversity && matchesBudget && matchesMoveIn && matchesTag
     })
-  }, [keyword, maxBudget, moveIn, roommatePosts, tag, university])
+  }, [browsablePosts, keyword, maxBudget, moveIn, tag, university])
 
   const selectedPost = filteredPosts.find((post) => post.id === selectedId) ?? filteredPosts[0] ?? null
 
@@ -179,6 +183,12 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
       return
     }
 
+    const post = roommatePosts.find((item) => item.id === id) ?? myPosts.find((item) => item.id === id)
+    if (post?.studentId === session.id || ownPostIds.has(id)) {
+      toast.error("You cannot save your own roommate post.")
+      return
+    }
+
     const wasSaved = savedPosts.includes(id)
     setSavedPosts((current) => (wasSaved ? current.filter((postId) => postId !== id) : [...current, id]))
     try {
@@ -195,9 +205,7 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
     try {
       const updated = await updateRoommatePostStatus(post.id, status)
       setMyPosts((current) => current.map((item) => item.id === updated.id ? updated : item))
-      setRoommatePosts((current) => status === "active"
-        ? [updated, ...current.filter((item) => item.id !== updated.id)]
-        : current.filter((item) => item.id !== updated.id))
+      setRoommatePosts((current) => current.filter((item) => item.id !== updated.id))
       toast.success(status === "matched" ? "Post marked as roommate found." : status === "paused" ? "Post paused." : "Post reactivated.")
     } catch (requestError) {
       console.error(requestError)
@@ -254,10 +262,9 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
       setMyPosts((current) => editingPost
         ? current.map((item) => item.id === savedPost.id ? savedPost : item)
         : [savedPost, ...current])
-      setRoommatePosts((current) => savedPost.status === "active"
-        ? [savedPost, ...current.filter((item) => item.id !== savedPost.id)]
-        : current.filter((item) => item.id !== savedPost.id))
-      setSelectedId(savedPost.id)
+      setRoommatePosts((current) => current.filter((item) => item.id !== savedPost.id))
+      setSelectedId((current) => current === savedPost.id ? "" : current)
+      setView("mine")
       setPostForm(emptyPostForm)
       setEditingPost(null)
       setIsCreateOpen(false)
@@ -282,7 +289,7 @@ export function RoommatesPage({ session, sessionLoading }: RoommatesPageProps) {
               <p className="text-xs font-bold uppercase tracking-wide text-blue-600">Roommate board</p>
               <h1 className="mt-1 text-xl font-bold tracking-tight text-slate-950 sm:text-2xl">Find a roommate near campus</h1>
               <p className="mt-1.5 text-sm leading-6 text-slate-600">
-                Browse student roommate posts around Rangsit University and Bangkok University, then contact posters using their shared profile details.
+                Browse student roommate posts around Rangsit University and Bangkok University, then send a basic inbox inquiry.
               </p>
             </div>
             <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
@@ -612,9 +619,9 @@ function RoommateDetailCard({ post, session, saved, onSave, onRequireSignIn }: {
               <>
                 <Button type="button" className="w-full" onClick={() => navigate(`/messages?roommate=${encodeURIComponent(post.id)}`)}>
                   <MessageCircle className="h-4 w-4" />
-                  Message student
+                  Send roommate inquiry
                 </Button>
-                <p className="text-center text-xs leading-5 text-slate-500">Contact details stay private. Continue the conversation securely in your inbox.</p>
+                <p className="text-center text-xs leading-5 text-slate-500">Contact details stay private. Continue the inquiry securely in your inbox.</p>
               </>
             )}
           </div>

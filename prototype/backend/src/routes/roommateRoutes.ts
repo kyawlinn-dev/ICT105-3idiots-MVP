@@ -19,7 +19,7 @@ export const roommateRoutes = Router()
 
 roommateRoutes.get("/roommate-posts", optionalAuth, async (req, res, next) => {
   try {
-    sendData(res, await getRoommatePosts(req.auth?.profile.role === "student"))
+    sendData(res, await getRoommatePosts(req.auth?.profile.role === "student", req.auth?.profile.role === "student" ? req.auth.profile.id : undefined))
   } catch (error) {
     next(error)
   }

@@ -10,3 +10,8 @@ export const markNotificationRead = async (id: string) => {
   const response = await apiRequest<AppNotification>(`/notifications/${encodeURIComponent(id)}/read`, { method: "PATCH" })
   return response.data
 }
+
+export const markNotificationsRead = async () => {
+  const response = await apiRequest<AppNotification[]>("/notifications/read", { method: "PATCH" })
+  return response.data
+}

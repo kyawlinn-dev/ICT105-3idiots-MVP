@@ -1,7 +1,6 @@
 import { Link, Outlet } from "react-router-dom"
 import type { AuthProfile } from "../../services/api/types"
 import { PublicNavbar } from "./PublicNavbar"
-import { NotificationBox } from "../shared/NotificationBox"
 
 type PublicLayoutProps = {
   session: AuthProfile | null
@@ -13,7 +12,6 @@ export function PublicLayout({ session, sessionLoading, onSignOut }: PublicLayou
   return (
     <div className="min-h-screen bg-[#f5f7fb] pb-16 lg:pb-0">
       <PublicNavbar session={session} sessionLoading={sessionLoading} onSignOut={onSignOut} />
-      <NotificationBox session={session} />
       <Outlet />
       <footer className="border-t border-slate-200 bg-white px-4 py-5 text-center text-xs text-slate-500">
         <p>Student Apartment Finder · Housing information for students</p>

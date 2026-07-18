@@ -14,6 +14,7 @@ The current prototype is no longer a frontend-only mockup. It uses a React front
 - View apartment details, uploaded room photos, and Google map location.
 - Save apartments to a shortlist after signing in.
 - Browse and create roommate posts as a signed-in student.
+- Use a basic asynchronous inbox to send apartment and roommate inquiries.
 
 ### Owner
 
@@ -23,7 +24,7 @@ The current prototype is no longer a frontend-only mockup. It uses a React front
 - Select listing location using Google Places Autocomplete.
 - Edit existing owned listings.
 - Update listing availability.
-- Use owner portal pages for listings, leads, messages, analytics, profile, and settings.
+- Use owner portal pages for listings, leads, inbox inquiries, analytics, profile, and settings.
 
 ### Admin
 
@@ -106,11 +107,11 @@ Create `prototype/backend/.env` using the variables expected by the backend conf
 
 ```env
 PORT=4000
+NODE_ENV=development
 SUPABASE_URL=your_supabase_project_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-FRONTEND_ORIGINS=http://localhost:5173,http://localhost:5174
-COOKIE_SECURE=false
+CORS_ORIGIN=http://localhost:5173,http://localhost:5174
 ```
 
 Use the service role key only on the backend. Never expose it in frontend code.
@@ -159,7 +160,7 @@ The frontend usually runs on:
 http://localhost:5173
 ```
 
-If Vite chooses another port, make sure the backend CORS `FRONTEND_ORIGINS` includes that origin.
+If Vite chooses another port, make sure the backend `CORS_ORIGIN` includes that origin.
 
 ## Useful Scripts
 
@@ -199,7 +200,7 @@ The following are intentionally out of scope for this MVP:
 - Online payment
 - Lease signing
 - Full booking workflow
-- Real-time chat
+- Real-time chat; the MVP only supports basic asynchronous inquiry messages.
 - Full identity verification
 - AI roommate matching
 - Production security hardening

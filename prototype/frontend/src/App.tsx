@@ -187,7 +187,7 @@ function App() {
   return (
     <>
       {appMessage ? (
-        <div className="fixed left-1/2 top-3 z-[60] flex w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800 shadow-lg" role="status">
+        <div className="fixed left-1/2 top-20 z-[60] flex w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800 shadow-lg" role="status">
           <span className="min-w-0 flex-1">{appMessage}</span>
           <button type="button" onClick={() => setAppMessage("")} className="shrink-0 rounded p-0.5 hover:bg-amber-100" aria-label="Dismiss message">
             <X className="h-4 w-4" />

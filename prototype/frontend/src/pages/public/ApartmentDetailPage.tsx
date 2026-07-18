@@ -117,7 +117,7 @@ export function ApartmentDetailPage({ apartments, savedIds, onToggleSave, loadin
               </Button>
               {canMessage ? (
                 <Button asChild className="min-h-11 flex-1 bg-blue-600 hover:bg-blue-700 sm:flex-none">
-                  <Link to={`/messages?listing=${encodeURIComponent(apartment.id)}`}>Message Landlord</Link>
+                  <Link to={`/messages?listing=${encodeURIComponent(apartment.id)}`}>Send inquiry</Link>
                 </Button>
               ) : session ? (
                 <Button type="button" disabled className="min-h-11 flex-1 sm:flex-none">Student account required</Button>
@@ -223,7 +223,7 @@ export function ApartmentDetailPage({ apartments, savedIds, onToggleSave, loadin
                     <Button asChild className="h-10 w-full bg-blue-600 hover:bg-blue-700">
                       <Link to={`/messages?listing=${encodeURIComponent(apartment.id)}`}>
                         <MessageCircle className="h-4 w-4" />
-                        Message Landlord
+                        Send inquiry
                       </Link>
                     </Button>
                     {hasDirectContact && contactIsEmail ? (
@@ -239,7 +239,7 @@ export function ApartmentDetailPage({ apartments, savedIds, onToggleSave, loadin
                         </a>
                       </Button>
                     ) : null}
-                    <p className="text-center text-xs text-slate-500">Response time: Within a few hours</p>
+                    <p className="text-center text-xs text-slate-500">Landlords reply when available.</p>
                   </>
                 ) : session ? (
                   <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-center">

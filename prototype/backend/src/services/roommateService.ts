@@ -77,15 +77,21 @@ const mapRowsWithContacts = async (rows: RoommatePostRow[], includeContacts: boo
   return rows.map((row) => mapPost(row, row.student_id ? contacts.get(row.student_id) : undefined, includeContacts))
 }
 
-export const getRoommatePosts = async (includeContacts = false) => {
+export const getRoommatePosts = async (includeContacts = false, viewerStudentId?: string) => {
   const supabase = requireSupabaseClient()
-  const { data, error } = await supabase
+  let query = supabase
     .from("roommate_posts")
     .select("*")
     .eq("status", "active")
     .eq("approval_status", "approved")
     .gt("expires_at", new Date().toISOString())
     .order("created_at", { ascending: false })
+
+  if (viewerStudentId) {
+    query = query.neq("student_id", viewerStudentId)
+  }
+
+  const { data, error } = await query
 
   if (error) {
     throw new ServiceError(500, error.message)
@@ -238,11 +244,20 @@ export const getSavedRoommatePostIds = async (studentId: string) => {
   const supabase = requireSupabaseClient()
   const { data, error } = await supabase.from("saved_roommate_posts").select("roommate_post_id").eq("student_id", studentId)
   if (error) throw new ServiceError(500, error.message)
-  return { ids: data?.map((item) => item.roommate_post_id) ?? [] }
+  const savedIds = data?.map((item) => item.roommate_post_id) ?? []
+  if (!savedIds.length) return { ids: [] }
+
+  const { data: posts, error: postsError } = await supabase.from("roommate_posts").select("id, student_id").in("id", savedIds)
+  if (postsError) throw new ServiceError(500, postsError.message)
+  const ownIds = new Set(((posts as Array<{ id: string; student_id: string | null }> | null) ?? []).filter((post) => post.student_id === studentId).map((post) => post.id))
+  return { ids: savedIds.filter((id) => !ownIds.has(id)) }
 }
 
 export const saveRoommatePost = async (studentId: string, postId: string) => {
-  await getRoommatePostById(postId)
+  const post = await getRoommatePostById(postId)
+  if (post.studentId === studentId) {
+    throw new ServiceError(400, "You cannot save your own roommate post.")
+  }
   const supabase = requireSupabaseClient()
   const { error } = await supabase.from("saved_roommate_posts").upsert({ student_id: studentId, roommate_post_id: postId }, { onConflict: "student_id,roommate_post_id" })
   if (error) throw new ServiceError(500, error.message)

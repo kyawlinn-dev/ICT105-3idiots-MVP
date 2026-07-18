@@ -54,15 +54,15 @@ export function OwnerMessagesPage({ listings }: OwnerPageProps) {
   return (
     <OwnerPageShell
       eyebrow="Landlord inbox"
-      title="Messages"
-      description="Students can contact landlords from approved listings."
+      title="Inbox"
+      description="Students can send basic inquiries from approved listings."
     >
       <Card>
         <CardContent className="p-4">
           <EmptyOwnerState
             icon={MessageSquare}
-            title="No messages to display"
-            description={`${listings.length} listing records are available for direct contact. Students can use the contact details shown on approved listings.`}
+            title="No inquiries to display"
+            description={`${listings.length} listing records are available for student inquiries. Students can use the contact details shown on approved listings.`}
           />
         </CardContent>
       </Card>

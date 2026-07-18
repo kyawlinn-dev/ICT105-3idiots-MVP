@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { cn } from "../../lib/utils"
 import type { AuthProfile } from "../../services/api/types"
+import { NotificationBox } from "../shared/NotificationBox"
 import { Button } from "../ui/button"
 
 const navItems = [
@@ -33,10 +34,10 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
   const closeMenu = () => setOpen(false)
   const dashboardPath = session?.role === "owner" ? "/owner/dashboard" : session?.role === "admin" ? "/admin/dashboard" : null
   const visibleNavItems = session?.role === "student"
-    ? [...navItems.slice(0, 4), { label: "Messages", to: "/messages" }, ...navItems.slice(4)]
+    ? [...navItems.slice(0, 4), { label: "Inbox", to: "/messages" }, ...navItems.slice(4)]
     : navItems
   const visibleMobileItems = session?.role === "student"
-    ? [...mobileItems, { label: "Messages", to: "/messages", icon: MessageCircle }]
+    ? [...mobileItems, { label: "Inbox", to: "/messages", icon: MessageCircle }]
     : mobileItems
   const mobileTitle = pathname === "/"
     ? "Student Apartment Finder"
@@ -49,7 +50,7 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
           : pathname.startsWith("/saved")
             ? "Saved"
             : pathname.startsWith("/messages")
-              ? "Messages"
+              ? "Inbox"
               : pathname.startsWith("/about")
                 ? "About"
                 : "Student Apartment Finder"
@@ -100,6 +101,7 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
                   {session.displayName}
                 </span>
                 {dashboardPath ? <Button asChild variant="ghost"><Link to={dashboardPath}><LayoutDashboard className="h-4 w-4" />Dashboard</Link></Button> : null}
+                <NotificationBox session={session} />
                 <Button type="button" variant="outline" onClick={handleSignOut} disabled={signingOut}>
                   <LogOut className="h-4 w-4" />{signingOut ? "Signing out…" : "Sign out"}
                 </Button>
@@ -118,7 +120,9 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
             <Building2 className="h-[18px] w-[18px]" />
           </Link>
           <p className="pointer-events-none absolute left-1/2 max-w-[65%] -translate-x-1/2 truncate text-center text-sm font-extrabold tracking-tight text-slate-950">{mobileTitle}</p>
-          <span className="h-9 w-9" aria-hidden="true" />
+          <div className="grid h-9 w-9 place-items-center">
+            <NotificationBox session={session} />
+          </div>
         </div>
       </header>
 
@@ -159,7 +163,7 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
             <div className="grid gap-2">
               {sessionLoading ? <div className="h-11 animate-pulse rounded-xl bg-slate-100" /> : session ? (
                 <>
-                  {session.role === "student" ? <Button asChild><Link to="/messages" onClick={closeMenu}><MessageCircle className="h-4 w-4" />Messages</Link></Button> : null}
+                  {session.role === "student" ? <Button asChild><Link to="/messages" onClick={closeMenu}><MessageCircle className="h-4 w-4" />Inbox</Link></Button> : null}
                   {dashboardPath ? <Button asChild><Link to={dashboardPath} onClick={closeMenu}><LayoutDashboard className="h-4 w-4" />Open dashboard</Link></Button> : null}
                   <Button type="button" variant="outline" onClick={handleSignOut} disabled={signingOut}><LogOut className="h-4 w-4" />{signingOut ? "Signing out…" : "Sign out"}</Button>
                 </>

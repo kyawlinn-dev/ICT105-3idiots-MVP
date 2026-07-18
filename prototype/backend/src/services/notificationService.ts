@@ -37,7 +37,18 @@ export const createNotification = async (input: { recipientId: string; type: Not
 }
 
 export const getNotifications = async (recipientId: string) => {
-  const { data, error } = await requireSupabaseClient().from("app_notifications").select("*").eq("recipient_id", recipientId).is("read_at", null).order("created_at", { ascending: false }).limit(20)
+  const { data, error } = await requireSupabaseClient().from("app_notifications").select("*").eq("recipient_id", recipientId).order("created_at", { ascending: false }).limit(20)
+  if (error) throw new ServiceError(500, error.message)
+  return ((data as NotificationRow[] | null) ?? []).map(mapNotification)
+}
+
+export const markNotificationsRead = async (recipientId: string) => {
+  const { data, error } = await requireSupabaseClient()
+    .from("app_notifications")
+    .update({ read_at: new Date().toISOString() })
+    .eq("recipient_id", recipientId)
+    .is("read_at", null)
+    .select("*")
   if (error) throw new ServiceError(500, error.message)
   return ((data as NotificationRow[] | null) ?? []).map(mapNotification)
 }

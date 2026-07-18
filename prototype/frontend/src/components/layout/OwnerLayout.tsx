@@ -46,17 +46,17 @@ export function OwnerLayout({ session, onSignOut }: OwnerLayoutProps) {
             <div className="hidden max-w-md flex-1 items-center gap-2 md:flex">
               <div className="relative w-full">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-                <Input className="pl-9" placeholder="Search listings or messages" />
+                <Input className="pl-9" placeholder="Search listings or inquiries" />
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <NotificationBox session={session} />
               <Button variant="ghost" size="icon" aria-label="Sign out" onClick={onSignOut}>
                 <LogOut className="h-5 w-5" />
               </Button>
             </div>
           </div>
         </header>
-        <NotificationBox session={session} />
         <main className="min-w-0 px-4 py-4 sm:px-6 lg:px-8">
           <Outlet />
         </main>

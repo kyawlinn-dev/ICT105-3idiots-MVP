@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <ScrollToTop />
-      <Toaster richColors position="top-right" />
+      <Toaster richColors position="top-center" offset={{ top: 72 }} mobileOffset={{ top: 64 }} />
       <App />
     </BrowserRouter>
   </StrictMode>,

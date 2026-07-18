@@ -117,7 +117,7 @@ export const ownerNavItems = [
   { label: "My Listings", to: "/owner/listings", icon: Building2 },
   { label: "Add Listing", to: "/owner/add-listing", icon: PlusCircle },
   { label: "Leads", to: "/owner/leads", icon: Inbox },
-  { label: "Messages", to: "/owner/messages", icon: MessageSquare },
+  { label: "Inbox", to: "/owner/messages", icon: MessageSquare },
   { label: "Analytics", to: "/owner/analytics", icon: LineChart },
   { label: "Profile", to: "/owner/profile", icon: UserRound },
   { label: "Settings", to: "/owner/settings", icon: Settings },
