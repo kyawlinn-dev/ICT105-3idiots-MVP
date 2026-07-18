@@ -31,10 +31,10 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
   return (
     <main className="bg-[#f5f7fb]">
       <section className="border-b border-slate-100 bg-gradient-to-b from-blue-50/80 to-white">
-        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:px-6 md:py-8 xl:grid-cols-[0.94fr_1.06fr] xl:px-8 xl:py-10">
+        <div className="mx-auto grid max-w-7xl gap-7 px-4 py-7 sm:px-6 md:py-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-9 xl:py-10">
           <div className="flex flex-col justify-center">
             <p className="text-xs font-bold uppercase tracking-wide text-blue-600 sm:text-sm">Student housing around Pathum Thani</p>
-            <h1 className="mt-3 max-w-3xl text-3xl font-extrabold leading-[1.12] tracking-tight text-slate-950 min-[420px]:text-4xl lg:text-[2.75rem] xl:text-5xl">
+            <h1 className="mt-3 max-w-3xl text-3xl font-extrabold leading-[1.12] tracking-tight text-slate-950 min-[420px]:text-4xl lg:text-[2.85rem] xl:text-5xl">
               Find student apartments near Rangsit and Bangkok University.
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 lg:text-[1.05rem]">
@@ -56,7 +56,7 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
               </Button>
             </div>
           </div>
-          <div className="relative min-h-60 overflow-hidden rounded-xl border border-blue-100 bg-slate-100 shadow-xl shadow-blue-100 sm:min-h-72 lg:min-h-[320px] xl:min-h-[340px]">
+          <div className="relative min-h-60 overflow-hidden rounded-xl border border-blue-100 bg-slate-100 shadow-xl shadow-blue-100 sm:min-h-72 lg:min-h-[320px] xl:min-h-[360px]">
             <img src={landingStudentRoom} alt="Bright furnished student apartment room" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent p-5 text-white">
               <p className="text-sm font-bold uppercase tracking-wide">Move with confidence</p>
