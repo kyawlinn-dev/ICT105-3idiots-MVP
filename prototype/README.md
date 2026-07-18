@@ -181,6 +181,25 @@ npm run build
 npm run test
 ```
 
+## Render Demo Deployment
+
+This repository includes a root `render.yaml` blueprint for deploying the prototype as one Render Web Service. The backend serves `/api` routes and, in production, serves the built React frontend from `prototype/frontend/dist`.
+
+Use these Render environment variables:
+
+```env
+NODE_ENV=production
+VITE_API_BASE_URL=/api
+VITE_GOOGLE_MAPS_API_KEY=your_google_maps_browser_key
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+```
+
+Render automatically provides `PORT` and `RENDER_EXTERNAL_URL`. The backend includes `RENDER_EXTERNAL_URL` in the allowed CORS origins.
+
+Before deploying, make sure the existing Supabase project has all migrations in `prototype/backend/supabase/migrations/` applied and the `listing-photos` bucket exists.
+
 ## Demo Flow
 
 1. Start backend and frontend.

@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: student-apartment-finder
+    runtime: node
+    plan: free
+    buildCommand: |
+      cd prototype/frontend && npm ci --include=dev && npm run build
+      cd ../backend && npm ci --include=dev && npm run build
+    startCommand: cd prototype/backend && npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VITE_API_BASE_URL
+        value: /api
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: VITE_GOOGLE_MAPS_API_KEY
+        sync: false

@@ -18,7 +18,7 @@ const defaultDevOrigins = [
 
 const parseOrigins = (value: string | undefined) => {
   const configuredOrigins = value?.split(",").map((origin) => origin.trim()).filter(Boolean) ?? []
-  return Array.from(new Set([...defaultDevOrigins, ...configuredOrigins]))
+  return Array.from(new Set([...defaultDevOrigins, process.env.RENDER_EXTERNAL_URL, ...configuredOrigins].filter(Boolean) as string[]))
 }
 
 export const env = {
