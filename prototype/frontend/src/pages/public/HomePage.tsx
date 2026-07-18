@@ -31,23 +31,23 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
   return (
     <main className="bg-[#f5f7fb]">
       <section className="border-b border-slate-100 bg-gradient-to-b from-blue-50/80 to-white">
-        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:px-6 md:py-8 xl:grid-cols-[0.94fr_1.06fr] xl:px-8 xl:py-10">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 md:py-10 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-12 xl:py-14">
           <div className="flex flex-col justify-center">
             <p className="text-xs font-bold uppercase tracking-wide text-blue-600 sm:text-sm">Student housing around Pathum Thani</p>
-            <h1 className="mt-3 max-w-3xl text-3xl font-extrabold leading-[1.12] tracking-tight text-slate-950 min-[420px]:text-4xl lg:text-[2.75rem] xl:text-5xl">
+            <h1 className="mt-4 max-w-3xl text-[2rem] font-extrabold leading-[1.12] tracking-tight text-slate-950 min-[420px]:text-4xl lg:text-5xl xl:text-[3.35rem]">
               Find student apartments near Rangsit and Bangkok University.
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 lg:text-[1.05rem]">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600 lg:text-lg">
               Compare verified landlord listings by university, area, price, distance, facilities, photos, and map location.
             </p>
-            <form className="mt-5 flex max-w-2xl flex-col gap-3 rounded-xl border border-slate-200 bg-white p-2 shadow-[0_8px_28px_rgba(24,119,242,0.12)] sm:flex-row" onSubmit={submitSearch} role="search">
+            <form className="mt-6 flex max-w-2xl flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_8px_28px_rgba(24,119,242,0.12)] sm:flex-row" onSubmit={submitSearch} role="search">
               <div className="relative flex-1">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                 <Input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search by apartment, area, or university" aria-label="Search apartments" className="h-12 border-0 pl-9 shadow-none focus:ring-0" />
               </div>
               <Button type="submit" className="h-12 w-full bg-blue-600 px-8 hover:bg-blue-700 sm:w-auto">Search</Button>
             </form>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button asChild variant="outline" className="h-11 w-full sm:w-auto">
                 <Link to="/apartments">Browse Apartments</Link>
               </Button>
@@ -56,7 +56,7 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
               </Button>
             </div>
           </div>
-          <div className="relative min-h-60 overflow-hidden rounded-xl border border-blue-100 bg-slate-100 shadow-xl shadow-blue-100 sm:min-h-72 lg:min-h-[320px] xl:min-h-[340px]">
+          <div className="relative min-h-64 overflow-hidden rounded-2xl border border-blue-100 bg-slate-100 shadow-2xl shadow-blue-100 sm:min-h-72 lg:min-h-[360px] xl:min-h-[400px]">
             <img src={landingStudentRoom} alt="Bright furnished student apartment room" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent p-5 text-white">
               <p className="text-sm font-bold uppercase tracking-wide">Move with confidence</p>
@@ -68,7 +68,7 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-4 px-4 py-6 min-[520px]:grid-cols-2 sm:px-6 xl:grid-cols-4 xl:px-8">
+      <section className="mx-auto grid max-w-7xl gap-4 px-4 py-7 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
         {[
           ["Apartments", apartments.length.toString(), Building2],
           ["Approved", apartments.filter((item) => item.approvalStatus === "Approved").length.toString(), ShieldCheck],
@@ -90,7 +90,7 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
       </section>
 
       <section className="border-y border-slate-100 bg-slate-50" id="about">
-        <div className="mx-auto grid max-w-6xl gap-5 px-4 py-8 sm:px-6 md:grid-cols-3 xl:px-8">
+        <div className="mx-auto grid max-w-7xl gap-5 px-4 py-9 sm:px-6 md:grid-cols-3 lg:px-8">
           {[
             { title: "Near campus", text: "Filter by Rangsit University or Bangkok University and compare distance in km.", icon: MapPin },
             { title: "Student-ready", text: "Check facilities such as Wi-Fi, keycard, laundry, CCTV, gym, pool, and study area.", icon: ShieldCheck },
@@ -109,7 +109,7 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 xl:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-9 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-bold uppercase tracking-wide text-blue-600">Featured apartments</p>
@@ -125,7 +125,7 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
         {loading ? (
           <LoadingState label="Loading featured apartments…" />
         ) : featured.length ? (
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-5 lg:grid-cols-3">
             {featured.map((apartment) => (
               <ApartmentCard key={apartment.id} apartment={apartment} isSaved={savedIds.includes(apartment.id)} onToggleSave={onToggleSave} />
             ))}
@@ -136,7 +136,7 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
       </section>
 
       <section className="bg-blue-600 text-white">
-        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 md:grid-cols-3 xl:px-8">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-9 sm:px-6 md:grid-cols-3 lg:px-8">
           {[
             ["Search by university", "Find apartments around your campus area."],
             ["Compare details", "Review photos, price, facilities, distance, and map position."],
@@ -152,7 +152,7 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
       </section>
 
       <footer className="bg-slate-950 px-4 py-8 text-sm text-slate-300 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-semibold text-white">Student Apartment Finder</p>
           <p>Student housing search for Pathum Thani campuses.</p>
         </div>

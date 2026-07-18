@@ -100,9 +100,9 @@ type ApartmentListItemProps = ApartmentCardProps
 export function ApartmentListItem({ apartment, isSaved, onToggleSave }: ApartmentListItemProps) {
   return (
     <Card className="overflow-hidden transition hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100">
-      <CardContent className="grid gap-3 p-3 min-[520px]:grid-cols-[132px_minmax(0,1fr)] min-[520px]:items-start sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-4">
+      <CardContent className="grid grid-cols-[104px_minmax(0,1fr)] gap-3 p-3 sm:grid-cols-[150px_minmax(0,1fr)_auto] sm:items-center sm:gap-4">
         <Link to={`/apartments/${apartment.id}`} className="block overflow-hidden rounded-lg">
-          <ListingImage src={apartment.image} alt={apartment.name} className="h-44 w-full object-cover min-[520px]:h-32 sm:h-28" />
+          <ListingImage src={apartment.image} alt={apartment.name} className="h-32 w-full object-cover sm:h-28" />
         </Link>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
@@ -131,7 +131,7 @@ export function ApartmentListItem({ apartment, isSaved, onToggleSave }: Apartmen
             <span>{apartment.roomType}</span>
           </div>
         </div>
-        <div className="flex items-center justify-between gap-4 border-t border-slate-100 pt-2 min-[520px]:col-span-2 sm:col-auto sm:block sm:border-0 sm:pt-0 sm:text-right">
+        <div className="col-span-2 flex items-center justify-between gap-4 border-t border-slate-100 pt-2 sm:col-auto sm:block sm:border-0 sm:pt-0 sm:text-right">
           <button
             type="button"
             onClick={() => onToggleSave(apartment.id)}

@@ -31,12 +31,12 @@ export function DashboardSidebar({ title, subtitle, profileName, profileRole, co
 
   return (
     <>
-    {mobileOpen ? <button type="button" className="fixed inset-0 z-40 bg-slate-950/50 xl:hidden" aria-label="Close navigation" onClick={onMobileClose} /> : null}
+    {mobileOpen ? <button type="button" className="fixed inset-0 z-40 bg-slate-950/50 lg:hidden" aria-label="Close navigation" onClick={onMobileClose} /> : null}
     <aside
       className={cn(
-        "fixed inset-y-0 left-0 z-50 w-72 border-r border-slate-200 bg-white transition-all duration-300 xl:z-40 xl:block",
+        "fixed inset-y-0 left-0 z-50 w-72 border-r border-slate-200 bg-white transition-all duration-300 lg:z-40 lg:block",
         mobileOpen ? "block" : "hidden",
-        collapsed ? "xl:w-14" : "xl:w-52",
+        collapsed ? "lg:w-14" : "lg:w-52",
       )}
       aria-label={`${title} navigation`}
     >
@@ -46,15 +46,15 @@ export function DashboardSidebar({ title, subtitle, profileName, profileRole, co
             <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-blue-600 text-white shadow-sm shadow-blue-200">
               <Building2 className="h-3.5 w-3.5" />
             </span>
-            <span className={cn("min-w-0", collapsed && "xl:hidden")}>
+            <span className={cn("min-w-0", collapsed && "lg:hidden")}>
                 <span className="block truncate text-xs font-bold text-slate-950">{title}</span>
                 <span className="block truncate text-[11px] text-slate-500">{subtitle}</span>
             </span>
           </Link>
-          <Button type="button" variant="ghost" size="icon" className="hidden xl:inline-flex" onClick={onToggle} aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}>
+          <Button type="button" variant="ghost" size="icon" className="hidden lg:inline-flex" onClick={onToggle} aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}>
             {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
           </Button>
-          <Button type="button" variant="ghost" size="icon" className="xl:hidden" onClick={onMobileClose} aria-label="Close navigation">
+          <Button type="button" variant="ghost" size="icon" className="lg:hidden" onClick={onMobileClose} aria-label="Close navigation">
             <X className="h-4 w-4" />
           </Button>
         </div>
@@ -64,7 +64,7 @@ export function DashboardSidebar({ title, subtitle, profileName, profileRole, co
             <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-[11px] font-bold text-blue-700">
               {profileName.slice(0, 2).toUpperCase()}
             </div>
-            <div className={cn("min-w-0", collapsed && "xl:hidden")}>
+            <div className={cn("min-w-0", collapsed && "lg:hidden")}>
                 <p className="truncate text-xs font-bold text-slate-950">{profileName}</p>
                 <p className="truncate text-[11px] text-slate-500">{profileRole}</p>
             </div>
@@ -93,7 +93,7 @@ export function DashboardSidebar({ title, subtitle, profileName, profileRole, co
                 }
               >
                 <item.icon className="h-3.5 w-3.5 shrink-0" />
-                <span className={cn(collapsed && "xl:hidden")}>{item.label}</span>
+                <span className={cn(collapsed && "lg:hidden")}>{item.label}</span>
               </NavLink>
             )
           })}
