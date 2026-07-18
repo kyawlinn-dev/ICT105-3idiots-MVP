@@ -84,11 +84,11 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave, loading }: 
   return (
     <main className="bg-slate-50">
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 py-5 sm:px-6 xl:px-8">
           <p className="text-sm font-bold uppercase tracking-wide text-blue-600">Apartments</p>
           <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <h1 className="max-w-2xl text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">Find apartments that fit your student life</h1>
+              <h1 className="max-w-2xl text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl xl:text-[2.35rem]">Find apartments that fit your student life</h1>
               <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">Search listings near Rangsit University, Bangkok University, Khlong Luang, Thanyaburi, and Pathum Thani.</p>
             </div>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
@@ -100,7 +100,7 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave, loading }: 
               </Select>
             </div>
           </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <div className="relative max-w-3xl flex-1">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
             <Input
@@ -110,7 +110,7 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave, loading }: 
               className="h-12 bg-slate-50 pl-9"
             />
             </div>
-            <Button type="button" variant="outline" className="h-12 w-full sm:w-auto lg:hidden" onClick={() => setFiltersOpen(true)}>
+            <Button type="button" variant="outline" className="h-12 w-full sm:w-auto xl:hidden" onClick={() => setFiltersOpen(true)}>
               <SlidersHorizontal className="h-4 w-4" />
               Filters
             </Button>
@@ -122,8 +122,8 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave, loading }: 
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-5 px-4 py-6 sm:px-6 lg:grid-cols-[280px_1fr] lg:px-8">
-        <div className="hidden lg:block">
+      <section className="mx-auto grid max-w-6xl gap-5 px-4 py-6 sm:px-6 xl:grid-cols-[280px_1fr] xl:px-8">
+        <div className="hidden xl:block">
           <FilterPanel filters={filters} onChange={setFilters} onReset={() => setFilters(initialFilters)} />
         </div>
         <div aria-busy={loading}>
@@ -155,7 +155,7 @@ export function ApartmentsPage({ apartments, savedIds, onToggleSave, loading }: 
         </div>
       </section>
       {filtersOpen ? (
-        <div className="fixed inset-0 z-50 bg-slate-950/40 lg:hidden" onClick={() => setFiltersOpen(false)}>
+        <div className="fixed inset-0 z-50 bg-slate-950/40 xl:hidden" onClick={() => setFiltersOpen(false)}>
           <div className="ml-auto h-full w-full max-w-sm overflow-y-auto bg-white p-4 shadow-xl" onClick={(event) => event.stopPropagation()}>
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-lg font-bold text-slate-950">Filters</h2>

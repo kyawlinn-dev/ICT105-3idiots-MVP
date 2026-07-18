@@ -10,7 +10,7 @@ type PublicLayoutProps = {
 
 export function PublicLayout({ session, sessionLoading, onSignOut }: PublicLayoutProps) {
   return (
-    <div className="min-h-screen bg-[#f5f7fb] pb-16 lg:pb-0">
+    <div className="min-h-screen bg-[#f5f7fb] pb-16 xl:pb-0">
       <PublicNavbar session={session} sessionLoading={sessionLoading} onSignOut={onSignOut} />
       <Outlet />
       <footer className="border-t border-slate-200 bg-white px-4 py-5 text-center text-xs text-slate-500">

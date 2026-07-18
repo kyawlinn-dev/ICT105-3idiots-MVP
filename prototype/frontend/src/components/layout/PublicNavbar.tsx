@@ -68,7 +68,7 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 shadow-[0_1px_8px_rgba(15,23,42,0.04)] backdrop-blur">
-        <div className="mx-auto hidden h-16 max-w-7xl items-center justify-between gap-5 px-6 lg:flex lg:px-8">
+        <div className="mx-auto hidden h-14 max-w-6xl items-center justify-between gap-3 px-4 xl:flex xl:px-6">
           <Link to="/" className="flex min-w-0 items-center gap-2.5 text-[15px] font-extrabold tracking-tight text-slate-950" onClick={closeMenu}>
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm shadow-blue-200">
               <Building2 className="h-[18px] w-[18px]" />
@@ -76,13 +76,13 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
             <span className="truncate">Student Apartment Finder</span>
           </Link>
 
-          <nav className="flex items-center gap-1" aria-label="Primary navigation">
+          <nav className="flex items-center gap-0.5" aria-label="Primary navigation">
             {visibleNavItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) => cn(
-                  "rounded-xl px-3.5 py-2 text-[15px] font-semibold text-slate-600 transition hover:bg-blue-50 hover:text-blue-700",
+                  "rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-blue-50 hover:text-blue-700",
                   isActive && "bg-blue-50 text-blue-700",
                 )}
               >
@@ -115,7 +115,7 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
           </div>
         </div>
 
-        <div className="relative flex h-14 items-center justify-between px-4 lg:hidden">
+        <div className="relative flex h-14 items-center justify-between px-4 xl:hidden">
           <Link to="/" className="grid h-9 w-9 place-items-center rounded-xl bg-blue-600 text-white shadow-sm shadow-blue-200" aria-label="Home">
             <Building2 className="h-[18px] w-[18px]" />
           </Link>
@@ -126,7 +126,7 @@ export function PublicNavbar({ session, sessionLoading, onSignOut }: PublicNavba
         </div>
       </header>
 
-      <nav className={cn("fixed inset-x-0 bottom-0 z-40 grid h-16 border-t border-slate-200 bg-white/98 px-1 pb-[env(safe-area-inset-bottom)] shadow-[0_-2px_12px_rgba(15,23,42,0.06)] backdrop-blur lg:hidden", session?.role === "student" ? "grid-cols-6" : "grid-cols-5")} aria-label="Mobile navigation">
+      <nav className={cn("fixed inset-x-0 bottom-0 z-40 grid h-16 border-t border-slate-200 bg-white/98 px-1 pb-[env(safe-area-inset-bottom)] shadow-[0_-2px_12px_rgba(15,23,42,0.06)] backdrop-blur xl:hidden", session?.role === "student" ? "grid-cols-6" : "grid-cols-5")} aria-label="Mobile navigation">
         {visibleMobileItems.map((item) => (
           <NavLink key={item.to} to={item.to} className={({ isActive }) => cn("flex min-w-0 flex-col items-center justify-center gap-1 text-[10px] font-semibold text-slate-500", isActive && "text-blue-600")}>
             {({ isActive }) => <><item.icon className={cn("h-5 w-5", isActive && "fill-blue-50")} /><span className="truncate">{item.label}</span></>}

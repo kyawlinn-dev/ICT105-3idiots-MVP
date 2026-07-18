@@ -31,16 +31,16 @@ export function OwnerLayout({ session, onSignOut }: OwnerLayoutProps) {
         onMobileClose={() => setMobileOpen(false)}
         navItems={ownerNavItems}
       />
-      <div className={cn("transition-all duration-300 lg:pl-52", collapsed && "lg:pl-14")}>
+      <div className={cn("transition-all duration-300 xl:pl-52", collapsed && "xl:pl-14")}>
         <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
           <div className="flex h-14 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-3">
-              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open sidebar" onClick={() => setMobileOpen(true)}>
+              <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open sidebar" onClick={() => setMobileOpen(true)}>
                 <Menu className="h-5 w-5" />
               </Button>
               <div>
                 <p className="text-sm font-bold text-slate-950">Landlord dashboard</p>
-                <p className="text-xs text-slate-500">Manage listings, leads, and student enquiries</p>
+                <p className="hidden text-xs text-slate-500 sm:block">Manage listings, leads, and student enquiries</p>
               </div>
             </div>
             <div className="hidden max-w-md flex-1 items-center gap-2 md:flex">
@@ -57,7 +57,7 @@ export function OwnerLayout({ session, onSignOut }: OwnerLayoutProps) {
             </div>
           </div>
         </header>
-        <main className="min-w-0 px-4 py-4 sm:px-6 lg:px-8">
+        <main className="min-w-0 px-4 py-4 sm:px-6 xl:px-8">
           <Outlet />
         </main>
       </div>

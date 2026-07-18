@@ -37,7 +37,7 @@ export function OwnerDashboardPage({ listings, loading }: OwnerDashboardPageProp
         </Button>
       </div>
 
-      <div className="grid gap-3 md:grid-cols-4">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard label="My Listings" value={`${ownerListings.length}`} change="Active records" type="neutral" icon={Eye} />
         <MetricCard label="Available Rooms" value={`${ownerListings.filter((item) => item.availabilityStatus === "Available").length}`} change="Ready for students" type="positive" icon={Inbox} />
         <MetricCard label="Pending Review" value={`${ownerListings.filter((item) => item.approvalStatus === "Pending").length}`} change="Admin queue" type="warning" icon={LineChart} />
