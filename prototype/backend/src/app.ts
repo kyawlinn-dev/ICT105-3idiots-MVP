@@ -10,7 +10,7 @@ import { notFound } from "./middleware/notFound.js"
 import { apiRoutes } from "./routes/index.js"
 
 const moduleDir = path.dirname(fileURLToPath(import.meta.url))
-const frontendDistPath = path.resolve(moduleDir, "../../frontend/dist")
+const frontendDistPath = path.resolve(moduleDir, "../../../frontend/dist")
 const frontendIndexPath = path.join(frontendDistPath, "index.html")
 
 export const createApp = () => {
