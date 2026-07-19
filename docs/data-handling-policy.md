@@ -46,7 +46,4 @@ For the class project, identifiable testing notes should be deleted or anonymize
 
 Use sample or masked data whenever possible. Never commit credentials, access tokens, real interview identities, private messages, confidential addresses, or sensitive personal information to GitHub.
 
-## GitHub Evidence
 
-- Product & Validation issue: `#PHYO_ISSUE`
-- Commit link: `COMMIT_LINK_AFTER_UPLOAD`
