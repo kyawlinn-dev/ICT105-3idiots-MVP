@@ -59,7 +59,4 @@ The repository also uses development packages such as Vitest, Supertest, tsx, Ox
 
 **Continue with mitigation.** The main software dependencies use recognized open-source licenses and can remain in the prototype when their license requirements are respected. The undocumented landing image and unused branded SVG collection remain high-risk until their sources are confirmed or they are replaced/removed.
 
-## GitHub Evidence
 
-- Issue: add the URL for `Review IP and Third-Party Assets`
-- Commit: add the commit URL after uploading this file
