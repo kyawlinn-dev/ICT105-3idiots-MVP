@@ -68,8 +68,4 @@ For the class prototype, identifiable testing notes should be deleted or anonymi
 
 **Continue with mitigation.** The prototype may continue using sample and masked data. The team must maintain contact masking, role-based visibility, voluntary testing consent, public-photo review, generalized roommate locations, and anonymized GitHub evidence.
 
-## GitHub Evidence
 
-- Product & Validation issue: `#PHYO_ISSUE`
-- Data inventory: `data/data-inventory.csv`
-- Commit link: `COMMIT_LINK_AFTER_UPLOAD`
