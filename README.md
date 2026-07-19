@@ -77,6 +77,7 @@ Possible technologies:
 | **Lab 06** | Completed the Business Model Canvas, mapped MVP features to user and business value, designed the technical architecture, defined the data structure, created the system architecture and data flow diagrams, and updated the project documentation for the Student Apartment Finder Platform. | `business-model-canvas.md`, `feature-value-mapping.md`, `technical-architecture.md`, `data-structure.md`, `system-architecture.png`, `data-flow.png`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 07** | Designed the MVP experiment by identifying critical assumptions, selecting the experiment type, defining success metrics, preparing the experiment script and feedback form, and updating the GitHub documentation for the Student Apartment Finder Platform. | `mvp-experiment-plan.md`, `critical-assumptions.md`, `experiment-script.md`, `success-metrics.md`, `feedback-form.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 08** | Conducted customer validation using the MVP prototype, collected and analysed validation data, calculated key analytics metrics, identified usability issues, documented validation insights, made an evidence-based MVP decision, and updated the project documentation. | `validation-results.xlsx`, `validation-results.csv`, `customer-validation-summary.md`, `analytics-insights.md`, `mvp-decision.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
+| **Lab 09** | Conducted a responsible IT review covering privacy, data protection, ethical risks, intellectual property, third-party assets, basic security, and requirement impacts. Created the data inventory and risk registers and began updating the required documentation. | `legal-ethical-checklist.md`, `privacy-and-data-protection.md`, `ip-and-third-party-assets.md`, `risk-register.md`, `data-inventory.csv`, `risk-register.csv`, `third-party-assets-register.csv`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
@@ -328,6 +329,51 @@ The validation results demonstrate that users can successfully complete the core
 - `/screenshots/validation-test-screens.png`
 - `/docs/weekly-logbook.md`
 
+## Lab 09 - Responsible IT Check
+
+### Responsible Design Summary
+
+In Lab 09, the team reviewed the Student Apartment Finder Platform from legal, ethical, privacy, intellectual property, data-protection, and basic security perspectives.
+
+The review identified several important risks. Landlord contact details and private account information must not be visible to anonymous users. Apartment coordinates and addresses must represent only the advertised property and must not expose an owner's private home location. Listing photos must not contain faces, identity documents, private information, or images used without permission.
+
+The team also identified ethical risks related to fake or outdated apartment listings, misleading claims, discriminatory roommate posts, harmful messages, and unsafe payment requests. To reduce these risks, apartment listings will require admin review, users will receive safety and verification warnings, and sensitive or discriminatory information will not be accepted.
+
+The intellectual property review identified the need to record the sources and licences of external libraries, APIs, icons, images, fonts, templates, and other third-party assets. Undocumented images or branded assets must be replaced or properly credited before public release.
+
+The basic security review requires role-based access control, input validation, restricted owner and admin functions, protected private messages, generic error messages, secure API-key handling, and rate limiting before the platform is publicly deployed.
+
+### Files Added
+
+- `docs/legal-ethical-checklist.md`
+- `docs/privacy-and-data-protection.md`
+- `docs/ip-and-third-party-assets.md`
+- `docs/security-risk-check.md`
+- `docs/risk-register.md`
+- `docs/updated-requirements-note.md`
+- `docs/user-consent-statement.md`
+- `docs/data-handling-policy.md`
+- `data/data-inventory.csv`
+- `data/risk-register.csv`
+- `data/third-party-assets-register.csv`
+- `docs/weekly-logbook.md`
+
+### Requirement Update
+
+The main purpose and core functionality in `system-requirements.md` remain unchanged. However, the responsible IT review identified several clarifications and stronger implementation controls for existing requirements.
+
+FR-03 and FR-07 require safer handling of apartment addresses, coordinates, photos, and landlord contact information. FR-09 requires clearer admin moderation and approval controls. FR-10 requires stronger validation, safe error messages, and future rate limiting. FR-15 requires privacy notices, restricted data visibility, consent, anonymised testing evidence, data minimisation, and protection of private messages and account information.
+
+These updates refine how the existing requirements will be implemented rather than changing the main direction of the Student Apartment Finder Platform.
+
+### Team Contributions
+
+| Member | Contribution | GitHub Evidence |
+|---|---|---|
+| Phyo Wai Aung | Reviewed legal, ethical, privacy, consent, and data-minimisation risks. | `docs/legal-ethical-checklist.md`, `docs/privacy-and-data-protection.md`, `docs/user-consent-statement.md`, `data/data-inventory.csv` |
+| Kyaw Linn | Reviewed security, role-based access, protected information, form validation, and technical risk mitigation. | `docs/security-risk-check.md`, `docs/risk-register.md`, `data/risk-register.csv` |
+| Arkar Kyaw Oo | Reviewed third-party assets, licensing, documentation updates, README, and weekly logbook. | `docs/ip-and-third-party-assets.md`, `data/third-party-assets-register.csv`, `README.md`, `docs/weekly-logbook.md` |
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
@@ -345,6 +391,10 @@ In Lab 06, the team transformed the Lab 05 product concept into a business and t
 In Lab 07, the team designed and prepared the MVP experiment for the Student Apartment Finder Platform. We identified critical assumptions, selected a simple web prototype as the experiment method, defined measurable success metrics, prepared an experiment script and feedback form, and updated the project documentation. These outputs provide a structured approach for validating the usability and effectiveness of the prototype before the final implementation stage.
 
 In Lab 08, the team validated the Student Apartment Finder Platform by collecting user testing data and analysing customer feedback. We calculated key validation metrics, identified usability improvements, documented analytics insights, and made an evidence-based MVP decision. The validation confirmed that the core workflow is effective while highlighting several areas for refinement before the final implementation.
+
+In Lab 09, the team reviewed the Student Apartment Finder Platform from a responsible IT development perspective. We identified privacy, ethical, intellectual property, third-party service, data-handling, and security risks associated with user accounts, apartment listings, landlord contact information, roommate posts, messages, photographs, maps, testing evidence, and administrative functions.
+
+The team prepared a detailed data inventory, classified the information collected and displayed by the prototype, documented privacy and consent controls, reviewed external assets and licences, and created a risk register with mitigation actions and responsible team members. The review confirmed that the project can continue, but additional controls such as restricted contact visibility, admin moderation, secure role separation, anonymised testing data, safe image handling, clearer warnings, and stronger security measures must be implemented.
 
 
 
@@ -376,3 +426,5 @@ In Lab 07, the team will begin implementing the Student Apartment Finder Platfor
 In Lab 08, the team will conduct user testing using the MVP experiment plan, collect feedback from target users, evaluate the success metrics, analyse the experiment results, and improve the Student Apartment Finder Platform based on the findings before continuing with the final prototype development.
 
 In Lab 09, the team will improve the prototype based on the customer validation results, resolve the identified usability issues, enhance the user interface and functionality, and continue developing the final MVP prototype to fully satisfy the project requirements.
+
+In Lab 10, the team will continue implementing and refining the Student Apartment Finder Platform based on the responsible IT findings from Lab 09. We will apply the documented privacy and security controls, resolve the priority risks recorded in the risk register, improve role-based access and validation, review public images and third-party assets, and continue building the final prototype according to the updated requirements.
