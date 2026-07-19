@@ -59,7 +59,3 @@ Date: ____________________
 
 Team member conducting the test: ____________________
 
-## GitHub Evidence
-
-- Product & Validation issue: `#PHYO_ISSUE`
-- Commit link: `COMMIT_LINK_AFTER_UPLOAD`
