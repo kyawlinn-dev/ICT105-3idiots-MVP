@@ -382,3 +382,74 @@ Although the majority of testers completed their tasks successfully, several use
 - Relocate and redesign the contact button for better visibility.
 - Conduct another round of user testing after implementing the improvements.
 - Continue developing the final MVP prototype based on the validation results.
+
+# Weekly Logbook - Lab 09
+
+## Group Name
+
+3idiots
+
+## Date
+
+29 July 2026
+
+## Members Present
+
+- Phyo Wai Aung
+- Kyaw Linn
+- Arkar Kyaw Oo
+
+## Work Completed Today
+
+- **Data inventory:** Reviewed the information collected, stored, displayed, and processed by the Student Apartment Finder Platform. Classified account information, apartment details, landlord contact information, map locations, roommate posts, messages, listing photos, moderation records, and validation evidence according to necessity, sensitivity, and visibility.
+
+- **Privacy review:** Defined data-minimisation rules, contact-visibility restrictions, consent requirements, testing-data anonymisation, safe screenshot practices, and rules for handling property addresses, coordinates, listing photos, and private messages.
+
+- **Ethical review:** Identified possible misleading claims, fake or outdated listings, scams, discriminatory roommate posts, harassment, unsafe payment requests, and misuse of landlord contact information. Added mitigation actions such as admin moderation, content rules, warnings, reporting, and independent-verification notices.
+
+- **IP review:** Reviewed the software libraries, APIs, icons, images, templates, fonts, diagrams, and other third-party resources used by the project. Documented their sources, licences, credit requirements, and replacement actions for undocumented assets.
+
+- **Security review:** Reviewed authentication, user roles, admin access, listing submission, private messages, contact visibility, photo uploads, API keys, validation, error handling, and public links. Identified the need for backend role checks, generic error messages, access restrictions, and future rate limiting.
+
+- **Risk register:** Created and updated the responsible IT risk register. Risks were classified by category, severity, likelihood, affected requirements, mitigation action, responsible member, status, and GitHub evidence.
+
+- **Requirements update note:** Confirmed that the main MVP direction remains unchanged. Existing requirements were clarified to include safer contact visibility, data minimisation, moderation, consent, anonymisation, secure role separation, stronger validation, and responsible handling of photos and map locations.
+
+## Member Contributions
+
+| Member | Contribution | GitHub Evidence |
+|---|---|---|
+| Phyo Wai Aung | Reviewed intellectual property and third-party assets, Completed the legal, ethical, privacy, consent, and data-inventory review. | `docs/ip-and-third-party-assets.md`, `data/third-party-assets-register.csv`, `docs/legal-ethical-checklist.md`, `docs/privacy-and-data-protection.md`, `docs/user-consent-statement.md`, `data/data-inventory.csv` |
+| Kyaw Linn | Reviewed application security, user permissions, admin controls, technical risks, and mitigation actions. | `docs/security-risk-check.md`, `docs/risk-register.md`, `data/risk-register.csv` |
+| Arkar Kyaw Oo | Updated project documentation. | `README.md`, `docs/weekly-logbook.md` |
+
+## Decisions Made
+
+The team decided that the Student Apartment Finder Platform is safe to continue as a class prototype with documented revisions and mitigation actions.
+
+The project will continue using sample or masked data during development and demonstrations. Real passwords, banking information, government identification, student identification, identity-document images, and unnecessary sensitive data will not be collected.
+
+Landlord contact information will be restricted to authenticated users, while account and private-message information will remain protected. Apartment photos and locations will require careful review to prevent accidental exposure of people, private homes, documents, or other identifying details.
+
+The team will maintain the existing functional requirements but strengthen the implementation of FR-03, FR-07, FR-09, FR-10, and FR-15 to reflect the responsible design findings.
+
+## Issues / Blockers
+
+Some external images and branded assets still require confirmed source and licence information. Assets without clear permission should be removed or replaced with team-created or properly licensed alternatives.
+
+Application-level rate limiting has not yet been implemented for sign-in, messaging, search, and upload actions.
+
+A complete real-world data-retention, account-deletion, message-deletion, and user-data-request process has not yet been implemented because the current system is a class prototype.
+
+The project must also ensure that the missing `security-risk-check.md` and `updated-requirements-note.md` documents are added to the repository before Lab 09 is considered complete.
+
+## Next Action Before Lab 10
+
+- Create and upload `docs/security-risk-check.md`.
+- Create and upload `docs/updated-requirements-note.md`.
+- Resolve or assign the priority risks in the risk register.
+- Restrict landlord contact details and private information to authorised users.
+- Improve backend role checks, validation, safe error handling, and API-key protection.
+- Review and replace any image or asset with an undocumented source or licence.
+- Apply responsible-design changes to the final prototype.
+- Continue implementation and testing in preparation for Lab 10.
