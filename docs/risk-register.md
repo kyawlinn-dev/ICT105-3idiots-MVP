@@ -40,7 +40,3 @@ Student Apartment Finder Platform
 ## Overall Risk Decision
 
 **Continue with mitigation.** The Student Apartment Finder may continue as an ICT105 class prototype because core role separation, admin review, validation, and contact masking already reduce several risks. It must use sample or anonymized data and must not be described as production-ready. High-risk items remain open until the responsible member adds implementation or review evidence.
-
-## GitHub Evidence Instructions
-
-Before closing the risk-register issue, replace each issue title in the GitHub Evidence column with the actual issue number or link. Add the commit link for this file to the `Create Lab 09 Risk Register` issue.
