@@ -38,9 +38,4 @@ Student Apartment Finder Platform
 - **Required revisions before a public production launch:** content reporting/moderation, clearer data-retention and deletion procedures, request rate limiting, careful review of public map/photo exposure, defined account/data assistance, and complete IP/license records.
 - **Class prototype rule:** use sample/masked data and do not claim that the platform guarantees property quality, landlord identity, roommate safety, availability, pricing, or a successful rental outcome.
 
-## GitHub Evidence
 
-- Product & Validation issue: `#PHYO_ISSUE`
-- Technical & UX issue: `#KYAW_ISSUE`
-- Documentation issue: `#ARKAR_ISSUE`
-- Commit link: `COMMIT_LINK_AFTER_UPLOAD`
