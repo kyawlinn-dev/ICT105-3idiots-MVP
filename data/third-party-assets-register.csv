@@ -1,0 +1,29 @@
+Asset_Name,Type,Source_URL,License_or_Permission,Used_In,Credit_Required,Risk_Level,Action
+React and React DOM,JavaScript libraries,https://react.dev/,MIT,Frontend interface,Keep license notice,Low,Record in acknowledgements
+React Router,JavaScript library,https://reactrouter.com/,MIT,Page routing and protected portals,Keep license notice,Low,Record in acknowledgements
+Vite,Build tool,https://vite.dev/,MIT,Frontend development and build,Keep license notice,Low,Record in dependency register
+TypeScript,Programming language/tooling,https://www.typescriptlang.org/,Apache-2.0,Frontend and backend type checking,Keep license and notices,Low,Record in dependency register
+Tailwind CSS,CSS framework,https://tailwindcss.com/,MIT,Responsive interface styling,Keep license notice,Low,Record in acknowledgements
+Lucide React,Icon library,https://lucide.dev/,ISC,"Navigation, action, status, and dashboard icons",Keep license notice,Low,Credit Lucide in acknowledgements
+Radix UI Slot,UI utility,https://www.radix-ui.com/,MIT,Reusable component behavior,Keep license notice,Low,Record in dependency register
+Recharts,Chart library,https://recharts.org/,MIT,Dashboard and analytics charts,Keep license notice,Low,Record in acknowledgements
+Sonner,Notification library,https://sonner.emilkowal.ski/,MIT,Success and error toast messages,Keep license notice,Low,Record in dependency register
+class-variance-authority,UI styling utility,https://cva.style/,Apache-2.0,Reusable component variants,Keep license and notices,Low,Record in dependency register
+clsx and tailwind-merge,CSS utilities,https://github.com/lukeed/clsx ; https://github.com/dcastil/tailwind-merge,MIT,Conditional and merged CSS classes,Keep license notices,Low,Record in dependency register
+Supabase JavaScript client,JavaScript library,https://github.com/supabase/supabase-js,MIT,Backend connection to Supabase,Keep license notice,Low,Record library and version
+Supabase hosted services,External cloud service,https://supabase.com/,Supabase terms and privacy policy,"Authentication, database, and photo storage",Terms apply,Medium,Link privacy policy and review service terms
+Google Maps JavaScript API Loader,JavaScript library,https://github.com/googlemaps/js-api-loader,Apache-2.0,Loads Google Maps features,Keep license and notices,Low,Record library and version
+Google Maps Platform,External API/service,https://mapsplatform.google.com/,Google Maps Platform Terms,"Property maps, coordinates, and links",Google attribution required,Medium,"Preserve attribution, restrict API key, and review terms"
+Express,Backend framework,https://expressjs.com/,MIT,Backend API and routing,Keep license notice,Low,Record in dependency register
+Zod,Validation library,https://zod.dev/,MIT,Input validation,Keep license notice,Low,Record in dependency register
+Multer,Upload middleware,https://github.com/expressjs/multer,MIT,Listing-photo uploads,Keep license notice,Low,Record in dependency register
+CORS and cookie-parser,Express middleware,https://github.com/expressjs/cors ; https://github.com/expressjs/cookie-parser,MIT,Cross-origin rules and cookie parsing,Keep license notices,Low,Record in dependency register
+dotenv,Configuration library,https://github.com/motdotla/dotenv,BSD-2-Clause,Local environment configuration,Keep copyright and license notice,Low,Record license; never commit secrets
+landing-student-room.webp,Image,Source not documented,Unknown,Homepage visual,Unknown,High,Confirm creator and permission or replace with verified team/open-license image
+Owner-uploaded listing photos,User-supplied images,Provided by listing owners,Uploader permission required,"Listing cards, details, and galleries",Depends on source,High,Require ownership/permission and remove copied or identifying images
+favicon.svg,Team SVG icon,Repository source file,"Team-created, pending confirmation",Browser icon,No if team-created,Low,Confirm creator in issue or commit history
+icons.svg branded symbols,SVG icon collection,Source not documented,Unknown / trademark rules may apply,Currently not referenced by app code,Unknown,High,Remove if unused or identify every source and permission
+Wireframes and project diagrams,Team-created visuals,Repository wireframes/ and diagrams/,Team-created,"Planning, architecture, and workflow evidence",No external credit,Low,Record creators and commit links
+Validation screenshots,Project evidence,Repository screenshoots/,Team-created; privacy review required,Lab 08 evidence,No external credit,Medium,"Check for personal data, messages, and secrets before public upload"
+Sample and validation datasets,Project data,Repository data/,Team-created with consent and anonymization,Customer validation and analytics,Credit external source if any,Medium,Use participant codes and document consent/source
+"AI-assisted material, if used",AI-assisted text or code,Actual tool used by team,Tool terms and course rules apply,"Possible drafting, coding, or editing",Declare according to course rules,Medium,"Disclose actual use, verify output, and do not invent usage"
