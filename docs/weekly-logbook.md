@@ -453,3 +453,56 @@ The project must also ensure that the missing `security-risk-check.md` and `upda
 - Review and replace any image or asset with an undocumented source or licence.
 - Apply responsible-design changes to the final prototype.
 - Continue implementation and testing in preparation for Lab 10.
+
+# Weekly Logbook - Lab 10
+
+## Lab Topic
+
+MVP Implementation Sprint 1
+
+## What We Built Today
+
+- Built the first working version of the Student Apartment Finder Platform using React, TypeScript, Express.js, and Supabase.
+- Developed the frontend interface including homepage, apartment listing pages, search functionality, and apartment detail views.
+- Prepared the backend project structure, database integration, API routes, and implementation documentation for Sprint 1.
+
+## Requirement IDs Addressed
+
+- FR-01: Homepage and project introduction.
+- FR-03: Apartment listing submission and data handling.
+- FR-05: Apartment browsing and listing display.
+- FR-06: Search and filtering.
+- FR-07: Apartment detail view.
+- FR-08: Status management.
+- FR-09: Administrator management.
+- FR-12: Dashboard preparation.
+
+## Contribution by Members
+
+| Member | Contribution | Evidence |
+|---|---|---|
+| Phyo Wai Aung | Developed frontend pages,screenshots, feature implementation status, apartment listing interface, and user interactions. | `/prototype/frontend`, `/docs/implementation-plan.md` |
+| Kyaw Linn | Prepared backend services, Express API, database integration, and authentication. | `/prototype/backend` |
+| Arkar Kyaw Oo | Updated implementation plan, README, and weekly logbook. | `README.md`, `/docs/weekly-logbook.md` |
+
+## Screenshots Added
+
+- `/screenshots/homepage.png`
+- `/screenshots/input-form.png`
+- `/screenshots/record-list.png`
+- `/screenshots/detail-view.png`
+- `/screenshots/admin-view.png`
+
+## Problems Faced
+
+- Some backend features are still under development and require additional API implementation.
+- Authentication and administrator permission controls require further testing.
+- Several UI components still require refinement to improve responsiveness and usability.
+
+## Plan for Next Lab
+
+- Complete the remaining Sprint 1 implementation tasks.
+- Improve backend functionality and API integration.
+- Finalise administrator features and dashboard.
+- Continue testing frontend and backend integration.
+- Resolve implementation bugs and improve overall system stability.
