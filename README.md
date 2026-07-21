@@ -78,6 +78,7 @@ Possible technologies:
 | **Lab 07** | Designed the MVP experiment by identifying critical assumptions, selecting the experiment type, defining success metrics, preparing the experiment script and feedback form, and updating the GitHub documentation for the Student Apartment Finder Platform. | `mvp-experiment-plan.md`, `critical-assumptions.md`, `experiment-script.md`, `success-metrics.md`, `feedback-form.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 08** | Conducted customer validation using the MVP prototype, collected and analysed validation data, calculated key analytics metrics, identified usability issues, documented validation insights, made an evidence-based MVP decision, and updated the project documentation. | `validation-results.xlsx`, `validation-results.csv`, `customer-validation-summary.md`, `analytics-insights.md`, `mvp-decision.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 09** | Conducted a responsible IT review covering privacy, data protection, ethical risks, intellectual property, third-party assets, basic security, and requirement impacts. Created the data inventory and risk registers and began updating the required documentation. | `legal-ethical-checklist.md`, `privacy-and-data-protection.md`, `ip-and-third-party-assets.md`, `risk-register.md`, `data-inventory.csv`, `risk-register.csv`, `third-party-assets-register.csv`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
+| **Lab 10** | Began Sprint 1 implementation by developing the first working prototype, preparing the frontend and backend structure, implementing core apartment browsing features, creating the implementation plan, mapping implemented features to system requirements, and updating project documentation. | `implementation-plan.md`, `feature-implementation-status.md`, `prototype/frontend`, `prototype/backend`, screenshots, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
@@ -374,6 +375,52 @@ These updates refine how the existing requirements will be implemented rather th
 | Kyaw Linn | Reviewed security, role-based access, protected information, form validation, and technical risk mitigation. | `docs/security-risk-check.md`, `docs/risk-register.md`, `data/risk-register.csv` |
 | Arkar Kyaw Oo | Reviewed third-party assets, licensing, documentation updates, README, and weekly logbook. | `docs/ip-and-third-party-assets.md`, `data/third-party-assets-register.csv`, `README.md`, `docs/weekly-logbook.md` |
 
+## Lab 10 - MVP Implementation Sprint 1
+
+### Sprint Goal
+
+Our goal in Lab 10 was to begin building the first working version of the Student Apartment Finder Platform based on the approved requirements, user stories, UI wireframes, technical architecture, and responsible IT reviews completed in previous labs.
+
+The team focused on transforming the project from documentation into an actual working prototype while maintaining traceability between implemented features and the approved system requirements.
+
+### Implementation Approach
+
+- **Platform/tools:** React, TypeScript, Node.js, Express.js, Supabase, Vite
+- **Backend status:** Basic backend structure prepared with Express API and Supabase integration.
+- **Data storage/simulation:** Supabase database with sample apartment data and authentication support.
+- **Prototype link or folder:** `/prototype/frontend` and `/prototype/backend`
+
+### Features Implemented in Sprint 1
+
+| Feature | Requirement ID | Status | Evidence |
+|---|---|---|---|
+| Homepage | FR-01 | ✅ Working Draft | Frontend homepage |
+| Input form | FR-03 | ✅ Working Draft | Apartment listing form |
+| Record list | FR-05 | ✅ Working Draft | Apartment listing page |
+| Search/filter | FR-06 | ✅ Working Draft | Search and filtering functions |
+| Detail view | FR-07 | ✅ Working Draft | Apartment detail page |
+| Status tracking | FR-08 | ✅ Working Draft | Backend status logic |
+| Admin view | FR-09 | ✅ Working Draft | Admin management module |
+| Dashboard | FR-12 | ✅ Working Draft | Dashboard components |
+
+### Screenshots
+
+- Homepage: `/screenshots/homepage.png`
+- Input form: `/screenshots/input-form.png`
+- Record list: `/screenshots/record-list.png`
+- Detail view: `/screenshots/detail-view.png`
+- Admin/status view: `/screenshots/admin-view.png`
+
+### Team Contribution
+
+| Member | Contribution |
+|---|---|
+| Phyo Wai Aung | Developed frontend pages, UI components, and apartment listing interface. |
+| Kyaw Linn | Implemented backend setup, Express API, database integration, and authentication support. |
+| Arkar Kyaw Oo | Updated implementation documentation, feature implementation status, README, screenshots, and weekly logbook. |
+
+All group members contributed to the same GitHub repository throughout Sprint 1.
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
@@ -395,6 +442,8 @@ In Lab 08, the team validated the Student Apartment Finder Platform by collectin
 In Lab 09, the team reviewed the Student Apartment Finder Platform from a responsible IT development perspective. We identified privacy, ethical, intellectual property, third-party service, data-handling, and security risks associated with user accounts, apartment listings, landlord contact information, roommate posts, messages, photographs, maps, testing evidence, and administrative functions.
 
 The team prepared a detailed data inventory, classified the information collected and displayed by the prototype, documented privacy and consent controls, reviewed external assets and licences, and created a risk register with mitigation actions and responsible team members. The review confirmed that the project can continue, but additional controls such as restricted contact visibility, admin moderation, secure role separation, anonymised testing data, safe image handling, clearer warnings, and stronger security measures must be implemented.
+
+In Lab 10, the team successfully started implementing the Student Apartment Finder Platform by transforming the approved design into a functional prototype. The frontend and backend project structures were established, core user interfaces were developed, sample data handling was prepared, and the first working implementation of the apartment browsing workflow was completed. Feature implementation was documented and linked to the corresponding functional requirements to maintain traceability throughout the development process.
 
 
 
@@ -428,3 +477,5 @@ In Lab 08, the team will conduct user testing using the MVP experiment plan, col
 In Lab 09, the team will improve the prototype based on the customer validation results, resolve the identified usability issues, enhance the user interface and functionality, and continue developing the final MVP prototype to fully satisfy the project requirements.
 
 In Lab 10, the team will continue implementing and refining the Student Apartment Finder Platform based on the responsible IT findings from Lab 09. We will apply the documented privacy and security controls, resolve the priority risks recorded in the risk register, improve role-based access and validation, review public images and third-party assets, and continue building the final prototype according to the updated requirements.
+
+In Lab 11, the team will continue expanding the prototype by completing the remaining Sprint 1 features, strengthening backend functionality, integrating additional database operations, improving user authentication and administrator functions, fixing implementation issues, and preparing the system for user testing and final prototype development.
