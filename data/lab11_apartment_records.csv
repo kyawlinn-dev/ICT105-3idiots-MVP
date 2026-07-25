@@ -1,0 +1,7 @@
+RecordID,ApartmentName,LandlordName,DistanceKM,MonthlyRentTHB,ReviewStatus,ListingCount,ApprovedCount,SubmittedDate,LastUpdatedDate,RequirementID,Source
+APT-001,Rangsita Apartment,Rangsita Apartment,1.5,3000,Approved,1,1,,,FR-08,Admin Dashboard
+APT-002,Bundit Apartment,Bundit Apartment,1.5,5500,Approved,1,1,,,FR-08,Admin Dashboard
+APT-003,Mst House,Mst House,1.5,6000,Approved,1,1,,,FR-08,Admin Dashboard
+APT-004,Littlebears Residences,Littlebears Residences,1.5,7400,Approved,1,1,,,FR-08,Admin Dashboard
+APT-005,The Rise 789,The Rise 789,1.5,8500,Approved,1,1,,,FR-08,Admin Dashboard
+APT-006,WoodRoof Residence Rangsit,WoodRoof Residence Rangsit,1.5,10500,Approved,1,1,,,FR-08,Admin Dashboard
