@@ -506,3 +506,63 @@ MVP Implementation Sprint 1
 - Finalise administrator features and dashboard.
 - Continue testing frontend and backend integration.
 - Resolve implementation bugs and improve overall system stability.
+
+# Weekly Logbook - Lab 11
+
+## Lab Topic
+
+MVP Implementation Sprint 2 and Startup Metrics
+
+## Group Case
+
+**Project Title:** Student Apartment Finder Platform
+
+**Selected Case:** A web-based platform that helps university students search for apartments, contact landlords, and manage rental information through a secure and user-friendly system.
+
+## Work Completed Today
+
+- Improved the Sprint 1 prototype by refining the homepage, apartment listing workflow, search, filtering, and detail pages.
+- Strengthened backend data handling using Supabase and improved administrator functions.
+- Added startup/product metrics, completed prototype testing, updated implementation documentation, and uploaded new screenshots.
+
+## Member Contributions
+
+| Member Name | Contribution | File/Feature Updated | GitHub Evidence |
+|---|---|---|---|
+| Phyo Wai Aung | Improved frontend interface, feature implementation status, prototype testing notes, screenshots and apartment search workflow. | Frontend pages | `/prototype/frontend` |
+| Kyaw Linn | Improved backend integration, Supabase database operations, administrator features, and startup metrics. | Backend services | `/prototype/backend` |
+| Arkar Kyaw Oo | Updated README, prototype link, and weekly logbook. | Documentation | `/docs/prototype-link.md`, `README.md`, `weekly-logbook.md`|
+
+## Requirements Addressed
+
+- FR-03 – Apartment listing submission
+- FR-06 – Search and filtering
+- FR-08 – Status management
+- FR-09 – Administrator functions
+- FR-12 – Dashboard and startup metrics
+
+## Metrics Added
+
+- Total apartment listings
+- Active listings
+- Reserved listings
+- Registered users
+- Search activity
+- Listing submissions
+- Validation success rate
+- Dashboard statistics
+
+## Problems Found
+
+- Some administrator functions still require further backend integration.
+- Dashboard metrics require more real-world data for better accuracy.
+- Minor UI responsiveness issues remain on smaller screen sizes.
+- Additional optimisation is needed for database queries and API performance.
+
+## Next Action Before Lab 12
+
+- Complete the remaining Sprint 2 implementation tasks.
+- Finalise administrator features and dashboard reporting.
+- Resolve issues identified during prototype testing.
+- Improve responsiveness, performance, and backend validation.
+- Prepare the final version of the Student Apartment Finder Platform for demonstration.
