@@ -79,6 +79,7 @@ Possible technologies:
 | **Lab 08** | Conducted customer validation using the MVP prototype, collected and analysed validation data, calculated key analytics metrics, identified usability issues, documented validation insights, made an evidence-based MVP decision, and updated the project documentation. | `validation-results.xlsx`, `validation-results.csv`, `customer-validation-summary.md`, `analytics-insights.md`, `mvp-decision.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 09** | Conducted a responsible IT review covering privacy, data protection, ethical risks, intellectual property, third-party assets, basic security, and requirement impacts. Created the data inventory and risk registers and began updating the required documentation. | `legal-ethical-checklist.md`, `privacy-and-data-protection.md`, `ip-and-third-party-assets.md`, `risk-register.md`, `data-inventory.csv`, `risk-register.csv`, `third-party-assets-register.csv`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 10** | Began Sprint 1 implementation by developing the first working prototype, preparing the frontend and backend structure, implementing core apartment browsing features, creating the implementation plan, mapping implemented features to system requirements, and updating project documentation. | `implementation-plan.md`, `feature-implementation-status.md`, `prototype/frontend`, `prototype/backend`, screenshots, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
+| **Lab 11** | Continued Sprint 2 implementation by improving the prototype, strengthening data handling, enhancing search and administrator functions, adding startup metrics, testing the complete user workflow, documenting implementation progress, and updating GitHub documentation. | `startup-metrics.md`, `prototype-testing-notes.md`, updated `feature-implementation-status.md`, updated prototype files, screenshots, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
@@ -421,6 +422,60 @@ The team focused on transforming the project from documentation into an actual w
 
 All group members contributed to the same GitHub repository throughout Sprint 1.
 
+## Lab 11: MVP Implementation Sprint 2 and Startup Metrics
+
+### Prototype Progress
+
+During Lab 11, the Student Apartment Finder Platform was extended beyond the initial Sprint 1 implementation. Core user interfaces were refined, backend integration was strengthened, and data handling was improved using Supabase. Search and filtering functions were enhanced, administrator features were expanded, and a startup metrics dashboard was prepared to monitor platform activity. Prototype testing was also carried out to identify defects and improve the overall user experience before the final implementation stage.
+
+### Implemented / Improved Features
+
+| Requirement ID | Feature | Status | Evidence |
+|---|---|---|---|
+| FR-03 | Apartment listing submission and validation | ✅ Completed | Listing submission page |
+| FR-06 | Search and filter improvements | ✅ Completed | Search and filter functions |
+| FR-08 | Apartment status management | ✅ Completed | Status update module |
+| FR-12 | Dashboard and startup metrics | ✅ Completed | Dashboard statistics page |
+
+### Startup/Product Metrics
+
+The following startup metrics were implemented or documented:
+
+- Total apartment listings
+- Total registered users
+- Active apartment listings
+- Reserved or occupied apartments
+- Most searched apartment category
+- User search activity
+- Listing submission count
+- Average validation success rate
+
+### Prototype Screenshots
+
+- `/screenshots/homepage.png`
+- `/screenshots/input-form.png`
+- `/screenshots/record-list.png`
+- `/screenshots/detail-view.png`
+- `/screenshots/dashboard.png`
+- `/screenshots/admin-view.png`
+
+### Member Contributions
+
+| Member | Contribution |
+|---|---|
+| Phyo Wai Aung | Improved frontend pages, apartment listing workflow, search, filtering, and UI refinement. |
+| Kyaw Linn | Improved backend integration, Supabase data handling, administrator functions, and startup metrics. |
+| Arkar Kyaw Oo | Updated Sprint 2 documentation, prototype testing notes, README, and weekly logbook. |
+
+### Remaining Work
+
+- Complete administrator status management.
+- Improve dashboard analytics and reporting.
+- Complete remaining backend validation.
+- Fix issues identified during prototype testing.
+- Optimise responsiveness and overall user experience.
+- Prepare the final production-ready prototype.
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
@@ -444,6 +499,8 @@ In Lab 09, the team reviewed the Student Apartment Finder Platform from a respon
 The team prepared a detailed data inventory, classified the information collected and displayed by the prototype, documented privacy and consent controls, reviewed external assets and licences, and created a risk register with mitigation actions and responsible team members. The review confirmed that the project can continue, but additional controls such as restricted contact visibility, admin moderation, secure role separation, anonymised testing data, safe image handling, clearer warnings, and stronger security measures must be implemented.
 
 In Lab 10, the team successfully started implementing the Student Apartment Finder Platform by transforming the approved design into a functional prototype. The frontend and backend project structures were established, core user interfaces were developed, sample data handling was prepared, and the first working implementation of the apartment browsing workflow was completed. Feature implementation was documented and linked to the corresponding functional requirements to maintain traceability throughout the development process.
+
+In Lab 11, the team continued Sprint 2 development of the Student Apartment Finder Platform by improving both the frontend and backend implementation. Core user journeys were refined, data handling through Supabase was strengthened, startup metrics were introduced, and prototype testing was conducted to evaluate the complete workflow. The prototype now demonstrates greater functionality, improved usability, and better alignment with the approved system requirements.
 
 
 
@@ -479,3 +536,5 @@ In Lab 09, the team will improve the prototype based on the customer validation 
 In Lab 10, the team will continue implementing and refining the Student Apartment Finder Platform based on the responsible IT findings from Lab 09. We will apply the documented privacy and security controls, resolve the priority risks recorded in the risk register, improve role-based access and validation, review public images and third-party assets, and continue building the final prototype according to the updated requirements.
 
 In Lab 11, the team will continue expanding the prototype by completing the remaining Sprint 1 features, strengthening backend functionality, integrating additional database operations, improving user authentication and administrator functions, fixing implementation issues, and preparing the system for user testing and final prototype development.
+
+In Lab 12, the team will complete the remaining prototype features, resolve issues identified during testing, improve dashboard analytics, finalise administrator functionality, optimise system performance, and prepare the Student Apartment Finder Platform for final demonstration and project submission.
