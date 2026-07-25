@@ -1,74 +1,89 @@
-# Lab 11 - Startup/Product Metrics
+# Lab 11 Startup Metrics
 
-## Project
-
-Student Apartment Finder Platform
+**Project:** Student Apartment Finder Platform  
+**Lab:** Lab 11 - MVP Implementation Sprint 2 and Startup Metrics  
+**Prepared by:** Phyo Wai Aung  
+**Analysis date:** 2026-07-25
 
 ## Purpose
 
-These metrics help the team understand apartment-listing activity, availability, admin workload, affordability, prototype usability and operational performance. The metrics connect to the system requirements and support evidence-based decisions for the final prototype.
+This document defines the startup and product metrics used to evaluate listing supply, administrator review activity, affordability, and prototype usability. The metrics are connected to the system requirements, the administrator dashboard, the Lab 11 datasets, and the prototype testing evidence.
 
 ## Metrics Summary
 
-| Metric ID | Metric Name | Metric Type | Why It Matters | Formula / Calculation | Data Source | Requirement |
-|---|---|---|---|---|---|---|
-| M-01 | Total Listings | Usage | Shows how many apartment records the platform manages. | Distinct count of listing IDs | Apartment records | FR-04, FR-05 |
-| M-02 | Approved Listings | Status | Shows how many listings passed admin review. | Count where approval status is Approved | Apartment records | FR-08, FR-09 |
-| M-03 | Pending Reviews | Operational | Shows the current admin-review workload. | Count where approval status is Pending Review | Apartment records | FR-08, FR-09 |
-| M-04 | Available Rooms | Status | Shows how many approved rooms students can currently consider. | Count where availability is Available and approval is Approved | Apartment records | FR-05, FR-08 |
-| M-05 | Average Monthly Rent | Product | Helps students and the team understand affordability. | Sum of monthly rent divided by listing count | Apartment records | FR-06, FR-07, FR-12 |
-| M-06 | Listing Approval Rate | Operational | Shows the proportion of submitted listings approved by admins. | Approved listings divided by total reviewed listings × 100 | Apartment records | FR-08, FR-09 |
-| M-07 | Average Review Time | Operational | Shows how quickly admins process listing submissions. | Average number of days from submission to review | Apartment records | FR-09, FR-12 |
-| M-08 | Prototype Task Success Rate | Validation | Shows whether the tested user journey works successfully. | Passed test cases divided by total test cases × 100 | Prototype testing notes | FR-02, FR-16 |
+| Metric ID | Metric | Definition and Calculation | Related Requirement | Current Result |
+|---|---|---|---|---:|
+| M01 | Total Listings | Count of unique apartment records | FR-04/FR-05 | 6 |
+| M02 | Approved Listings | Count of records where `ReviewStatus` is `Approved` | FR-08/FR-09 | 6 |
+| M03 | Pending Reviews | Count of records where `ReviewStatus` is `Pending` | FR-08/FR-09 | 0 |
+| M04 | Available Rooms | Count of records marked as available | FR-05/FR-08 | Not available in the current dataset |
+| M05 | Average Monthly Rent | Sum of monthly rents divided by the number of listings | FR-06/FR-07/FR-12 | THB 6,816.67 |
+| M06 | Listing Approval Rate | Approved listings divided by total listings, multiplied by 100 | FR-08/FR-09 | 100% |
+| M07 | Average Review Time | Average time between submission and review/update | FR-09/FR-12 | Cannot be calculated because dates are unavailable |
+| M08 | Prototype Task Success Rate | Passed test cases divided by executed test cases, multiplied by 100 | FR-02/FR-16 | 100% (7 of 7 tests) |
+
+## Calculation Evidence
+
+- Total monthly rent: THB 40,900
+- Number of listings: 6
+- Average monthly rent: THB 40,900 / 6 = THB 6,816.67
+- Approved listings: 6
+- Listing approval rate: 6 / 6 x 100 = 100%
+- Passed prototype tests: 7
+- Prototype task success rate: 7 / 7 x 100 = 100%
+
 ## Requirement Evidence
 
-| Requirement ID | Metric Evidence | Dashboard / Visual | Decision Supported |
+| Requirement ID | Metric Evidence | Dashboard or Visual | Decision Supported |
 |---|---|---|---|
-| FR03 | Total listing submissions | Prototype dashboard and Power BI | Check whether landlords are actively adding apartments |
-| FR04–FR05 | Total listings and available rooms | Prototype dashboard and Power BI | Measure the amount of housing available to students |
-| FR06 | Average monthly rent and search/filter activity | Apartment search page and Power BI | Check whether listings match student budgets |
-| FR08 | Approved listings and pending reviews | Admin dashboard and Power BI | Monitor the listing review workload |
-| FR09 | Listing approval rate and average review time | Admin dashboard and Power BI | Evaluate the efficiency of the approval process |
-| FR12 | Listings, room availability, rent, and review metrics | Startup metrics dashboard | Support product and operational decisions |
-| FR16 | Prototype task success rate | Prototype testing notes | Identify usability problems and workflow failures |
+| FR-03 | Listing-submission test event | Landlord input form and activity log | Check whether landlords can submit apartment records |
+| FR-04/FR-05 | Total listings and listing persistence | Apartment records and public listing screen | Measure housing supply and confirm that records persist |
+| FR-06 | Average rent and search/filter test | Apartment search page and Power BI | Check whether listings can be compared by student budget |
+| FR-08 | Approved and pending listing counts | Administrator listings screen | Monitor the listing-review workload |
+| FR-09 | Approval rate and administrator-review event | Administrator dashboard and activity log | Evaluate the listing-approval process |
+| FR-12 | Listing, rent, approval, and testing metrics | Prototype dashboard and Power BI | Support product and operational decisions |
+| FR-16 | Prototype task success rate | Prototype testing notes | Identify usability problems and workflow failures |
 
 ## Current Metric Results
 
 | Metric ID | Current Result | Evidence Source | Status |
 |---|---:|---|---|
-| M01 – Total Listings | Awaiting dataset export | Backend apartment records | Pending |
-| M02 – Approved Listings | Awaiting dataset export | Backend apartment records | Pending |
-| M03 – Pending Reviews | Awaiting dataset export | Backend apartment records | Pending |
-| M04 – Available Rooms | Awaiting dataset export | Backend apartment records | Pending |
-| M05 – Average Monthly Rent | Awaiting dataset export | Backend apartment records | Pending |
-| M06 – Listing Approval Rate | Awaiting dataset export | Backend apartment records | Pending |
-| M07 – Average Review Time | Awaiting activity-log export | Backend activity log | Pending |
-| M08 – Prototype Task Success Rate | 100% (7 of 7 tests passed) | `docs/prototype-testing-notes.md` | Completed |
+| M01 - Total Listings | 6 | `data/lab11_apartment_records.csv` | Completed |
+| M02 - Approved Listings | 6 | `data/lab11_apartment_records.csv` | Completed |
+| M03 - Pending Reviews | 0 | `data/lab11_apartment_records.csv` | Completed |
+| M04 - Available Rooms | Not available | Availability was not displayed in the supplied administrator records | Pending |
+| M05 - Average Monthly Rent | THB 6,816.67 | `data/lab11_apartment_records.csv` | Completed |
+| M06 - Listing Approval Rate | 100% | `data/lab11_apartment_records.csv` | Completed |
+| M07 - Average Review Time | Cannot be calculated | Submission and update dates were not displayed | Pending |
+| M08 - Prototype Task Success Rate | 100% (7/7) | `data/lab11_activity_log.csv` and `docs/prototype-testing-notes.md` | Completed |
 
-> The remaining metric values will be added after Kyaw Linn provides the sanitized backend datasets and completes the Power BI calculations. No values have been invented.
-> ## Preliminary Interpretation and Decisions
+## Interpretation and Decisions
 
-The prototype completed all seven planned workflow tests, giving a current task success rate of 100%. This indicates that the main student, landlord, and administrator workflows are functioning in the tested desktop environment. A short delay was observed when the Render server started, so a loading or server warm-up message should be considered. Listing submission, persistence, searching, filtering, detail viewing, and administrator approval worked correctly during testing. Rejection, deletion, unauthorized role access, and mobile responsiveness still require additional verification. The remaining business metrics cannot be finalized until the sanitized backend exports are available. After the datasets are received, the team will compare listing supply, availability, rent, approval rate, and review time in Power BI before making final product decisions.
+The prototype currently contains six apartment listings, and all six are approved. The average listed monthly rent is THB 6,816.67, which provides an initial affordability benchmark for students. The 100% approval rate shows that all current records passed administrator review, but the dataset does not yet include rejected examples for comparison. All seven planned workflow tests passed, indicating that the main student, landlord, and administrator journeys worked in the tested laptop environment. A short Render cold-start delay was observed, so the interface should provide a loading or server warm-up message. Available-room totals cannot be confirmed because availability was not present in the supplied administrator records. Average review time also cannot be calculated until submission and review timestamps are recorded. The next data improvement should therefore add availability status and lifecycle timestamps to each listing.
+
 ## Data Sources and Evidence
 
 - Live prototype: https://student-apartment-finder.onrender.com
+- Apartment records: `data/lab11_apartment_records.csv`
+- Prototype activity log: `data/lab11_activity_log.csv`
+- Data dictionary: `data/lab11_data_dictionary.csv`
 - Prototype test results: `docs/prototype-testing-notes.md`
 - Feature audit: `docs/feature-implementation-status.md`
-- Apartment dataset: `data/lab11_apartment_records.csv` — awaiting sanitized backend export
-- Activity dataset: `data/lab11_activity_log.csv` — awaiting sanitized backend export
 - Power BI dashboard: awaiting completion
-- Power BI screenshot: `screenshots/lab11-powerbi-dashboard.png` — awaiting completion
+- Power BI screenshot: `screenshots/lab11-powerbi-dashboard.png` - awaiting completion
 
 ## Current Limitations
 
-- Most business metric values are pending because the backend datasets have not yet been exported.
-- The current prototype test was performed on a laptop using Chrome.
-- Mobile responsiveness and unauthorized role access still require testing.
+- Submission dates and last-update dates were not visible in the administrator screenshots.
+- Availability status was not included in the supplied administrator listing table.
+- The current dataset contains only approved records and cannot compare approval with rejection patterns.
+- The prototype test was performed on a laptop using Chrome.
+- Mobile responsiveness, unauthorized role access, listing rejection, and listing deletion still require verification.
 - The Render deployment may have a short cold-start delay.
-- Final Power BI metric values must be checked against the prototype dashboard.
+- Final Power BI calculations must be checked against the values in this document.
 
 ## Responsibility
 
-- Metric definitions and prototype validation: Phyo Wai Aung
-- Backend data export and Power BI dashboard: Kyaw Linn
+- Metric definitions, dataset validation, data dictionary, and prototype validation: Phyo Wai Aung
+- Backend development, prototype improvements, and Power BI dashboard: Kyaw Linn
 - README and weekly logbook updates: Arkar Kyaw Oo
