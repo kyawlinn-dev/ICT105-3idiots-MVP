@@ -1,0 +1,8 @@
+EventID,RecordID,EventDate,TestCaseID,UserRole,ActionType,DeviceType,Result,RequirementID,EvidenceSource
+EVT-001,,2026-07-24,T01,Visitor,OpenHomepage,Laptop,Passed with startup-delay observation,FR-01,docs/prototype-testing-notes.md
+EVT-002,APT-002,2026-07-24,T02,Landlord,SubmitListing,Laptop,Passed,FR-03,docs/prototype-testing-notes.md
+EVT-003,APT-002,2026-07-24,T03,Landlord,VerifyListingPersistence,Laptop,Passed,FR-04/FR-05,docs/prototype-testing-notes.md
+EVT-004,APT-002,2026-07-24,T04,Student,SearchAndFilterListings,Laptop,Passed,FR-06,docs/prototype-testing-notes.md
+EVT-005,APT-002,2026-07-24,T05,Student,ViewListingDetail,Laptop,Passed,FR-07,docs/prototype-testing-notes.md
+EVT-006,APT-002,2026-07-24,T06,Admin,ApproveListing,Laptop,Passed,FR-08/FR-09,docs/prototype-testing-notes.md
+EVT-007,APT-002,2026-07-24,T07,Admin,ViewDashboardMetrics,Laptop,Passed,FR-12,docs/prototype-testing-notes.md
