@@ -1,0 +1,23 @@
+DatasetName,ColumnName,DataType,Required,Description,ExampleValue,PrivacyNote
+lab11_apartment_records.csv,RecordID,Text,Yes,Anonymous identifier used to connect an apartment record with activity events.,APT-002,Contains no personal information.
+lab11_apartment_records.csv,ApartmentName,Text,Yes,Public name of the apartment listing.,Bundit Apartment,Public listing information.
+lab11_apartment_records.csv,LandlordName,Text,Yes,Public landlord or property name shown in the administrator dashboard.,Bundit Apartment,Private email and contact information are excluded.
+lab11_apartment_records.csv,DistanceKM,Decimal,Yes,Displayed distance from the apartment to the university in kilometres.,1.5,Non-personal location summary.
+lab11_apartment_records.csv,MonthlyRentTHB,Whole Number,Yes,Monthly apartment rent in Thai baht.,5500,Public listing information.
+lab11_apartment_records.csv,ReviewStatus,Text,Yes,Administrator review result for the listing.,Approved,Operational status only.
+lab11_apartment_records.csv,ListingCount,Whole Number,Yes,Number of listings connected to the landlord record.,1,Aggregated count.
+lab11_apartment_records.csv,ApprovedCount,Whole Number,Yes,Number of approved listings connected to the landlord record.,1,Aggregated count.
+lab11_apartment_records.csv,SubmittedDate,Date,No,Date the listing was submitted when available.,2026-07-24,Currently blank because the date was not visible.
+lab11_apartment_records.csv,LastUpdatedDate,Date,No,Date the listing was last reviewed or updated when available.,2026-07-24,Currently blank because the date was not visible.
+lab11_apartment_records.csv,RequirementID,Text,Yes,System requirement supported by the record or administration activity.,FR-08,Project documentation reference.
+lab11_apartment_records.csv,Source,Text,Yes,Prototype location from which the visible data was collected.,Admin Dashboard,No credential or secret information.
+lab11_activity_log.csv,EventID,Text,Yes,Anonymous identifier for one recorded prototype test event.,EVT-001,Contains no personal information.
+lab11_activity_log.csv,RecordID,Text,No,Related apartment record identifier; blank when an event is not listing-specific.,APT-002,Anonymous relationship key.
+lab11_activity_log.csv,EventDate,Date,Yes,Date on which the prototype test event occurred.,2026-07-24,Non-sensitive test date.
+lab11_activity_log.csv,TestCaseID,Text,Yes,Identifier matching the prototype testing notes.,T01,Project documentation reference.
+lab11_activity_log.csv,UserRole,Text,Yes,Role used to perform the test without identifying the individual tester.,Admin,Uses roles instead of names.
+lab11_activity_log.csv,ActionType,Text,Yes,Prototype action completed during the test.,ApproveListing,Operational event only.
+lab11_activity_log.csv,DeviceType,Text,Yes,General device category used for testing.,Laptop,Does not include device identifiers.
+lab11_activity_log.csv,Result,Text,Yes,Outcome recorded for the test action.,Passed,Contains no personal information.
+lab11_activity_log.csv,RequirementID,Text,Yes,System requirement verified by the event.,FR-09,Project documentation reference.
+lab11_activity_log.csv,EvidenceSource,Text,Yes,Repository document containing the detailed test evidence.,docs/prototype-testing-notes.md,Internal repository path only.
