@@ -614,3 +614,172 @@ The team plans to monitor landing page visitors, CTA click-through rate, prototy
 - Fix remaining UI and backend issues.
 - Prepare presentation materials and demonstration.
 - Review all documentation before final project submission.
+
+# Weekly Logbook - Lab 13
+
+## Group Name
+
+3idiots
+
+## Project Title
+
+Student Apartment Finder Platform
+
+## Date
+
+29 July 2026
+
+## Members and Contributions
+
+| Member | Contribution This Lab | GitHub Evidence |
+| --- | --- | --- |
+| Phyo Wai Aung | Prepared the sales scenario, improved prototype presentation, and updated screenshots for the final demonstration. | `/docs/sales-scenario.md`, `/screenshots/` |
+| Kyaw Linn | Reviewed the prototype workflow, verified backend functionality, supported user testing, and refined administrator functions. | `/prototype/backend` |
+| Arkar Kyaw Oo | Prepared the demo script, user testing documents, improvement list, README updates, and weekly logbook. | `/docs/`, `README.md` |
+
+## Work Completed
+
+- Sales scenario:
+  Completed a realistic customer scenario showing how university students use the Student Apartment Finder Platform to search for suitable accommodation and contact landlords.
+
+- Demo script:
+  Prepared a complete step-by-step demonstration covering the landing page, apartment search, filtering, apartment details, user interaction, administrator functions, and dashboard.
+
+- User testing plan:
+  Defined tester profiles, testing objectives, success criteria, observation methods, and evaluation metrics.
+
+- User testing results:
+  Conducted prototype testing, recorded user feedback, identified usability issues, and documented improvement recommendations.
+
+- Final improvement list:
+  Prioritised improvements into Critical, Important, Useful, and Future Enhancements to prepare for the final MVP release.
+
+- Screenshots:
+  Captured updated screenshots showing the latest prototype implementation and demonstration workflow.
+
+## Key Decisions
+
+- Maintain the existing system requirements without major changes.
+- Improve user experience through interface refinement instead of introducing additional features.
+- Focus final development on stability, usability, and documentation quality.
+- Prioritise completing administrator functions and dashboard improvements before final submission.
+
+## Problems Encountered
+
+- Minor interface alignment issues remained on several pages.
+- Some administrator functions required additional backend refinement.
+- Dashboard metrics required more representative sample data.
+- Documentation and screenshots required updating to match the latest prototype.
+
+## Next Actions Before Lab 14
+
+- Complete remaining interface improvements.
+- Resolve identified usability issues.
+- Finalise administrator features.
+- Prepare the final prototype presentation.
+- Complete all final documentation and repository cleanup.
+
+## Requirement Traceability Notes
+
+The following requirements were reviewed and confirmed before the final MVP release:
+
+- FR-01 Homepage
+- FR-02 User workflow
+- FR-03 Apartment listing submission
+- FR-04 Data storage
+- FR-05 Apartment listing
+- FR-06 Search and filtering
+- FR-07 Apartment detail view
+- FR-08 Status management
+- FR-09 Administrator functions
+- FR-10 User validation and feedback
+- FR-11 Dashboard and startup metrics
+- FR-12 Requirement traceability
+
+Remaining work focuses on minor interface improvements and completing the final verification before Lab 14.
+
+# Weekly Logbook - Lab 14
+
+## Group Name
+
+3idiots
+
+## Date
+
+29 July 2026
+
+## Members Present
+
+- Phyo Wai Aung
+- Kyaw Linn
+- Arkar Kyaw Oo
+
+---
+
+## What We Completed Today
+
+- Finalised the Student Apartment Finder Platform prototype.
+- Verified all functional requirements against the implementation.
+- Updated project documentation.
+- Organised repository structure.
+- Prepared the final demonstration.
+- Completed final testing and documentation review.
+- Prepared venture pitch materials.
+
+---
+
+## Final Prototype Updates
+
+- Completed homepage and landing page improvements.
+- Verified apartment browsing workflow.
+- Confirmed search and filtering functionality.
+- Completed apartment detail page improvements.
+- Finalised administrator management functions.
+- Verified dashboard and startup metrics.
+- Reviewed data handling through Supabase.
+- Fixed minor interface issues discovered during final testing.
+
+---
+
+## Final Documentation Updates
+
+The following documentation was completed or updated:
+
+- README
+- Weekly Logbook
+- Final Prototype Report
+- Final Demo Script
+- Final Reflection
+- Final Submission Checklist
+- Feature Implementation Status
+- Prototype Testing Documents
+
+---
+
+## GitHub Contributions Today
+
+| Member | File/Issue/Commit Updated | Evidence Link |
+|---|---|---|
+| Phyo Wai Aung | Frontend improvements, landing page refinement, UI polishing | `/prototype/frontend` |
+| Kyaw Linn | Backend improvements, administrator module, Supabase integration | `/prototype/backend` |
+| Arkar Kyaw Oo | README, final documentation, reflection, prototype report, GitHub cleanup | `/docs/`, `README.md` |
+
+---
+
+## Problems Found Before Submission
+
+- Minor responsive layout adjustments remain for smaller mobile screens.
+- Dashboard metrics can be improved further with larger production datasets.
+- Additional security enhancements could be implemented for production deployment.
+- Future versions may include push notifications and real-time messaging between students and landlords.
+
+---
+
+## Action Before Final Presentation
+
+- Verify all GitHub links.
+- Confirm prototype deployment is accessible.
+- Review all screenshots.
+- Practice the complete demonstration script.
+- Review venture pitch presentation.
+- Perform one final repository inspection before submission.
