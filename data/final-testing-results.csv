@@ -1,0 +1,9 @@
+tester_id,target_user_type,task,completed,time_minutes,confusion_point,feedback_score_1_5,comment,improvement_needed
+SIM-STU-01,University Student,Understand the homepage and product purpose,Yes,1,None,5,Simulated final check found the homepage purpose and main actions clear,No
+SIM-STU-01,University Student,Browse search and filter apartment listings,Yes,3,Distance unit could be clearer,4,Simulated final check confirmed that search and filters return apartment results,Yes
+SIM-STU-01,University Student,Open an apartment and review its complete details,Yes,2,Map may require a short loading time,4,Simulated final check confirmed that price facilities photos contact and map are displayed,Yes
+SIM-STU-02,University Student,Complete the main pathway from homepage to landlord inquiry,Yes,4,Inquiry action could be more prominent,4,Simulated final check confirmed the complete student pathway,Yes
+SIM-LAND-01,Landlord Role,Start submitting a new apartment listing,Partial,6,Location and photograph instructions require clarification,3,Simulated final check confirmed the form fields but identified remaining guidance improvements,Yes
+SIM-ADM-01,Administrator Role,Review apartment listing status and available actions,Yes,3,Approval controls could be more visible,4,Simulated final check confirmed listing records status and administrator actions,Yes
+SIM-ADM-01,Administrator Role,Review and understand a roommate post,Partial,3,Moderation status explanation could be clearer,3,Simulated final check confirmed moderation functions with a minor clarity issue,Yes
+SIM-ADM-01,Administrator Role,Explain the administrator dashboard metrics,Yes,2,Average rent should show THB per month clearly,4,Simulated final check confirmed the dashboard summaries and charts,Yes
