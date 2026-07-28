@@ -30,3 +30,37 @@ Landlords can submit apartment listings, while the platform administrator can re
 ## 6. Value Message
 
 For university students who experience difficulty finding reliable and comparable accommodation information, our Student Apartment Finder Platform helps them find suitable apartments near campus by providing centralized listings with prices, distance, facilities, photographs, availability, landlord contact details, and map locations.
+
+## 7. Sales Conversation / Pitch Moment
+
+**Student:** I have been searching Facebook groups for an apartment, but the information is confusing and I cannot easily compare the prices or locations.
+
+**Team Member:** Our Student Apartment Finder Platform brings apartment information together in one place. You can search by apartment name, area, or university and use filters for price, distance, room type, facilities, and availability.
+
+**Student:** Can I check the apartment before contacting the landlord?
+
+**Team Member:** Yes. Each approved listing provides room photographs, monthly rent, facilities, distance from the university, availability, landlord contact information, and a confirmed map location. You can compare the information before sending an inquiry.
+
+**Student:** That would save me time and help me choose more confidently.
+
+**Team Member:** You can open the live platform now, browse the approved apartments, and provide feedback about your experience.
+
+##8. Expected User Action
+
+After seeing the product, the user should:
+
+Open the live Student Apartment Finder prototype.
+
+Browse available apartment listings.
+
+Search or filter listings based on personal needs.
+
+Open an apartment detail page.
+
+Compare the price, facilities, distance, photographs, and location.
+
+Send an inquiry to a landlord when interested.
+
+Try the roommate-finding feature if needed.
+
+Provide feedback about the platform.
