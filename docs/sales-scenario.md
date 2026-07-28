@@ -64,3 +64,19 @@ Send an inquiry to a landlord when interested.
 Try the roommate-finding feature if needed.
 
 Provide feedback about the platform.
+
+## 9. Related Requirements
+
+| Requirement ID | Related Functionality |
+| --- | --- |
+| FR-01 | The homepage identifies the product, target users, problem, and main action. |
+| FR-02 | Students can follow the main pathway from browsing apartments to viewing a suitable listing. |
+| FR-03 | Landlords and users can submit relevant information through the platform forms. |
+| FR-04 | Apartment listings and other submitted records are stored and displayed by the system. |
+| FR-05 | Students and administrators can view apartment records and other relevant lists. |
+| FR-06 | Students can search and filter apartment listings. |
+| FR-07 | Students can open a listing to view its complete details. |
+| FR-08 | The platform displays availability and approval status. |
+| FR-09 | Administrators can review apartment listings and roommate posts. |
+| FR-10 | Forms provide validation, error prevention, and user feedback. |
+| FR-11 | The admin dashboard displays useful platform summaries and metrics. |
