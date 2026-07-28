@@ -566,3 +566,51 @@ MVP Implementation Sprint 2 and Startup Metrics
 - Resolve issues identified during prototype testing.
 - Improve responsiveness, performance, and backend validation.
 - Prepare the final version of the Student Apartment Finder Platform for demonstration.
+
+# Weekly Logbook - Lab 12
+
+## Group Name
+
+3idiots
+
+## Project Title
+
+Student Apartment Finder Platform
+
+## Lab Date
+
+29 July 2026
+
+## Work Completed Today
+
+| Member Name | Contribution | File/Commit Evidence |
+| --- | --- | --- |
+| Phyo Wai Aung | Designed and improved the landing page interface and promotional content. | `/landing-page` |
+| Kyaw Linn | Connected the landing page with the working prototype and verified functionality. | Prototype integration |
+| Arkar Kyaw Oo | Updated README, weekly logbook, landing page documentation, and screenshots. | `README.md`, `docs/weekly-logbook.md` |
+
+## Landing Page Progress
+
+The team designed a responsive landing page introducing the Student Apartment Finder Platform, highlighting its purpose, key features, and benefits for university students. A clear call-to-action was added to encourage visitors to access the working prototype and begin searching for apartments.
+
+## Go-to-Market Progress
+
+The target audience includes university students seeking accommodation and apartment owners wishing to advertise their properties. The marketing strategy focuses on Facebook, Instagram, TikTok, university social media groups, and student communities. The campaign message promotes safe, affordable, and convenient apartment searching through one central platform.
+
+## Metrics Plan
+
+The team plans to monitor landing page visitors, CTA click-through rate, prototype visits, user registrations, apartment searches, and engagement with promotional content to evaluate marketing effectiveness.
+
+## Problems Encountered
+
+- The landing page required refinement to maintain visual consistency with the prototype.
+- Additional optimisation is needed for mobile responsiveness.
+- Marketing content and screenshots required several revisions before finalisation.
+
+## Next Action Before Lab 13
+
+- Finalise the remaining prototype improvements.
+- Complete end-to-end system testing.
+- Fix remaining UI and backend issues.
+- Prepare presentation materials and demonstration.
+- Review all documentation before final project submission.
