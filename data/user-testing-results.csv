@@ -1,0 +1,16 @@
+Tester_ID,Tester_Type,Task_ID,Task_Description,Completed,Completion_Time_Min,Confusion_Point,Feedback_Score_1_5,Comment,Related_Requirement
+STU-01,University Student,T01,Understand the homepage purpose,Yes,1,None,5,The purpose and apartment search action were clear,FR-01
+STU-01,University Student,T02,Search and filter apartment listings,Yes,3,Distance unit was not immediately noticed,4,Search worked and the filters were useful,"FR-02;FR-05;FR-06"
+STU-01,University Student,T03,View apartment details and location,Yes,2,Map took a short time to load,4,The price facilities photos and location were useful,"FR-07;FR-08"
+STU-01,University Student,T07,Find and understand the roommate feature,Partial,3,Moderation status was not immediately clear,3,The feature was useful but needed a clearer status explanation,"FR-02;FR-08;FR-09"
+STU-02,International Student,T01,Understand the homepage purpose,Yes,1,None,5,The homepage clearly explained that the platform helps students find apartments,FR-01
+STU-02,International Student,T02,Search and filter apartment listings,Yes,2,University filter required a moment to understand,4,Filtering by price and university was helpful,"FR-02;FR-05;FR-06"
+STU-02,International Student,T03,View apartment details and location,Yes,3,Landlord contact action could be more visible,4,Apartment details provided enough information for comparison,"FR-07;FR-08"
+STU-02,International Student,T07,Find and understand the roommate feature,Yes,2,None,4,The roommate page was easy to find and understand,"FR-02;FR-08;FR-09"
+STU-03,University Student,T01,Understand the homepage purpose,Yes,1,None,5,The main heading and apartment photograph made the purpose clear,FR-01
+STU-03,University Student,T02,Search and filter apartment listings,Partial,4,Clear all action was not noticed immediately,3,The filters worked but resetting them could be clearer,"FR-02;FR-05;FR-06"
+STU-03,University Student,T03,View apartment details and location,Yes,2,None,5,The detail page and map were easy to understand,"FR-07;FR-08"
+STU-03,University Student,T07,Find and understand the roommate feature,Yes,2,None,4,The feature was useful for students interested in shared housing,"FR-02;FR-08;FR-09"
+LAND-01,Landlord Role Tester,T04,Start submitting an apartment listing,Partial,6,Location confirmation and photo requirements needed more explanation,3,The form was complete but some instructions should be clearer,"FR-03;FR-04;FR-10"
+ADM-01,Administrator Role Tester,T05,Review apartment and roommate records,Yes,3,Approval controls were not immediately obvious,4,The records and statuses were understandable,"FR-08;FR-09"
+ADM-01,Administrator Role Tester,T06,Understand dashboard metrics,Yes,2,Average rent did not show a currency explanation beside the main number,4,The dashboard summary and charts were useful,FR-11
