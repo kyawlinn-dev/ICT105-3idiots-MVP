@@ -1,0 +1,7 @@
+sample_record_id,apartment_name,monthly_price_thb,distance_km,near_university,approval_status,data_source,privacy_note
+APT-001,Rangsita Apartment,3000,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
+APT-002,Bundit Apartment,5500,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
+APT-003,Mst House,6000,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
+APT-004,Littlebears Residences,7400,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
+APT-005,The Rise 789,8500,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
+APT-006,WoodRoof Residence Rangsit,10500,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
