@@ -1,0 +1,13 @@
+requirement_id,feature_or_screen,user_story_id,evidence_source,final_status,screenshot_file,notes
+FR-01,Public homepage,US-01,Homepage and Lab 13 demo script,Completed,final-homepage.png,Shows the product title target users problem and main actions
+FR-02,Primary apartment discovery pathway,US-02,Homepage apartment list filters and detail page,Completed,"final-homepage.png;final-record-list.png;final-detail-view.png",Students can move from the homepage to a selected apartment
+FR-03,Landlord listing submission,US-04,Landlord Add Listing form,Partially Completed,final-input-form.png,Final form guidance and validation require verification
+FR-04,Apartment and roommate data handling,"US-02;US-04",Stored records shown in student and admin views,Completed,"final-record-list.png;final-admin-view.png",Apartment and roommate records are stored and displayed
+FR-05,Apartment and administrative record lists,US-02,Apartment list and admin listing records,Completed,"final-record-list.png;final-admin-view.png",Students and administrators can view relevant records
+FR-06,Apartment search and filters,US-02,Search and filter panel,Completed,final-record-list.png,Search and filters work with minor clarity improvements recorded
+FR-07,Apartment detail view,US-03,Apartment detail page,Completed,final-detail-view.png,Displays photos rent distance facilities contact and map
+FR-08,Availability approval and moderation status,"US-03;US-05",Detail page and administrative status labels,Completed,"final-detail-view.png;final-admin-view.png",Status information is displayed with minor clarity improvements recorded
+FR-09,Administrator review and moderation,US-06,Admin listings roommate posts landlords and dashboard,Completed,"final-admin-view.png;final-dashboard.png",Administrator records and moderation functions are demonstrated
+FR-10,Form validation and feedback,US-04,Landlord Add Listing form,Partially Completed,final-input-form.png,Location and photo guidance require final verification
+FR-11,Dashboard and product metrics,US-07,Administrator dashboard,Completed,final-dashboard.png,Shows listings availability rent status pain points and roommate demand
+FR-12,Final requirement traceability,US-01 to US-07,Final audit documents testing evidence and screenshots,Completed,"final-homepage.png;final-input-form.png;final-record-list.png;final-detail-view.png;final-dashboard.png;final-admin-view.png",Traceability matrix and CSV connect the final prototype to documented requirements
