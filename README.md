@@ -81,6 +81,8 @@ Possible technologies:
 | **Lab 10** | Began Sprint 1 implementation by developing the first working prototype, preparing the frontend and backend structure, implementing core apartment browsing features, creating the implementation plan, mapping implemented features to system requirements, and updating project documentation. | `implementation-plan.md`, `feature-implementation-status.md`, `prototype/frontend`, `prototype/backend`, screenshots, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 11** | Continued Sprint 2 implementation by improving the prototype, strengthening data handling, enhancing search and administrator functions, adding startup metrics, testing the complete user workflow, documenting implementation progress, and updating GitHub documentation. | `startup-metrics.md`, `prototype-testing-notes.md`, updated `feature-implementation-status.md`, updated prototype files, screenshots, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 12** | Designed the project landing page, prepared the digital go-to-market strategy, connected the landing page to the working prototype, defined acquisition metrics, updated project documentation, and uploaded the supporting screenshots. | `landing-page/`, `landing-page-content.md`, `README.md`, `weekly-logbook.md`, landing page screenshots | ✅ Completed |
+| **Lab 13** | Conducted the final prototype demonstration, prepared the sales scenario and demo script, completed user testing, analysed user feedback, documented the final improvement list, updated the project documentation, and prepared the project for the final MVP release. | `sales-scenario.md`, `demo-script.md`, `user-testing-plan.md`, `user-testing-results.md`, `final-improvement-list.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
+| **Lab 14** | Finalised the Student Apartment Finder Platform, completed the final prototype report and reflection, verified all implemented features, organised the GitHub repository, prepared the final presentation materials, completed the final submission checklist, and updated the project documentation for the final MVP release. | `final-prototype-report.md`, `final-demo-script.md`, `final-reflection.md`, `final-submission-checklist.md`, `final-pitch-outline.md`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
@@ -528,6 +530,159 @@ The landing page supports the project's functional requirements by introducing t
 | Kyaw Linn | Connected the landing page with the working prototype and improved deployment. | Prototype integration commits |
 | Arkar Kyaw Oo | Updated README and weekly logbook, | Documentation commits |
 
+## Lab 13: Sales Scenario, Demo Script, and User Testing
+
+### Lab 13 Objective
+
+During Lab 13, the team prepared the final demonstration materials for the Student Apartment Finder Platform before the final MVP release. We developed a realistic sales scenario, created a structured demo script, prepared and conducted user testing, analysed the testing results, and documented the remaining improvements required before the final presentation. All activities were aligned with the project requirements, user stories, MVP features, and previous validation results.
+
+### Files Completed
+
+- [x] `/docs/sales-scenario.md`
+- [x] `/docs/demo-script.md`
+- [x] `/docs/user-testing-plan.md`
+- [x] `/docs/user-testing-results.md`
+- [x] `/docs/final-improvement-list.md`
+- [x] `/docs/weekly-logbook.md`
+- [x] `/screenshots/demo-flow.png`
+- [x] `/screenshots/user-testing-evidence.png`
+
+### Prototype / Demo Link
+
+Prototype Folder
+
+```
+/prototype/frontend
+```
+
+Backend
+
+```
+/prototype/backend
+```
+
+Landing Page
+
+```
+/landing-page
+```
+
+### Final Preparation Status
+
+The Student Apartment Finder Platform has completed the final demonstration preparation. The prototype now supports the complete user journey, including browsing apartments, searching and filtering listings, viewing apartment details, contacting landlords, and administrator management. User testing was completed to identify usability issues and collect improvement suggestions. Remaining tasks focus on interface refinement, minor bug fixes, and final documentation before the Lab 14 final MVP release.
+
+# Student Apartment Finder Platform
+
+## Project Title
+
+Student Apartment Finder Platform
+
+## Group Members
+
+| Name | Role | Main Contribution |
+|---|---|---|
+| Phyo Wai Aung | Frontend Developer | Developed the user interface, apartment browsing pages, search and filter functions, and landing page. |
+| Kyaw Linn | Backend Developer | Implemented backend services, Supabase integration, administrator functions, and data management. |
+| Arkar Kyaw Oo | Documentation & Project Management | Managed GitHub documentation, testing documents, README updates, weekly logbooks, and project coordination. |
+
+---
+
+## Project Overview
+
+The Student Apartment Finder Platform is a web-based application designed to help university students easily search for suitable apartments near their campus. The platform allows users to browse listings, search and filter apartments, view detailed information, contact landlords, and manage apartment records through an administrator interface. Throughout the semester, the prototype evolved from an initial concept into a requirement-based MVP supported by user validation, technical implementation, startup metrics, responsible IT practices, and final usability testing.
+
+---
+
+## Target Users
+
+- University students looking for rental accommodation.
+- Apartment owners who want to advertise available rooms.
+- Platform administrators responsible for managing apartment listings and user-generated content.
+
+---
+
+## Problem Solved
+
+Students often spend significant time searching across multiple social media platforms and unofficial channels to find suitable accommodation. Information is frequently incomplete, outdated, or unreliable. The Student Apartment Finder Platform centralises apartment information into a single system where users can quickly search, compare, and contact landlords while providing administrators with tools to manage listings efficiently.
+
+---
+
+## Final Prototype
+
+**Prototype Folder**
+
+```
+/prototype/frontend
+```
+
+**Backend**
+
+```
+/prototype/backend
+```
+
+**Landing Page**
+
+```
+/landing-page
+```
+
+**Final Demo**
+
+```
+/prototype/final-demo-link.md
+```
+
+---
+
+## Final Documentation
+
+- System requirements: `/docs/system-requirements.md`
+- User stories: `/docs/user-stories.md`
+- MVP feature list: `/docs/mvp-feature-list.md`
+- Feature implementation status: `/docs/feature-implementation-status.md`
+- Final prototype report: `/docs/final-prototype-report.md`
+- Final demo script: `/docs/final-demo-script.md`
+- Final reflection: `/docs/final-reflection.md`
+
+---
+
+## Screenshots
+
+- `/screenshots/final-homepage.png`
+- `/screenshots/final-input-form.png`
+- `/screenshots/final-record-list.png`
+- `/screenshots/final-detail-view.png`
+- `/screenshots/final-dashboard.png`
+- `/screenshots/final-admin-view.png`
+
+---
+
+## Pitch
+
+Final venture pitch materials are available in:
+
+```
+/pitch/
+```
+
+---
+
+## Data and Diagrams
+
+- Final sample dataset: `/data/`
+- System diagrams: `/diagrams/`
+- Technical architecture
+- Data structure
+- User flow
+- Business Model Canvas
+
+---
+
+## Final Submission Notes
+
+The Student Apartment Finder Platform successfully satisfies the project objectives established throughout ICT105. The prototype demonstrates the complete user journey, requirement traceability, user validation, startup metrics, and responsible IT practices. All project evidence has been organised within a single GitHub repository to support the final presentation and assessment.
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
@@ -555,6 +710,12 @@ In Lab 10, the team successfully started implementing the Student Apartment Find
 In Lab 11, the team continued Sprint 2 development of the Student Apartment Finder Platform by improving both the frontend and backend implementation. Core user journeys were refined, data handling through Supabase was strengthened, startup metrics were introduced, and prototype testing was conducted to evaluate the complete workflow. The prototype now demonstrates greater functionality, improved usability, and better alignment with the approved system requirements.
 
 In Lab 12, the team expanded the Student Apartment Finder Platform by creating a dedicated landing page to promote the project and introduce its core features. A digital go-to-market strategy was prepared to identify target users, marketing channels, and acquisition metrics. The landing page was connected to the working prototype, allowing potential users to access the system through a clear call-to-action while maintaining consistency with the project requirements and branding.
+
+The Student Apartment Finder Platform has reached the final testing stage. Core features including apartment browsing, search and filtering, apartment detail viewing, landlord contact, and administrator management have been implemented and tested. User testing has been completed, feedback has been analysed, and the remaining improvements have been identified. The project is now ready for final refinement before submission in Lab 14.
+
+The Student Apartment Finder Platform has reached its final project stage. All core functional requirements have been implemented, including apartment browsing, search and filtering, apartment detail viewing, landlord contact, and administrator management. The prototype has been validated through user testing, documentation has been completed, and the GitHub repository has been organised for final submission. The project is now fully prepared for the final presentation and assessment.
+
+
 
 
 
@@ -596,3 +757,5 @@ In Lab 11, the team will continue expanding the prototype by completing the rema
 In Lab 12, the team will complete the remaining prototype features, resolve issues identified during testing, improve dashboard analytics, finalise administrator functionality, optimise system performance, and prepare the Student Apartment Finder Platform for final demonstration and project submission.
 
 In Lab 13, the team will complete the remaining prototype improvements, perform final testing and bug fixing, prepare the presentation materials, finalise project documentation, and ensure the Student Apartment Finder Platform is ready for demonstration and final submission.
+
+For Lab 14, the team will complete the remaining interface improvements, fix any outstanding issues identified during user testing, prepare the final prototype report and reflection, organise the GitHub repository, complete the final presentation materials, and perform a final review before project submission.
