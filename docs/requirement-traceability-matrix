@@ -14,3 +14,18 @@ The user-story IDs should be checked against `docs/user-stories.md` during the f
 | E04 | Students need access to stored and updated apartment information. | FR-04 | US-02, US-04 | Apartment and roommate data handling | Apartment records, landlord records, and roommate posts | `screenshots/final-record-list.png`, `screenshots/final-admin-view.png` | Completed |
 | E05 | Students need to browse available accommodation in one place. | FR-05 | US-02 | Apartment record list | Apartments page and admin listing page | `screenshots/final-record-list.png` | Completed |
 | E06 | Students need to find apartments that match price, distance, university, room type, and facility preferences. | FR-06 | US-02 | Apartment search and filtering | Apartment filter panel | `screenshots/final-record-list.png` | Completed |
+| E07 | Students need enough trustworthy detail before contacting a landlord. | FR-07 | US-03 | Apartment detail and comparison | Apartment detail page with photographs, facilities, contact, and map | `screenshots/final-detail-view.png` | Completed |
+| E08 | Students and administrators need to understand availability, approval, and moderation progress. | FR-08 | US-03, US-05 | Availability and approval-status tracking | Apartment details, admin listings, and roommate moderation | `screenshots/final-detail-view.png`, `screenshots/final-admin-view.png` | Completed |
+| E09 | Submitted records require administrator review and platform oversight. | FR-09 | US-06 | Administrator review and moderation | Admin listings, roommate posts, landlord records, and dashboard | `screenshots/final-admin-view.png`, `screenshots/final-dashboard.png` | Completed |
+| E10 | Incomplete or incorrect submissions could reduce listing reliability. | FR-10 | US-04 | Form validation and user feedback | Landlord Add Listing form | `screenshots/final-input-form.png` | Partially Completed |
+| E11 | The team and administrator need useful summaries for platform decisions. | FR-11 | US-07 | Startup and product dashboard | Admin dashboard | `screenshots/final-dashboard.png` | Completed |
+| E12 | The lecturer must be able to connect the prototype to requirements and previous evidence. | FR-12 | US-01 to US-07 | Final requirement traceability | Requirements, testing, screenshots, and final audit documents | `docs/feature-implementation-status.md`, `data/final-requirement-traceability.csv` | Partially Completed |
+
+## Final Audit Summary
+
+- **Completed:** FR-01, FR-02, FR-04, FR-05, FR-06, FR-07, FR-08, FR-09, and FR-11
+- **Partially Completed:** FR-03, FR-10, and FR-12
+- **Not Completed:** None
+- **Justified Changes:** None currently recorded
+
+FR-03 and FR-10 require final verification of the landlord-form guidance and validation. FR-12 will become Completed after the traceability CSV is added and the provisional user-story IDs are checked against `docs/user-stories.md`.
