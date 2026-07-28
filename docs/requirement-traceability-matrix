@@ -1,0 +1,16 @@
+# Requirement Traceability Matrix
+
+## Mapping Note
+
+This matrix connects the final Student Apartment Finder prototype to problem evidence, requirements, user stories, MVP features, prototype screens, and final screenshots.
+
+The user-story IDs should be checked against `docs/user-stories.md` during the final repository review. If the earlier document uses different IDs, the IDs will be updated without changing the demonstrated functionality or evidence.
+
+| Evidence ID | Problem Pattern | Requirement ID | User Story ID | MVP Feature | Prototype Screen / Module | Final Screenshot | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| E01 | Students need to understand the housing platform immediately. | FR-01 | US-01 | Product homepage and main actions | Public homepage | `screenshots/final-homepage.png` | Completed |
+| E02 | Students need a clear journey from starting a search to selecting an apartment. | FR-02 | US-02 | Main apartment-discovery pathway | Homepage, apartment list, filters, and detail page | `screenshots/final-homepage.png`, `screenshots/final-record-list.png`, `screenshots/final-detail-view.png` | Completed |
+| E03 | Landlords need a structured way to submit apartment information. | FR-03 | US-04 | Landlord listing submission | Add Listing form | `screenshots/final-input-form.png` | Partially Completed |
+| E04 | Students need access to stored and updated apartment information. | FR-04 | US-02, US-04 | Apartment and roommate data handling | Apartment records, landlord records, and roommate posts | `screenshots/final-record-list.png`, `screenshots/final-admin-view.png` | Completed |
+| E05 | Students need to browse available accommodation in one place. | FR-05 | US-02 | Apartment record list | Apartments page and admin listing page | `screenshots/final-record-list.png` | Completed |
+| E06 | Students need to find apartments that match price, distance, university, room type, and facility preferences. | FR-06 | US-02 | Apartment search and filtering | Apartment filter panel | `screenshots/final-record-list.png` | Completed |
