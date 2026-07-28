@@ -80,6 +80,7 @@ Possible technologies:
 | **Lab 09** | Conducted a responsible IT review covering privacy, data protection, ethical risks, intellectual property, third-party assets, basic security, and requirement impacts. Created the data inventory and risk registers and began updating the required documentation. | `legal-ethical-checklist.md`, `privacy-and-data-protection.md`, `ip-and-third-party-assets.md`, `risk-register.md`, `data-inventory.csv`, `risk-register.csv`, `third-party-assets-register.csv`, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 10** | Began Sprint 1 implementation by developing the first working prototype, preparing the frontend and backend structure, implementing core apartment browsing features, creating the implementation plan, mapping implemented features to system requirements, and updating project documentation. | `implementation-plan.md`, `feature-implementation-status.md`, `prototype/frontend`, `prototype/backend`, screenshots, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
 | **Lab 11** | Continued Sprint 2 implementation by improving the prototype, strengthening data handling, enhancing search and administrator functions, adding startup metrics, testing the complete user workflow, documenting implementation progress, and updating GitHub documentation. | `startup-metrics.md`, `prototype-testing-notes.md`, updated `feature-implementation-status.md`, updated prototype files, screenshots, updated `README.md`, updated `weekly-logbook.md` | ✅ Completed |
+| **Lab 12** | Designed the project landing page, prepared the digital go-to-market strategy, connected the landing page to the working prototype, defined acquisition metrics, updated project documentation, and uploaded the supporting screenshots. | `landing-page/`, `landing-page-content.md`, `README.md`, `weekly-logbook.md`, landing page screenshots | ✅ Completed |
 
 ## Customer Problem Discovery Summary
 In Lab 03, our team conducted customer discovery activities to validate the apartment-searching problems experienced by university students. We collected early evidence through interviews and surveys involving students who have experience searching for off-campus accommodation.
@@ -476,6 +477,57 @@ The following startup metrics were implemented or documented:
 - Optimise responsiveness and overall user experience.
 - Prepare the final production-ready prototype.
 
+## Lab 12 - Landing Page and Digital Go-to-Market
+
+### Landing Page
+
+- **Landing page folder/link:** `/landing-page`
+- **Main CTA:** **Find Your Perfect Student Apartment Today**
+- **Prototype/demo link:** `/prototype/frontend`
+
+The landing page was created to introduce the Student Apartment Finder Platform, explain its purpose, highlight its key features, and encourage students to explore the prototype. It provides a clear call-to-action that directs visitors to begin searching for apartments or access the working prototype.
+
+### Go-to-Market Plan
+
+- **Target early users:**
+  - University students searching for off-campus accommodation.
+  - Apartment owners who want to advertise rental properties.
+  - University communities and student organisations.
+
+- **Selected channels:**
+  - Facebook
+  - Instagram
+  - TikTok
+  - University Facebook Groups
+  - University Discord and Line communities
+
+- **Main marketing message:**
+
+> Find safe, affordable student accommodation faster with the Student Apartment Finder Platform. Search verified listings, compare apartments, and contact landlords directly in one convenient platform.
+
+### Acquisition Metrics
+
+- **Landing page visitors**
+- **Prototype click-through rate (CTA clicks)**
+- **User registrations / apartment searches**
+
+### Screenshots
+
+- Landing page screenshot: `/screenshots/landing-page.png`
+- CTA screenshot: `/screenshots/call-to-action.png`
+
+### Requirement Alignment
+
+The landing page supports the project's functional requirements by introducing the Student Apartment Finder Platform, explaining its core purpose, and directing users to the working prototype. The CTA encourages students to begin the apartment search process, while the landing page reflects the approved user stories, system requirements, and MVP features developed throughout previous labs. It also follows the responsible-design principles established during Lab 09.
+
+### Member Contributions
+
+| Member | Contribution | Commit/Issue Evidence |
+| --- | --- | --- |
+| Phyo Wai Aung | Designed the landing page layout and promotional content, and project screenshots | Landing page commits |
+| Kyaw Linn | Connected the landing page with the working prototype and improved deployment. | Prototype integration commits |
+| Arkar Kyaw Oo | Updated README and weekly logbook, | Documentation commits |
+
 ## Current Status
 
 The team has created the GitHub repository with the full required folder structure. We prepared the initial project documentation — README, team profile, idea log, problem notes, and weekly logbook — and set the Student Apartment Finder Chatbot as our current front-runner among three candidate ideas for further evaluation.
@@ -501,6 +553,10 @@ The team prepared a detailed data inventory, classified the information collecte
 In Lab 10, the team successfully started implementing the Student Apartment Finder Platform by transforming the approved design into a functional prototype. The frontend and backend project structures were established, core user interfaces were developed, sample data handling was prepared, and the first working implementation of the apartment browsing workflow was completed. Feature implementation was documented and linked to the corresponding functional requirements to maintain traceability throughout the development process.
 
 In Lab 11, the team continued Sprint 2 development of the Student Apartment Finder Platform by improving both the frontend and backend implementation. Core user journeys were refined, data handling through Supabase was strengthened, startup metrics were introduced, and prototype testing was conducted to evaluate the complete workflow. The prototype now demonstrates greater functionality, improved usability, and better alignment with the approved system requirements.
+
+In Lab 12, the team expanded the Student Apartment Finder Platform by creating a dedicated landing page to promote the project and introduce its core features. A digital go-to-market strategy was prepared to identify target users, marketing channels, and acquisition metrics. The landing page was connected to the working prototype, allowing potential users to access the system through a clear call-to-action while maintaining consistency with the project requirements and branding.
+
+
 
 
 
@@ -538,3 +594,5 @@ In Lab 10, the team will continue implementing and refining the Student Apartmen
 In Lab 11, the team will continue expanding the prototype by completing the remaining Sprint 1 features, strengthening backend functionality, integrating additional database operations, improving user authentication and administrator functions, fixing implementation issues, and preparing the system for user testing and final prototype development.
 
 In Lab 12, the team will complete the remaining prototype features, resolve issues identified during testing, improve dashboard analytics, finalise administrator functionality, optimise system performance, and prepare the Student Apartment Finder Platform for final demonstration and project submission.
+
+In Lab 13, the team will complete the remaining prototype improvements, perform final testing and bug fixing, prepare the presentation materials, finalise project documentation, and ensure the Student Apartment Finder Platform is ready for demonstration and final submission.
