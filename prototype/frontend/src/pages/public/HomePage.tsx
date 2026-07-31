@@ -151,10 +151,51 @@ export function HomePage({ apartments, savedIds, onToggleSave, loading }: HomePa
         </div>
       </section>
 
-      <footer className="bg-slate-950 px-4 py-8 text-sm text-slate-300 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-semibold text-white">Student Apartment Finder</p>
-          <p>Student housing search for Pathum Thani campuses.</p>
+      <footer className="bg-slate-950 px-4 py-10 text-sm text-slate-300 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <div className="flex items-center gap-3">
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-blue-600 text-white">
+                <Building2 className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-bold text-white">Student Apartment Finder</p>
+                <p className="mt-1 text-xs uppercase tracking-wide text-blue-200">Pathum Thani student housing</p>
+              </div>
+            </div>
+            <p className="mt-4 max-w-xl leading-6 text-slate-400">
+              Compare approved landlord listings, save useful options, and contact owners from one student-focused prototype.
+            </p>
+          </div>
+
+          <div>
+            <p className="font-semibold text-white">Explore</p>
+            <div className="mt-4 grid gap-3">
+              <Link to="/apartments" className="hover:text-white">Apartments</Link>
+              <Link to="/roommates" className="hover:text-white">Roommates</Link>
+              <Link to="/saved" className="hover:text-white">Saved</Link>
+              <Link to="/about" className="hover:text-white">About</Link>
+            </div>
+          </div>
+
+          <div>
+            <p className="font-semibold text-white">Portals</p>
+            <div className="mt-4 grid gap-3">
+              <Link to="/owner/sign-in" className="hover:text-white">Landlord portal</Link>
+              <Link to="/admin/sign-in" className="hover:text-white">Admin review</Link>
+              <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-white">Terms of Use</Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>Built for ICT105 MVP demo.</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
+            <span>Verified listings</span>
+            <span>Campus distance</span>
+            <span>Basic inbox</span>
+          </div>
         </div>
       </footer>
     </main>
