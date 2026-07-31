@@ -1,7 +1,7 @@
-sample_record_id,apartment_name,monthly_price_thb,distance_km,near_university,approval_status,data_source,privacy_note
-APT-001,Rangsita Apartment,3000,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
-APT-002,Bundit Apartment,5500,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
-APT-003,Mst House,6000,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
-APT-004,Littlebears Residences,7400,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
-APT-005,The Rise 789,8500,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
-APT-006,WoodRoof Residence Rangsit,10500,1.5,Rangsit University,Approved,Admin listings dashboard,Private contact details excluded
+sample_record_id,apartment_name,monthly_price_thb,distance_km,near_university,room_type,availability_status,approval_status,data_source,privacy_note
+APT-001,Rangsita Apartment,3000,0.3,Rangsit University,Private Room,Available,Approved,Final admin listings dashboard,Private landlord contact details excluded
+APT-002,Sawanya Place,3000,0.5,Rangsit University,Private Room,Available,Approved,Final admin listings dashboard,Private landlord contact details excluded
+APT-003,Littlebears Residences,7400,0.4,Rangsit University,Studio,Limited,Approved,Final admin listings dashboard,Private landlord contact details excluded
+APT-004,The Rise 789,8500,0.5,Rangsit University,Studio,Available,Approved,Final admin listings dashboard,Private landlord contact details excluded
+APT-005,Mst House,8500,0.7,Rangsit University,Shared Room,Available,Approved,Final admin listings dashboard,Private landlord contact details excluded
+APT-006,WoodRoof Residence Rangsit,10500,0.8,Rangsit University,One Bedroom,Available,Approved,Final admin listings dashboard,Private landlord contact details excluded

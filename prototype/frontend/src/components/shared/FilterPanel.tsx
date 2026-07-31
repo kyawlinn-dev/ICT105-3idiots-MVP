@@ -59,7 +59,7 @@ export function FilterPanel({ filters, onChange, onReset }: FilterPanelProps) {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="maxDistance">Max distance</Label>
+            <Label htmlFor="maxDistance">Max distance (km)</Label>
             <Input
               id="maxDistance"
               value={filters.maxDistance}

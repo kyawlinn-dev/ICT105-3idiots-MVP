@@ -20,6 +20,6 @@
 
 ## Current Decision
 
-No Critical issue was identified during the simulated testing. The prototype needs minor revision before Lab 14.
+No Critical issue was identified during the simulated testing. The Important and Useful improvements were completed before the final Lab 14 package.
 
-The team will first complete the Important improvements. Useful improvements will be completed if time permits. After the prototype is updated, Phyo Wai Aung will retest the affected workflows and change each completed item’s status from `Pending` to `Completed`.
+The team completed the recorded improvement list and used the final screenshot evidence, testing evidence, and prototype verification notes to support the Lab 14 submission.
